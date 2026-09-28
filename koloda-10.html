@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Колода 10 — Числительные (A1)</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: linear-gradient(135deg, #0f2027, #2c5364);
+    min-height: 100vh;
+    padding: 40px 20px;
+    color: #333;
+  }
+
+  h1 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 8px;
+    font-size: 1.9rem;
+  }
+
+  .subtitle {
+    text-align: center;
+    color: #b0d4e0;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+  }
+
+  .counter {
+    text-align: center;
+    color: #7fa8b5;
+    margin-bottom: 35px;
+    font-size: 0.85rem;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  .card {
+    perspective: 1200px;
+    height: 300px;
+    cursor: pointer;
+  }
+
+  .card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.7s;
+    transform-style: preserve-3d;
+  }
+
+  .card.flipped .card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    overflow-y: auto;
+  }
+
+  .front {
+    background: #ffffff;
+    border-top: 6px solid #2c5364;
+  }
+
+  .front .number {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #0f2027;
+    text-align: center;
+    margin-bottom: 6px;
+    line-height: 1;
+  }
+
+  .front .word {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #2c5364;
+    text-align: center;
+    margin-bottom: 6px;
+    line-height: 1.2;
+  }
+
+  .front .pron {
+    text-align: center;
+    color: #d97706;
+    font-style: italic;
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+
+  .front .category {
+    text-align: center;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #2c5364;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .front .hint {
+    text-align: center;
+    font-size: 0.7rem;
+    color: #bbb;
+    margin-top: auto;
+    padding-top: 10px;
+    border-top: 1px dashed #eee;
+  }
+
+  .back {
+    background: linear-gradient(160deg, #0f2027, #2c5364);
+    color: #fff;
+    transform: rotateY(180deg);
+    border-top: 6px solid #2c5364;
+    justify-content: center;
+  }
+
+  .back .label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #b0d4e0;
+    margin-bottom: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 4px;
+  }
+
+  .back .info {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+
+  .back .info strong { color: #ffd166; }
+
+  .back .example {
+    font-size: 0.93rem;
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+
+  .back .example .de { font-weight: 600; color: #fff; }
+  .back .example .ru { color: #b0d4e0; font-size: 0.85rem; }
+
+  @media (max-width: 480px) {
+    .card { height: 320px; }
+    h1 { font-size: 1.35rem; }
+    .front .number { font-size: 2.4rem; }
+    .front .word { font-size: 1.15rem; }
+  }
+</style>
+</head>
+<body>
+
+<h1>🔢 Колода 10 — Числительные</h1>
+<p class="subtitle">Уровень A1 · Нажми на карточку, чтобы перевернуть 🔄</p>
+<p class="counter">34 карточки</p>
+
+<div class="grid">
+
+  <!-- 0 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="number">0</div>
+        <div class="word">null</div>
+        <div class="category">кардинальное</div>
+        <div class="pron">[нуль]</div>
+        <div class="hint">нажми, чтобы увидеть пример</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Как читается</div>
+        <div class="info">Телефонные номера часто читают по цифрам: <strong>null eins sieben...</strong></div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Meine Nummer ist null eins sieben sechs...</div><div class="ru">Мой номер 0 1 7 6...</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="number">1</div>
+        <div class="word">eins</div>
+        <div class="category">кардинальное</div>
+        <div class="pron">[айнс]</div>
+        <div class="hint">нажми, чтобы увидеть пример</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Как читается</div>
+        <div class="info">Перед существительным — <strong>ein/eine</strong>. Отдельно — <strong>eins</strong>.</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich habe nur eins.</div><div class="ru">У меня только один.</div></div>
+        <div class="example"><div class="de">Ich möchte ein Bier, bitte.</div><div class="ru">Я хотел бы одно пиво, пожалуйста.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="number">2</div>
+        <div class="word">zwei</div>
+        <div class="category">кардинальное</div>
+        <div class="pron">[цвай]</div>
+        <div class="hint">нажми, чтобы увидеть пример</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Как читается</div>
+        <div class="info">В телефонии часто говорят <strong>zwo</strong>, чтобы не путать с drei.</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich habe zwei Kinder.</div><div class="ru">У меня двое детей.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="number">3</div>
+        <div class="word">drei</div>
+        <div class="category">кардинальное</div>
+        <div class="pron">[драй]</div>
+        <div class="hint">нажми, чтобы увидеть пример</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Es ist drei Uhr.</div><div class="ru">Три часа.</div></div>
+        <div class="example"><div class="de">Ich wohne im dritten Stock.</div><div class="ru">Я живу на 4-м этаже.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="number">4</div>
+        <div class="word">vier</div>
+        <div class="category">кардинальное</div>
+        <div class="pron">[фир]</div>
+        <div class="hint">нажми, чтобы увидеть пример</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Der Tisch hat vier Stühle.</div><div class="ru">У стола четыре стула.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="number">5</div>
+        <div class="word">fünf</div>
+        <div class="category">кардинальное</div>
+        <div class="pron">[фюнф]</div>
+        <div class="hint">нажми, чтобы увидеть пример</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Das kostet fünf Euro.</div><div class="ru">Это стоит пять евро.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="number">6</div>
+        <div class="word">sechs</div>
+        <div class="category">кардинальное</div>
+        <div class="pron">[зэкс]</div>
+        <div class="hint">нажми, чтобы увидеть пример</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich stehe um sechs Uhr auf.</div><div class="ru">Я встаю в шесть часов.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="number">7</div>
+        <div class="word">sieben</div>
+        <div class="category">кардинальное</div>
+        <div class="pron">[зибэн]</div>
+        <div class="hint">нажми, чтобы увидеть пример</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Die Woche hat sieben Tage.</div><div class="ru">В неделе семь дней.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="number">8</div>
+        <div class="word">acht</div>
+        <div class="category">кардинальное</div>
+        <div class="pron">[ахт]</div>
+        <div class="hint">нажми, чтобы увидеть пример</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Der Film beginnt um acht.</div><div class="ru">Фильм начинается в восемь.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="number">9</div>
+        <div class="word">neun</div>
+        <div class="category">кардинальное</div>
+        <div class="pron">[нойн]</div>
+        <div class="hint">нажми, чтобы увидеть пример</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich arbeite von neun bis fünf.</div><div class="ru">Я работаю с девяти до пяти.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="number">10</div>
+        <div class="word">zehn</div>
+        <div class="category">кардинальное</div>
+        <div class="pron">[цэн]</div>
+        <div class="hint">нажми, чтобы увидеть пример</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Das kostet zehn Euro.</div><div class="ru">Это стоит десять евро.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 11 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="number">11</div>
+        <div class="word">elf</div>
+        <div class="category">кардинальное</div>
+        <div class="pron">[эльф]</div>
+        <div class="hint">нажми, чтобы увидеть пример</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Как читается</div>
+        <div class="info">Как английское «eleven», но с немецким произношением.</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Es ist elf Uhr.</div><div class="ru">Одиннадцать часов.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 12 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="number">12</div>
+        <div class="word">zwölf</div>
+        <div class="category">кардинальное</div>
+        <div class="pron">[цвёльф]</div>
+        <div class="hint">нажми, чтобы увидеть пример</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Как читается</div>
+        <div class="info">Не «цвельф», а мягкое <strong>цвёльф</strong>.</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Mittag ist um zwölf Uhr.</div><div class="ru">Полдень в двенадцать часов.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 13 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="number">13</div>
+        <div class="word">dreizehn</div>
+        <div class="category">кардинальное</div>
+        <div class="pron">[драйцэн]</div>
+        <div class="hint">нажми, чтобы увидеть пример</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Как образуется</div>
+        <div class="info">От 13 до 19: <strong>цифра + zehn</strong>.</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich bin dreizehn Jahre alt.</div><div class="ru">Мне тринадцать лет.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 14 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="number">14</div>
+        <div class="word">vierzehn</div>
+        <div class="category">кардинальное</div>
+        <div class="pron">[фирцэн]</div>
+        <div class="hint">нажми, чтобы увидеть пример</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Wir haben vierzehn Gäste.</div><div class="ru">У нас четырнадцать гостей.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 15 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="number">15</div>
+        <div class="word">fünfzehn</div>
+        <div class="category">кардинальное</div>
+        <div class="pron">[фюнфцэн]</div>
+        <div class="hint">нажми, чтобы увидеть пример</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Der Bus kommt in fünfzehn Minuten.</div><div class="ru">Автобус придёт через пятнадцать минут.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 16 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="number">16</div>
+        <div class="word">sechzehn</div>
+        <div class="category">кардинальное</div>
+        <div class="pron">[зэхьцэн]</div>
+        <div class="hint">нажми, чтобы увидеть пример</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Важно</div>
+        <div class="info">Не «sechszehn», а <strong>sechzehn</strong> — выпадает «s»!</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Sie ist sechzehn Jahre alt.</div><div class="ru">Ей шестнадцать лет.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 17 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="number">17</div>
+        <div class="word">siebzehn</div>
+        <div class="category">кардинальное</div>
+        <div class="pron">[зибцэн]</div>
+        <div class="hint">нажми, чтобы увидеть пример</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Важно</div>
+        <div class="info">Не «siebenzehn», а <strong>siebzehn</strong> — выпадает «en»!</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Sie ist siebzehn.</div><div class="ru">Ей семнадцать.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 18 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="number">18</div>
+        <div class="word">achtzehn</div>
+        <div class="category">кардинальное</div>
+        <div class="pron">[ахцэн]</div>
+        <div class="hint">нажми, чтобы увидеть пример</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Важно</div>
+        <div class="info">Не «achtzehn», а <strong>achtzehn</strong> — без «t» на стыке.</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Mit achtzehn bin ich erwachsen.</div><div class="ru">В восемнадцать я взрослый.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 19 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="number">19</div>
+        <div class="word">neunzehn</div>
+        <div class="category">кардинальное</div>
+        <div class="pron">[нойнцэн]</div>
+        <div class="hint">нажми, чтобы увидеть пример</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Sie wohnt im neunzehnten Stock.</div><div class="ru">Она живёт на 20-м этаже.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 20 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="number">20</div>
+        <div class="word">zwanzig</div>
+        <div class="category">десятки</div>
+        <div class="pron">[цванцихь]</div>
+        <div class="hint">нажми, чтобы увидеть пример</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Как образуется</div>
+        <div class="info">Десятки от 20 до 90: <strong>цифра + zig</strong>.</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Das kostet zwanzig Euro.</div><div class="ru">Это стоит двадцать евро.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 21 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="number">30</div>
+        <div class="word">dreißig</div>
+        <div class="category">десятки</div>
+        <div class="pron">[драйсихь]</div>
+        <div class="hint">нажми, чтобы увидеть пример</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Важно</div>
+        <div class="info">Только 30 пишется через <strong>ß</strong> — <strong>dreißig</strong> (не «dreizig»).</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich bin dreißig Jahre alt.</div><div class="ru">Мне тридцать лет.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 22 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="number">40</div>
+        <div class="word">vierzig</div>
+        <div class="category">десятки</div>
+        <div class="pron">[фирцихь]</div>
+        <div class="hint">нажми, чтобы увидеть пример</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Der Kurs dauert vierzig Minuten.</div><div class="ru">Курс длится сорок минут.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 23 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="number">50</div>
+        <div class="word">fünfzig</div>
+        <div class="category">десятки</div>
+        <div class="pron">[фюнфцихь]</div>
+        <div class="hint">нажми, чтобы увидеть пример</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Die Jacke kostet fünfzig Euro.</div><div class="ru">Куртка стоит пятьдесят евро.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 24 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="number">60</div>
+        <div class="word">sechzig</div>
+        <div class="category">десятки</div>
+        <div class="pron">[зэхьцихь]</div>
+        <div class="hint">нажми, чтобы увидеть пример</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Важно</div>
+        <div class="info">Опять без «s» — <strong>sechzig</strong>.</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Eine Stunde hat sechzig Minuten.</div><div class="ru">В часе шестьдесят минут.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 25 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="number">70</div>
+        <div class="word">siebzig</div>
+        <div class="category">десятки</div>
+        <div class="pron">[зипцихь]</div>
+        <div class="hint">нажми, чтобы увидеть пример</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Важно</div>
+        <div class="info">Тоже сокращённая форма — <strong>siebzig</strong> (не «siebenzig»).</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Meine Oma ist siebzig.</div><div class="ru">Моей бабушке семьдесят.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 26 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="number">80</div>
+        <div class="word">achtzig</div>
+        <div class="category">десятки</div>
+        <div class="pron">[ахцихь]</div>
+        <div class="hint">нажми, чтобы увидеть пример</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Er ist achtzig Jahre alt.</div><div class="ru">Ему восемьдесят лет.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 27 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="number">90</div>
+        <div class="word">neunzig</div>
+        <div class="category">десятки</div>
+        <div class="pron">[нойнцихь]</div>
+        <div class="hint">нажми, чтобы увидеть пример</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Sie ist neunzig Jahre alt.</div><div class="ru">Ей девяносто лет.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 28 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="number">100</div>
+        <div class="word">(ein)hundert</div>
+        <div class="category">крупное число</div>
+        <div class="pron">[(айн)хундэрт]</div>
+        <div class="hint">нажми, чтобы увидеть пример</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Как читается</div>
+        <div class="info">Просто <strong>hundert</strong> или <strong>einhundert</strong> (в банках, документах).</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Das kostet hundert Euro.</div><div class="ru">Это стоит сто евро.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 29 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="number">1000</div>
+        <div class="word">(ein)tausend</div>
+        <div class="category">крупное число</div>
+        <div class="pron">[(айн)таузэнт]</div>
+        <div class="hint">нажми, чтобы увидеть пример</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Как читается</div>
+        <div class="info">Чаще <strong>tausend</strong>. <strong>eintausend</strong> — в документах.</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Das Auto kostet zwanzigtausend Euro.</div><div class="ru">Машина стоит двадцать тысяч евро.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 30. Составное число -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="number">21</div>
+        <div class="word">einundzwanzig</div>
+        <div class="category">составное число</div>
+        <div class="pron">[айн-унт-цванцихь]</div>
+        <div class="hint">нажми, чтобы увидеть правило</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Правило</div>
+        <div class="info">В немецком числа 21–99 читаются <strong>«наоборот»</strong>: сначала единицы, потом <strong>und</strong>, потом десятки.<br><br>
+        <strong>21</strong> = ein + und + zwanzig = <strong>einundzwanzig</strong><br>
+        <strong>45</strong> = fünf + und + vierzig = <strong>fünfundvierzig</strong><br>
+        <strong>99</strong> = neun + und + neunzig = <strong>neunundneunzig</strong></div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich bin einundzwanzig Jahre alt.</div><div class="ru">Мне двадцать один год.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 31. Составное число 2 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="number">35</div>
+        <div class="word">fünfunddreißig</div>
+        <div class="category">составное число</div>
+        <div class="pron">[фюнф-унт-драйсихь]</div>
+        <div class="hint">нажми, чтобы увидеть пример</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Разбор</div>
+        <div class="info">fünf + und + dreißig = <strong>35</strong></div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Der Kurs kostet fünfunddreißig Euro.</div><div class="ru">Курс стоит тридцать пять евро.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 32. Порядковое 1. -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="number">1.</div>
+        <div class="word">erste</div>
+        <div class="category">порядковое</div>
+        <div class="pron">[эрстэ]</div>
+        <div class="hint">нажми, чтобы увидеть пример</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Правило</div>
+        <div class="info">Порядковые до 19: <strong>число + te</strong>. С 20: <strong>число + ste</strong>.</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Heute ist der erste Mai.</div><div class="ru">Сегодня первое мая.</div></div>
+        <div class="example"><div class="de">Das ist meine erste Wohnung.</div><div class="ru">Это моя первая квартира.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 33. Порядковое 2. -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="number">2.</div>
+        <div class="word">zweite</div>
+        <div class="category">порядковое</div>
+        <div class="pron">[цвайтэ]</div>
+        <div class="hint">нажми, чтобы увидеть пример</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Исключения</div>
+        <div class="info">Только 1-й и 3-й — особые: <strong>erste, dritte</strong>. Остальные до 19 — по правилу: <strong>zweite, vierte, fünfte, sechste, siebte, achte, neunte, zehnte...</strong></div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Sie wohnt im zweiten Stock.</div><div class="ru">Она живёт на 3-м этаже (немецкий 2-й этаж).</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 34. Порядковое 3. -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="number">3.</div>
+        <div class="word">dritte</div>
+        <div class="category">порядковое</div>
+        <div class="pron">[дритэ]</div>
+        <div class="hint">нажми, чтобы увидеть пример</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Важно</div>
+        <div class="info">Третье порядковое — <strong>dritte</strong> (не «dreite»). Запомнить!</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich wohne im dritten Stock.</div><div class="ru">Я живу на 4-м этаже (немецкий 3-й).</div></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Колода 5 — Время, дни, месяцы, числа (A1)</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: linear-gradient(135deg, #232526, #414345);
+    min-height: 100vh;
+    padding: 40px 20px;
+    color: #333;
+  }
+
+  h1 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 8px;
+    font-size: 1.9rem;
+  }
+
+  .subtitle {
+    text-align: center;
+    color: #cfd8dc;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+  }
+
+  .counter {
+    text-align: center;
+    color: #b0bec5;
+    margin-bottom: 35px;
+    font-size: 0.85rem;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  .card {
+    perspective: 1200px;
+    height: 300px;
+    cursor: pointer;
+  }
+
+  .card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.7s;
+    transform-style: preserve-3d;
+  }
+
+  .card.flipped .card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    overflow-y: auto;
+  }
+
+  .front {
+    background: #ffffff;
+    border-top: 6px solid #607d8b;
+  }
+
+  .front .word {
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: #263238;
+    text-align: center;
+    margin-bottom: 4px;
+    line-height: 1.2;
+  }
+
+  .front .word .art {
+    color: #607d8b;
+    font-weight: 500;
+  }
+
+  .front .plural {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #78909c;
+    margin-bottom: 10px;
+    font-style: italic;
+  }
+
+  .front .pron {
+    text-align: center;
+    color: #d97706;
+    font-style: italic;
+    font-size: 1rem;
+    margin-bottom: 12px;
+  }
+
+  .front .hint {
+    text-align: center;
+    font-size: 0.7rem;
+    color: #bbb;
+    margin-top: auto;
+    padding-top: 10px;
+    border-top: 1px dashed #eee;
+  }
+
+  .back {
+    background: linear-gradient(160deg, #263238, #37474f);
+    color: #fff;
+    transform: rotateY(180deg);
+    border-top: 6px solid #90a4ae;
+    justify-content: center;
+  }
+
+  .back .translation {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 16px;
+    color: #ffd166;
+  }
+
+  .back .label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #b0bec5;
+    margin-bottom: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 4px;
+  }
+
+  .back .example {
+    font-size: 0.93rem;
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+
+  .back .example .de { font-weight: 600; color: #fff; }
+  .back .example .ru { color: #b0bec5; font-size: 0.85rem; }
+
+  @media (max-width: 480px) {
+    .card { height: 320px; }
+    h1 { font-size: 1.35rem; }
+    .front .word { font-size: 1.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<h1>🕐 Колода 5 — Время, дни, месяцы, числа</h1>
+<p class="subtitle">Уровень A1 · Нажми на карточку, чтобы перевернуть 🔄</p>
+<p class="counter">38 карточек</p>
+
+<div class="grid">
+
+  <!-- 1. День -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Tag</div>
+        <div class="plural">die Tage</div>
+        <div class="pron">[так]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">день</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Guten Tag!</div><div class="ru">Добрый день!</div></div>
+        <div class="example"><div class="de">Der Tag war lang.</div><div class="ru">День был длинный.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Woche -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Woche</div>
+        <div class="plural">die Wochen</div>
+        <div class="pron">[вохэ]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">неделя</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Die Woche hat sieben Tage.</div><div class="ru">В неделе семь дней.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Monat -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Monat</div>
+        <div class="plural">die Monate</div>
+        <div class="pron">[монат]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">месяц</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Der Monat ist fast zu Ende.</div><div class="ru">Месяц почти закончился.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Jahr -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">das</span> Jahr</div>
+        <div class="plural">die Jahre</div>
+        <div class="pron">[яр]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">год</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich bin 25 Jahre alt.</div><div class="ru">Мне 25 лет.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Stunde -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Stunde</div>
+        <div class="plural">die Stunden</div>
+        <div class="pron">[штундэ]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">час (длительность)</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Der Kurs dauert zwei Stunden.</div><div class="ru">Курс длится два часа.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Minute -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Minute</div>
+        <div class="plural">die Minuten</div>
+        <div class="pron">[минутэ]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">минута</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Warte eine Minute, bitte.</div><div class="ru">Подожди минуту, пожалуйста.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. Uhr -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Uhr</div>
+        <div class="plural">die Uhren</div>
+        <div class="pron">[ур]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">час (время на часах); часы</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Es ist zehn Uhr.</div><div class="ru">Сейчас десять часов.</div></div>
+        <div class="example"><div class="de">Meine Uhr ist kaputt.</div><div class="ru">Мои часы сломаны.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. Morgen -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Morgen</div>
+        <div class="plural">die Morgen</div>
+        <div class="pron">[моргэн]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">утро</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Guten Morgen!</div><div class="ru">Доброе утро!</div></div>
+        <div class="example"><div class="de">Am Morgen trinke ich Kaffee.</div><div class="ru">Утром я пью кофе.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9. Mittag -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Mittag</div>
+        <div class="plural">die Mittage</div>
+        <div class="pron">[митак]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">полдень</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Zu Mittag esse ich Suppe.</div><div class="ru">В полдень я ем суп.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10. Abend -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Abend</div>
+        <div class="plural">die Abende</div>
+        <div class="pron">[абэнт]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">вечер</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Guten Abend!</div><div class="ru">Добрый вечер!</div></div>
+        <div class="example"><div class="de">Am Abend sehe ich fern.</div><div class="ru">Вечером я смотрю телевизор.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 11. Nacht -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Nacht</div>
+        <div class="plural">die Nächte</div>
+        <div class="pron">[нахт]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">ночь</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Gute Nacht!</div><div class="ru">Спокойной ночи!</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 12. Montag -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Montag</div>
+        <div class="plural">die Montage</div>
+        <div class="pron">[монтаг]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">понедельник</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Am Montag habe ich Deutsch.</div><div class="ru">В понедельник у меня немецкий.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 13. Dienstag -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Dienstag</div>
+        <div class="plural">die Dienstage</div>
+        <div class="pron">[динстаг]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">вторник</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Am Dienstag arbeite ich.</div><div class="ru">Во вторник я работаю.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 14. Mittwoch -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Mittwoch</div>
+        <div class="plural">die Mittwoche</div>
+        <div class="pron">[митвох]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">среда</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Am Mittwoch habe ich frei.</div><div class="ru">В среду у меня выходной.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 15. Donnerstag -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Donnerstag</div>
+        <div class="plural">die Donnerstage</div>
+        <div class="pron">[донэрстаг]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">четверг</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Am Donnerstag habe ich Sport.</div><div class="ru">В четверг у меня спорт.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 16. Freitag -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Freitag</div>
+        <div class="plural">die Freitage</div>
+        <div class="pron">[фрайтаг]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">пятница</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Am Freitag gehe ich ins Kino.</div><div class="ru">В пятницу я иду в кино.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 17. Samstag -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Samstag</div>
+        <div class="plural">die Samstage</div>
+        <div class="pron">[замстаг]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">суббота</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Am Samstag schlafe ich lange.</div><div class="ru">В субботу я долго сплю.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 18. Sonntag -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Sonntag</div>
+        <div class="plural">die Sonntage</div>
+        <div class="pron">[зонтаг]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">воскресенье</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Am Sonntag besuche ich meine Eltern.</div><div class="ru">В воскресенье я навещаю родителей.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 19. Wochenende -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">das</span> Wochenende</div>
+        <div class="plural">die Wochenenden</div>
+        <div class="pron">[вохэнэндэ]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">выходные</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Am Wochenende habe ich frei.</div><div class="ru">На выходных у меня свободно.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 20. Januar -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Januar</div>
+        <div class="plural">die Januare</div>
+        <div class="pron">[януар]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">январь</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Im Januar ist es kalt.</div><div class="ru">В январе холодно.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 21. Februar -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Februar</div>
+        <div class="plural">die Februare</div>
+        <div class="pron">[фэбруар]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">февраль</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Im Februar habe ich Geburtstag.</div><div class="ru">В феврале у меня день рождения.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 22. März -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> März</div>
+        <div class="plural">die Märze</div>
+        <div class="pron">[мэрц]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">март</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Im März beginnt der Frühling.</div><div class="ru">В марте начинается весна.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 23. April -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> April</div>
+        <div class="plural">die Aprile</div>
+        <div class="pron">[априль]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">апрель</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Im April regnet es oft.</div><div class="ru">В апреле часто идёт дождь.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 24. Mai -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Mai</div>
+        <div class="plural">die Maie</div>
+        <div class="pron">[май]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">май</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Im Mai ist das Wetter schön.</div><div class="ru">В мае погода красивая.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 25. Juni -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Juni</div>
+        <div class="plural">die Junis</div>
+        <div class="pron">[юни]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">июнь</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Im Juni fahre ich in den Urlaub.</div><div class="ru">В июне я еду в отпуск.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 26. Juli -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Juli</div>
+        <div class="plural">die Julis</div>
+        <div class="pron">[юли]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">июль</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Im Juli ist es sehr warm.</div><div class="ru">В июле очень тепло.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 27. August -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> August</div>
+        <div class="plural">die Auguste</div>
+        <div class="pron">[аугуст]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">август</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Im August schwimme ich oft.</div><div class="ru">В августе я часто плаваю.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 28. September -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> September</div>
+        <div class="plural">die September</div>
+        <div class="pron">[зэптэмбэр]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">сентябрь</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Im September beginnt die Schule.</div><div class="ru">В сентябре начинается школа.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 29. Oktober -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Oktober</div>
+        <div class="plural">die Oktober</div>
+        <div class="pron">[октобэр]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">октябрь</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Im Oktober fallen die Blätter.</div><div class="ru">В октябре падают листья.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 30. November -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> November</div>
+        <div class="plural">die November</div>
+        <div class="pron">[новэмбэр]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">ноябрь</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Im November ist es oft neblig.</div><div class="ru">В ноябре часто туманно.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 31. Dezember -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Dezember</div>
+        <div class="plural">die Dezember</div>
+        <div class="pron">[дэцэмбэр]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">декабрь</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Im Dezember feiern wir Weihnachten.</div><div class="ru">В декабре мы празднуем Рождество.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 32. heute -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">heute</div>
+        <div class="plural">наречие</div>
+        <div class="pron">[хойтэ]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">сегодня</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Heute ist Montag.</div><div class="ru">Сегодня понедельник.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 33. morgen -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">morgen</div>
+        <div class="plural">наречие</div>
+        <div class="pron">[моргэн]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">завтра</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Morgen fahre ich nach Berlin.</div><div class="ru">Завтра я еду в Берлин.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 34. gestern -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">gestern</div>
+        <div class="plural">наречие</div>
+        <div class="pron">[гэстэрн]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">вчера</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Gestern war ich zu Hause.</div><div class="ru">Вчера я был дома.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 35. jetzt -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">jetzt</div>
+        <div class="plural">наречие</div>
+        <div class="pron">[йецт]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">сейчас</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Jetzt lerne ich Deutsch.</div><div class="ru">Сейчас я учу немецкий.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 36. immer -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">immer</div>
+        <div class="plural">наречие</div>
+        <div class="pron">[иммэр]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">всегда</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich bin immer müde.</div><div class="ru">Я всегда уставший.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 37. oft -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">oft</div>
+        <div class="plural">наречие</div>
+        <div class="pron">[офт]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">часто</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich gehe oft spazieren.</div><div class="ru">Я часто гуляю.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 38. manchmal -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">manchmal</div>
+        <div class="plural">наречие</div>
+        <div class="pron">[манхьмаль]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">иногда</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Manchmal koche ich selbst.</div><div class="ru">Иногда я готовлю сам.</div></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

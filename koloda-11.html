@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Колода 11 — Полезные фразы и выражения (A1)</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: linear-gradient(135deg, #f12711, #f5af19);
+    min-height: 100vh;
+    padding: 40px 20px;
+    color: #333;
+  }
+
+  h1 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 8px;
+    font-size: 1.9rem;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  }
+
+  .subtitle {
+    text-align: center;
+    color: #ffe9c4;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+  }
+
+  .counter {
+    text-align: center;
+    color: #ffd08a;
+    margin-bottom: 35px;
+    font-size: 0.85rem;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 20px;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  .card {
+    perspective: 1200px;
+    height: 320px;
+    cursor: pointer;
+  }
+
+  .card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.7s;
+    transform-style: preserve-3d;
+  }
+
+  .card.flipped .card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    overflow-y: auto;
+  }
+
+  .front {
+    background: #ffffff;
+    border-top: 6px solid #f5af19;
+  }
+
+  .front .category {
+    text-align: center;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #f12711;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  .front .word {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #7a2006;
+    text-align: center;
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+
+  .front .pron {
+    text-align: center;
+    color: #d97706;
+    font-style: italic;
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+  }
+
+  .front .hint {
+    text-align: center;
+    font-size: 0.7rem;
+    color: #bbb;
+    margin-top: auto;
+    padding-top: 10px;
+    border-top: 1px dashed #eee;
+  }
+
+  .back {
+    background: linear-gradient(160deg, #7a2006, #f12711);
+    color: #fff;
+    transform: rotateY(180deg);
+    border-top: 6px solid #f5af19;
+    justify-content: center;
+  }
+
+  .back .translation {
+    font-size: 1.35rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 14px;
+    color: #ffd166;
+    line-height: 1.3;
+  }
+
+  .back .label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #ffd08a;
+    margin-bottom: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 4px;
+  }
+
+  .back .example {
+    font-size: 0.92rem;
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+
+  .back .example .de { font-weight: 600; color: #fff; }
+  .back .example .ru { color: #ffd08a; font-size: 0.85rem; }
+
+  @media (max-width: 480px) {
+    .card { height: 340px; }
+    h1 { font-size: 1.35rem; }
+    .front .word { font-size: 1.15rem; }
+  }
+</style>
+</head>
+<body>
+
+<h1>💬 Колода 11 — Полезные фразы и выражения</h1>
+<p class="subtitle">Уровень A1 · Нажми на карточку, чтобы перевернуть 🔄</p>
+<p class="counter">40 карточек</p>
+
+<div class="grid">
+
+  <!-- 1 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Приветствие</div>
+        <div class="word">Hallo!</div>
+        <div class="pron">[халё]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">Привет!</div>
+        <div class="label">Употребление</div>
+        <div class="example"><div class="de">Hallo, wie geht's?</div><div class="ru">Привет, как дела?</div></div>
+        <div class="example"><div class="de">Универсальное неформальное приветствие.</div><div class="ru">Подходит для друзей, знакомых, коллег.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Приветствие</div>
+        <div class="word">Guten Morgen!</div>
+        <div class="pron">[гутэн моргэн]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">Доброе утро!</div>
+        <div class="label">Употребление</div>
+        <div class="example"><div class="de">До примерно 11:00.</div><div class="ru">Формально и неформально.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Приветствие</div>
+        <div class="word">Guten Tag!</div>
+        <div class="pron">[гутэн так]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">Добрый день!</div>
+        <div class="label">Употребление</div>
+        <div class="example"><div class="de">Официальное приветствие днём.</div><div class="ru">С 11:00 до 18:00, особенно в учреждениях.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Приветствие</div>
+        <div class="word">Guten Abend!</div>
+        <div class="pron">[гутэн абэнт]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">Добрый вечер!</div>
+        <div class="label">Употребление</div>
+        <div class="example"><div class="de">После 18:00.</div><div class="ru">При встрече, не при прощании.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Прощание</div>
+        <div class="word">Tschüss!</div>
+        <div class="pron">[чюс]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">Пока!</div>
+        <div class="label">Употребление</div>
+        <div class="example"><div class="de">Неформальное прощание.</div><div class="ru">С друзьями, коллегами, в магазине.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Прощание</div>
+        <div class="word">Auf Wiedersehen!</div>
+        <div class="pron">[ауф видэрзэен]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">До свидания!</div>
+        <div class="label">Употребление</div>
+        <div class="example"><div class="de">Официальное прощание.</div><div class="ru">В учреждении, с незнакомыми.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Прощание</div>
+        <div class="word">Bis bald!</div>
+        <div class="pron">[бис бальт]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">До скорого!</div>
+        <div class="label">Употребление</div>
+        <div class="example"><div class="de">Если увидитесь скоро.</div><div class="ru">Неформально и нейтрально.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Прощание</div>
+        <div class="word">Bis morgen!</div>
+        <div class="pron">[бис моргэн]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">До завтра!</div>
+        <div class="label">Употребление</div>
+        <div class="example"><div class="de">Если увидитесь завтра.</div><div class="ru">Также: <strong>Bis später! Bis dann!</strong></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Вежливость</div>
+        <div class="word">Bitte</div>
+        <div class="pron">[битэ]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">Пожалуйста (просьба); пожалуйста (ответ)</div>
+        <div class="label">Употребление</div>
+        <div class="example"><div class="de">Ein Wasser, bitte.</div><div class="ru">Воду, пожалуйста.</div></div>
+        <div class="example"><div class="de">Danke! — Bitte!</div><div class="ru">Спасибо! — Пожалуйста!</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Вежливость</div>
+        <div class="word">Danke (schön)</div>
+        <div class="pron">[данкэ (шён)]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">Спасибо (большое)</div>
+        <div class="label">Употребление</div>
+        <div class="example"><div class="de">Danke schön!</div><div class="ru">Большое спасибо!</div></div>
+        <div class="example"><div class="de">Vielen Dank!</div><div class="ru">Большое спасибо! (усиленно)</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 11 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Вежливость</div>
+        <div class="word">Entschuldigung</div>
+        <div class="pron">[энтшульдигунг]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">Извините</div>
+        <div class="label">Употребление</div>
+        <div class="example"><div class="de">Entschuldigung, wo ist der Bahnhof?</div><div class="ru">Извините, где вокзал?</div></div>
+        <div class="example"><div class="de">Обратиться к незнакомому человеку.</div><div class="ru">= «простите» по-русски.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 12 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Вежливость</div>
+        <div class="word">Es tut mir leid</div>
+        <div class="pron">[эс тут мир ляйд]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">Мне жаль / Сожалею</div>
+        <div class="label">Употребление</div>
+        <div class="example"><div class="de">Es tut mir leid, ich habe keine Zeit.</div><div class="ru">Мне жаль, у меня нет времени.</div></div>
+        <div class="example"><div class="de">Искреннее извинение.</div><div class="ru">Сильнее, чем Entschuldigung.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 13 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Знакомство</div>
+        <div class="word">Freut mich!</div>
+        <div class="pron">[фройт михь]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">Приятно познакомиться!</div>
+        <div class="label">Употребление</div>
+        <div class="example"><div class="de">Ich heiße Anna. — Freut mich!</div><div class="ru">Меня зовут Анна. — Приятно познакомиться!</div></div>
+        <div class="example"><div class="de">Полная форма: <strong>Es freut mich, Sie kennenzulernen.</strong></div><div class="ru">Рад(а) с вами познакомиться.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 14 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Непонимание</div>
+        <div class="word">Wie bitte?</div>
+        <div class="pron">[ви битэ]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">Простите? / Что?</div>
+        <div class="label">Употребление</div>
+        <div class="example"><div class="de">Wie bitte? Ich habe das nicht verstanden.</div><div class="ru">Простите? Я не понял.</div></div>
+        <div class="example"><div class="de">Вежливая просьба повторить.</div><div class="ru">Без негативного оттенка.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 15 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Непонимание</div>
+        <div class="word">Ich verstehe nicht.</div>
+        <div class="pron">[ихь фэрштэе нихьт]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">Я не понимаю.</div>
+        <div class="label">Употребление</div>
+        <div class="example"><div class="de">Können Sie das wiederholen?</div><div class="ru">Вы можете это повторить?</div></div>
+        <div class="example"><div class="de">Sprechen Sie bitte langsamer.</div><div class="ru">Говорите, пожалуйста, медленнее.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 16 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Непонимание</div>
+        <div class="word">Wie sagt man das auf Deutsch?</div>
+        <div class="pron">[ви загт ман дас ауф дойч]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">Как это сказать по-немецки?</div>
+        <div class="label">Употребление</div>
+        <div class="example"><div class="de">На уроке или в разговоре.</div><div class="ru">Полезно для изучающих язык.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 17 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Непонимание</div>
+        <div class="word">Was bedeutet das?</div>
+        <div class="pron">[вас бэдойтэт дас]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">Что это значит?</div>
+        <div class="label">Употребление</div>
+        <div class="example"><div class="de">Was bedeutet das Wort?</div><div class="ru">Что значит это слово?</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 18 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Просьбы</div>
+        <div class="word">Können Sie mir helfen?</div>
+        <div class="pron">[кёнэн зи мир хельфэн]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">Вы можете мне помочь?</div>
+        <div class="label">Употребление</div>
+        <div class="example"><div class="de">Können Sie mir bitte helfen?</div><div class="ru">Вы можете мне, пожалуйста, помочь?</div></div>
+        <div class="example"><div class="de">Kannst du mir helfen? (неформально)</div><div class="ru">Ты можешь мне помочь?</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 19 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Просьбы</div>
+        <div class="word">Ich hätte gern...</div>
+        <div class="pron">[ихь хэтэ гэрн]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">Я хотел(а) бы...</div>
+        <div class="label">Употребление</div>
+        <div class="example"><div class="de">Ich hätte gern einen Kaffee.</div><div class="ru">Я хотел(а) бы кофе.</div></div>
+        <div class="example"><div class="de">В кафе, ресторане, магазине.</div><div class="ru">Вежливая форма заказа.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 20 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Просьбы</div>
+        <div class="word">Könnten Sie...?</div>
+        <div class="pron">[кёнтэн зи]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">Не могли бы вы...?</div>
+        <div class="label">Употребление</div>
+        <div class="example"><div class="de">Könnten Sie mir das zeigen?</div><div class="ru">Не могли бы вы мне это показать?</div></div>
+        <div class="example"><div class="de">Очень вежливая форма (сослагательное).</div><div class="ru">Используется с незнакомыми.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 21 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Согласие</div>
+        <div class="word">Ja, gern!</div>
+        <div class="pron">[я гэрн]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">Да, с удовольствием!</div>
+        <div class="label">Употребление</div>
+        <div class="example"><div class="de">Kommst du mit? — Ja, gern!</div><div class="ru">Ты пойдёшь со мной? — Да, с удовольствием!</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 22 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Согласие</div>
+        <div class="word">Das ist eine gute Idee.</div>
+        <div class="pron">[дас ист айне гутэ идэе]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">Это хорошая идея.</div>
+        <div class="label">Употребление</div>
+        <div class="example"><div class="de">Wir gehen ins Kino. — Das ist eine gute Idee!</div><div class="ru">Мы идём в кино. — Это хорошая идея!</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 23 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Согласие</div>
+        <div class="word">Einverstanden!</div>
+        <div class="pron">[айнфэрштандэн]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">Согласен / Договорились!</div>
+        <div class="label">Употребление</div>
+        <div class="example"><div class="de">Um 8 Uhr? — Einverstanden!</div><div class="ru">В 8 часов? — Договорились!</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 24 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Согласие</div>
+        <div class="word">Kein Problem.</div>
+        <div class="pron">[кайн проблем]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">Не проблема / Без проблем.</div>
+        <div class="label">Употребление</div>
+        <div class="example"><div class="de">Kannst du morgen kommen? — Kein Problem.</div><div class="ru">Ты можешь прийти завтра? — Без проблем.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 25 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Отказ</div>
+        <div class="word">Nein, danke.</div>
+        <div class="pron">[найн данкэ]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">Нет, спасибо.</div>
+        <div class="label">Употребление</div>
+        <div class="example"><div class="de">Möchten Sie noch einen Kaffee? — Nein, danke.</div><div class="ru">Хотите ещё кофе? — Нет, спасибо.</div></div>
+        <div class="example"><div class="de">Вежливый отказ.</div><div class="ru">Всегда с «danke».</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 26 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Отказ</div>
+        <div class="word">Leider nicht.</div>
+        <div class="pron">[ляйдэр нихьт]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">К сожалению, нет.</div>
+        <div class="label">Употребление</div>
+        <div class="example"><div class="de">Kommst du mit? — Leider nicht, ich muss arbeiten.</div><div class="ru">Пойдёшь с нами? — К сожалению, нет, я должен работать.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 27 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Отказ</div>
+        <div class="word">Ich habe leider keine Zeit.</div>
+        <div class="pron">[ихь хабэ ляйдэр кайне цайт]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">К сожалению, у меня нет времени.</div>
+        <div class="label">Употребление</div>
+        <div class="example"><div class="de">Kommst du zur Party? — Ich habe leider keine Zeit.</div><div class="ru">Ты придёшь на вечеринку? — К сожалению, у меня нет времени.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 28 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Отказ</div>
+        <div class="word">Das geht nicht.</div>
+        <div class="pron">[дас гэйт нихьт]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">Это не получится / Нельзя.</div>
+        <div class="label">Употребление</div>
+        <div class="example"><div class="de">Können wir uns um 5 treffen? — Nein, das geht nicht.</div><div class="ru">Мы можем встретиться в 5? — Нет, это не получится.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 29 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Пожелания</div>
+        <div class="word">Viel Glück!</div>
+        <div class="pron">[филь глюк]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">Удачи!</div>
+        <div class="label">Употребление</div>
+        <div class="example"><div class="de">Viel Glück bei der Prüfung!</div><div class="ru">Удачи на экзамене!</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 30 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Пожелания</div>
+        <div class="word">Gute Reise!</div>
+        <div class="pron">[гутэ райзэ]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">Хорошей поездки!</div>
+        <div class="label">Употребление</div>
+        <div class="example"><div class="de">Ich fahre morgen nach Berlin. — Gute Reise!</div><div class="ru">Я завтра еду в Берлин. — Хорошей поездки!</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 31 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Пожелания</div>
+        <div class="word">Gute Besserung!</div>
+        <div class="pron">[гутэ бэсэрунг]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">Выздоравливай(те)!</div>
+        <div class="label">Употребление</div>
+        <div class="example"><div class="de">Ich bin krank. — Gute Besserung!</div><div class="ru">Я болен. — Выздоравливай!</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 32 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Пожелания</div>
+        <div class="word">Herzlichen Glückwunsch!</div>
+        <div class="pron">[хэрцлихэн глюквунш]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">Поздравляю!</div>
+        <div class="label">Употребление</div>
+        <div class="example"><div class="de">Herzlichen Glückwunsch zum Geburtstag!</div><div class="ru">С днём рождения!</div></div>
+        <div class="example"><div class="de">Или просто: <strong>Alles Gute zum Geburtstag!</strong></div><div class="ru">Всего хорошего на день рождения!</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 33 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Пожелания</div>
+        <div class="word">Schönes Wochenende!</div>
+        <div class="pron">[шёнэс вохэнэндэ]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">Хороших выходных!</div>
+        <div class="label">Употребление</div>
+        <div class="example"><div class="de">В пятницу вечером.</div><div class="ru">Часто в коллективе перед выходными.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 34 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">За столом</div>
+        <div class="word">Guten Appetit!</div>
+        <div class="pron">[гутэн апэтит]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">Приятного аппетита!</div>
+        <div class="label">Употребление</div>
+        <div class="example"><div class="de">Перед едой.</div><div class="ru">Отвечают: <strong>Danke, gleichfalls!</strong> (Спасибо, взаимно!)</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 35 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">За столом</div>
+        <div class="word">Zum Wohl! / Prost!</div>
+        <div class="pron">[цум воль / прост]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">За здоровье! / Ваше здоровье!</div>
+        <div class="label">Употребление</div>
+        <div class="example"><div class="de">При тосте с бокалами.</div><div class="ru">Неформально — <strong>Prost!</strong></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 36 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">В магазине</div>
+        <div class="word">Ich schaue nur.</div>
+        <div class="pron">[ихь шауэ нур]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">Я только смотрю.</div>
+        <div class="label">Употребление</div>
+        <div class="example"><div class="de">Kann ich helfen? — Nein danke, ich schaue nur.</div><div class="ru">Могу помочь? — Нет, спасибо, я только смотрю.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 37 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">В магазине</div>
+        <div class="word">Was macht das?</div>
+        <div class="pron">[вас махт дас]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">Сколько с меня?</div>
+        <div class="label">Употребление</div>
+        <div class="example"><div class="de">На кассе или на рынке.</div><div class="ru">Также: <strong>Was kostet das?</strong> (Сколько это стоит?)</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 38 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">В магазине</div>
+        <div class="word">Ich nehme das.</div>
+        <div class="pron">[ихь нэмэ дас]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">Я возьму это.</div>
+        <div class="label">Употребление</div>
+        <div class="example"><div class="de">При покупке.</div><div class="ru">Универсальная фраза для выбора.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 39 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Незнание</div>
+        <div class="word">Ich weiß nicht.</div>
+        <div class="pron">[ихь вайс нихьт]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">Я не знаю.</div>
+        <div class="label">Употребление</div>
+        <div class="example"><div class="de">Wo ist die Post? — Ich weiß nicht, tut mir leid.</div><div class="ru">Где почта? — Я не знаю, извините.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 40 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Общее</div>
+        <div class="word">Alles klar!</div>
+        <div class="pron">[алэс клар]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">Всё понятно! / Хорошо!</div>
+        <div class="label">Употребление</div>
+        <div class="example"><div class="de">Wir treffen uns um 6. — Alles klar!</div><div class="ru">Встречаемся в 6. — Всё понятно!</div></div>
+        <div class="example"><div class="de">Универсальный ответ «ок, принято».</div><div class="ru">Разговорное, дружеское.</div></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

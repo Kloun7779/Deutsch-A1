@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Колода 8 — Наречия и слова времени (A1)</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: linear-gradient(135deg, #4776e6, #8e54e9);
+    min-height: 100vh;
+    padding: 40px 20px;
+    color: #333;
+  }
+
+  h1 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 8px;
+    font-size: 1.9rem;
+  }
+
+  .subtitle {
+    text-align: center;
+    color: #e0d5ff;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+  }
+
+  .counter {
+    text-align: center;
+    color: #c9b8ff;
+    margin-bottom: 35px;
+    font-size: 0.85rem;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  .card {
+    perspective: 1200px;
+    height: 300px;
+    cursor: pointer;
+  }
+
+  .card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.7s;
+    transform-style: preserve-3d;
+  }
+
+  .card.flipped .card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    overflow-y: auto;
+  }
+
+  .front {
+    background: #ffffff;
+    border-top: 6px solid #8e54e9;
+  }
+
+  .front .word {
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: #3d1a6e;
+    text-align: center;
+    margin-bottom: 6px;
+    line-height: 1.2;
+  }
+
+  .front .category {
+    text-align: center;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #8e54e9;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .front .pron {
+    text-align: center;
+    color: #d97706;
+    font-style: italic;
+    font-size: 1rem;
+    margin-bottom: 12px;
+  }
+
+  .front .hint {
+    text-align: center;
+    font-size: 0.7rem;
+    color: #bbb;
+    margin-top: auto;
+    padding-top: 10px;
+    border-top: 1px dashed #eee;
+  }
+
+  .back {
+    background: linear-gradient(160deg, #3d1a6e, #4776e6);
+    color: #fff;
+    transform: rotateY(180deg);
+    border-top: 6px solid #8e54e9;
+    justify-content: center;
+  }
+
+  .back .translation {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 16px;
+    color: #ffd166;
+  }
+
+  .back .label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #d4c4ff;
+    margin-bottom: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 4px;
+  }
+
+  .back .example {
+    font-size: 0.93rem;
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+
+  .back .example .de { font-weight: 600; color: #fff; }
+  .back .example .ru { color: #d4c4ff; font-size: 0.85rem; }
+
+  @media (max-width: 480px) {
+    .card { height: 320px; }
+    h1 { font-size: 1.35rem; }
+    .front .word { font-size: 1.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<h1>🧭 Колода 8 — Наречия и слова времени</h1>
+<p class="subtitle">Уровень A1 · Нажми на карточку, чтобы перевернуть 🔄</p>
+<p class="counter">34 карточки</p>
+
+<div class="grid">
+
+  <!-- 1. hier -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">hier</div>
+        <div class="category">место</div>
+        <div class="pron">[хир]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">здесь</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich wohne hier.</div><div class="ru">Я живу здесь.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. dort -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">dort</div>
+        <div class="category">место</div>
+        <div class="pron">[дорт]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">там</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Der Bahnhof ist dort.</div><div class="ru">Вокзал там.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. links -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">links</div>
+        <div class="category">направление</div>
+        <div class="pron">[линкс]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">слева, налево</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Gehen Sie nach links.</div><div class="ru">Идите налево.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. rechts -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">rechts</div>
+        <div class="category">направление</div>
+        <div class="pron">[рэхьтс]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">справа, направо</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Die Bank ist rechts.</div><div class="ru">Банк справа.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. oben -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">oben</div>
+        <div class="category">место</div>
+        <div class="pron">[обэн]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">наверху</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Das Schlafzimmer ist oben.</div><div class="ru">Спальня наверху.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. unten -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">unten</div>
+        <div class="category">место</div>
+        <div class="pron">[унтэн]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">внизу</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Die Küche ist unten.</div><div class="ru">Кухня внизу.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. vorne -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">vorne</div>
+        <div class="category">место</div>
+        <div class="pron">[форнэ]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">впереди</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Die Haltestelle ist vorne.</div><div class="ru">Остановка впереди.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. hinten -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">hinten</div>
+        <div class="category">место</div>
+        <div class="pron">[хинтэн]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">сзади</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Der Garten ist hinten.</div><div class="ru">Сад сзади.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9. weit -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">weit</div>
+        <div class="category">расстояние</div>
+        <div class="pron">[вайт]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">далеко</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Der Bahnhof ist weit.</div><div class="ru">Вокзал далеко.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10. nah -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">nah</div>
+        <div class="category">расстояние</div>
+        <div class="pron">[на]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">близко</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Der Supermarkt ist nah.</div><div class="ru">Супермаркет близко.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 11. jetzt -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">jetzt</div>
+        <div class="category">время</div>
+        <div class="pron">[йецт]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">сейчас</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Jetzt lerne ich Deutsch.</div><div class="ru">Сейчас я учу немецкий.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 12. dann -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">dann</div>
+        <div class="category">время</div>
+        <div class="pron">[дан]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">потом, тогда</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Zuerst lerne ich, dann spiele ich.</div><div class="ru">Сначала я учусь, потом играю.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 13. immer -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">immer</div>
+        <div class="category">частота</div>
+        <div class="pron">[иммэр]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">всегда</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich bin immer müde.</div><div class="ru">Я всегда уставший.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 14. oft -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">oft</div>
+        <div class="category">частота</div>
+        <div class="pron">[офт]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">часто</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich gehe oft spazieren.</div><div class="ru">Я часто гуляю.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 15. manchmal -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">manchmal</div>
+        <div class="category">частота</div>
+        <div class="pron">[манхьмаль]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">иногда</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Manchmal koche ich selbst.</div><div class="ru">Иногда я готовлю сам.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 16. selten -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">selten</div>
+        <div class="category">частота</div>
+        <div class="pron">[зэльтэн]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">редко</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Er kommt selten zu Besuch.</div><div class="ru">Он редко приходит в гости.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 17. nie -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">nie</div>
+        <div class="category">частота</div>
+        <div class="pron">[ни]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">никогда</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich trinke nie Alkohol.</div><div class="ru">Я никогда не пью алкоголь.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 18. oft / bald -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">bald</div>
+        <div class="category">время</div>
+        <div class="pron">[бальт]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">скоро</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich komme bald.</div><div class="ru">Я скоро приду.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 19. früh -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">früh</div>
+        <div class="category">время</div>
+        <div class="pron">[фрю]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">рано</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich stehe früh auf.</div><div class="ru">Я рано встаю.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 20. spät -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">spät</div>
+        <div class="category">время</div>
+        <div class="pron">[шпэт]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">поздно</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Es ist schon spät.</div><div class="ru">Уже поздно.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 21. schon -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">schon</div>
+        <div class="category">время</div>
+        <div class="pron">[шон]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">уже</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich bin schon fertig.</div><div class="ru">Я уже готов.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 22. noch -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">noch</div>
+        <div class="category">время</div>
+        <div class="pron">[нох]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">ещё</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich habe noch Zeit.</div><div class="ru">У меня ещё есть время.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 23. bald / wieder -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">wieder</div>
+        <div class="category">время</div>
+        <div class="pron">[видэр]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">снова, опять</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Komm bald wieder!</div><div class="ru">Приходи скорее снова!</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 24. auch -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">auch</div>
+        <div class="category">дополнение</div>
+        <div class="pron">[аух]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">тоже, также</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich möchte auch einen Kaffee.</div><div class="ru">Я тоже хотел бы кофе.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 25. nur -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">nur</div>
+        <div class="category">ограничение</div>
+        <div class="pron">[нур]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">только</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich habe nur zehn Euro.</div><div class="ru">У меня только десять евро.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 26. sehr -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">sehr</div>
+        <div class="category">степень</div>
+        <div class="pron">[зэр]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">очень</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Das ist sehr gut.</div><div class="ru">Это очень хорошо.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 27. viel -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">viel</div>
+        <div class="category">количество</div>
+        <div class="pron">[филь]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">много</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich arbeite viel.</div><div class="ru">Я много работаю.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 28. wenig -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">wenig</div>
+        <div class="category">количество</div>
+        <div class="pron">[венихь]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">мало</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich habe wenig Zeit.</div><div class="ru">У меня мало времени.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 29. gern -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">gern</div>
+        <div class="category">отношение</div>
+        <div class="pron">[гэрн]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">охотно, с удовольствием</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich trinke gern Tee.</div><div class="ru">Я охотно пью чай.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 30. vielleicht -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">vielleicht</div>
+        <div class="category">вероятность</div>
+        <div class="pron">[филяйхьт]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">может быть</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Vielleicht komme ich morgen.</div><div class="ru">Может быть, я приду завтра.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 31. natürlich -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">natürlich</div>
+        <div class="category">уверенность</div>
+        <div class="pron">[натурлихь]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">конечно, естественно</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Natürlich helfe ich dir.</div><div class="ru">Конечно, я тебе помогу.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 32. zusammen -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">zusammen</div>
+        <div class="category">образ действия</div>
+        <div class="pron">[цузамэн]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">вместе</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Wir lernen zusammen.</div><div class="ru">Мы учимся вместе.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 33. allein -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">allein</div>
+        <div class="category">образ действия</div>
+        <div class="pron">[аляйн]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">один, в одиночестве</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich wohne allein.</div><div class="ru">Я живу один.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 34. zusammen / auch / bald -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">deshalb</div>
+        <div class="category">причина</div>
+        <div class="pron">[дэсхальп]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">поэтому</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich bin müde, deshalb gehe ich schlafen.</div><div class="ru">Я устал, поэтому иду спать.</div></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

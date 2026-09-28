@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Немецкий A1 — Главное меню</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    min-height: 100vh;
+    padding: 50px 20px;
+    color: #fff;
+  }
+
+  .header { text-align: center; margin-bottom: 50px; }
+
+  .header h1 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    background: linear-gradient(90deg, #ffd166, #ff9a3c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .header p { color: #b0d4e0; font-size: 1rem; }
+
+  .flag { font-size: 2.5rem; margin-bottom: 10px; display: block; }
+
+  .trainer-block { max-width: 1200px; margin: 0 auto 30px; }
+
+  .trainer-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 30px;
+    background: linear-gradient(135deg, #4caf50, #2e7d32);
+    border-radius: 18px;
+    text-decoration: none;
+    color: #fff;
+    box-shadow: 0 10px 30px rgba(76,175,80,0.35);
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 2px solid rgba(255,255,255,0.15);
+  }
+
+  .trainer-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 40px rgba(76,175,80,0.5);
+  }
+
+  .trainer-link .left { display: flex; align-items: center; gap: 20px; }
+  .trainer-link .icon { font-size: 2.5rem; }
+  .trainer-link .title { font-size: 1.35rem; font-weight: 800; margin-bottom: 4px; }
+  .trainer-link .desc { font-size: 0.9rem; opacity: 0.9; }
+  .trainer-link .arrow { font-size: 1.8rem; opacity: 0.8; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 18px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .card {
+    display: block;
+    padding: 22px 20px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 16px;
+    text-decoration: none;
+    color: #fff;
+    transition: transform 0.2s, background 0.2s, border-color 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: var(--accent, #ffd166);
+    transition: width 0.2s;
+  }
+
+  .card:hover {
+    transform: translateY(-3px);
+    background: rgba(255,255,255,0.12);
+    border-color: rgba(255,255,255,0.3);
+  }
+
+  .card:hover::before { width: 8px; }
+
+  .card .num {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--accent, #ffd166);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .card .title { font-size: 1.1rem; font-weight: 700; margin-bottom: 6px; line-height: 1.3; }
+  .card .desc { font-size: 0.85rem; color: #b0d4e0; line-height: 1.4; }
+
+  .card .count {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 0.75rem;
+    color: #90a4ae;
+    background: rgba(0,0,0,0.25);
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+
+  .footer {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 0.85rem;
+    color: #78909c;
+    line-height: 1.7;
+  }
+
+  .footer strong { color: #b0d4e0; }
+
+  @media (max-width: 600px) {
+    .header h1 { font-size: 1.6rem; }
+    .trainer-link { flex-direction: column; align-items: flex-start; gap: 14px; }
+    .trainer-link .arrow { align-self: flex-end; }
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <span class="flag">🇩🇪</span>
+  <h1>Немецкий язык — уровень A1</h1>
+  <p>Карточки для изучения · Выберите раздел</p>
+</div>
+
+<!-- Тренажёр -->
+<div class="trainer-block">
+  <a href="trainer.html" class="trainer-link">
+    <div class="left">
+      <div class="icon">🎯</div>
+      <div>
+        <div class="title">Тренажёр — случайные карточки</div>
+        <div class="desc">Проверь себя: отвечай «Знаю / Не знаю» и следи за результатом</div>
+      </div>
+    </div>
+    <div class="arrow">→</div>
+  </a>
+</div>
+
+<!-- Сетка колод -->
+<div class="grid">
+
+  <a href="glagoly.html" class="card" style="--accent: #ffb703;">
+    <div class="num">Раздел</div>
+    <div class="title">Глаголы</div>
+    <div class="desc">44 основных глагола со спряжением</div>
+    <div class="count">44 карточки</div>
+  </a>
+
+  <a href="voprosy.html" class="card" style="--accent: #2ecc71;">
+    <div class="num">Раздел</div>
+    <div class="title">Основные вопросы</div>
+    <div class="desc">Вопросы и варианты ответов</div>
+    <div class="count">40 карточек</div>
+  </a>
+
+  <a href="koloda-01.html" class="card" style="--accent: #a044ff;">
+    <div class="num">Колода 01</div>
+    <div class="title">Семья, люди, профессии</div>
+    <div class="desc">Члены семьи, профессии, отношения</div>
+    <div class="count">36 карточек</div>
+  </a>
+
+  <a href="koloda-02.html" class="card" style="--accent: #f15f79;">
+    <div class="num">Колода 02</div>
+    <div class="title">Дом, квартира, мебель</div>
+    <div class="desc">Жильё, комнаты, мебель, быт</div>
+    <div class="count">32 карточки</div>
+  </a>
+
+  <a href="koloda-03.html" class="card" style="--accent: #f7971e;">
+    <div class="num">Колода 03</div>
+    <div class="title">Еда, напитки, магазины</div>
+    <div class="desc">Продукты, блюда, покупки, цены</div>
+    <div class="count">36 карточек</div>
+  </a>
+
+  <a href="koloda-04.html" class="card" style="--accent: #4ca1af;">
+    <div class="num">Колода 04</div>
+    <div class="title">Город, транспорт, места</div>
+    <div class="desc">Транспорт, места в городе, ориентация</div>
+    <div class="count">34 карточки</div>
+  </a>
+
+  <a href="koloda-05.html" class="card" style="--accent: #90a4ae;">
+    <div class="num">Колода 05</div>
+    <div class="title">Время, дни, месяцы</div>
+    <div class="desc">Дни недели, месяцы, наречия времени</div>
+    <div class="count">38 карточек</div>
+  </a>
+
+  <a href="koloda-06.html" class="card" style="--accent: #c31432;">
+    <div class="num">Колода 06</div>
+    <div class="title">Тело, здоровье, одежда</div>
+    <div class="desc">Части тела, болезни, гардероб</div>
+    <div class="count">34 карточки</div>
+  </a>
+
+  <a href="koloda-07.html" class="card" style="--accent: #00b09b;">
+    <div class="num">Колода 07</div>
+    <div class="title">Прилагательные</div>
+    <div class="desc">Качества, степени сравнения, антонимы</div>
+    <div class="count">42 карточки</div>
+  </a>
+
+  <a href="koloda-08.html" class="card" style="--accent: #8e54e9;">
+    <div class="num">Колода 08</div>
+    <div class="title">Наречия</div>
+    <div class="desc">Место, время, частота, количество</div>
+    <div class="count">34 карточки</div>
+  </a>
+
+  <a href="koloda-09.html" class="card" style="--accent: #546e7a;">
+    <div class="num">Колода 09</div>
+    <div class="title">Местоимения, предлоги, союзы</div>
+    <div class="desc">Служебные слова — основа грамматики</div>
+    <div class="count">50 карточек</div>
+  </a>
+
+  <a href="koloda-10.html" class="card" style="--accent: #2c5364;">
+    <div class="num">Колода 10</div>
+    <div class="title">Числительные</div>
+    <div class="desc">От 0 до 1000, порядковые, составные</div>
+    <div class="count">34 карточки</div>
+  </a>
+
+  <a href="koloda-11.html" class="card" style="--accent: #f12711;">
+    <div class="num">Колода 11</div>
+    <div class="title">Полезные фразы и выражения</div>
+    <div class="desc">Приветствия, вежливость, просьбы, отказ</div>
+    <div class="count">40 карточек</div>
+  </a>
+
+</div>
+
+<div class="footer">
+  <p>💡 <strong>Совет:</strong> сначала изучите 2–3 колоды, затем прогоните их в тренажёре.</p>
+  <p>Все файлы работают <strong>локально и без интернета</strong>.</p>
+</div>
+
+</body>
+</html>

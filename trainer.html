@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Тренажёр A1 — немецкие карточки</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    min-height: 100vh;
+    padding: 20px;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h1 {
+    color: #fff;
+    font-size: 1.6rem;
+    margin-bottom: 6px;
+    text-align: center;
+  }
+
+  .subtitle {
+    color: #b0d4e0;
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  /* Верхняя панель со статистикой */
+  .stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 700px;
+  }
+
+  .stat-box {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 12px;
+    padding: 10px 16px;
+    color: #fff;
+    text-align: center;
+    min-width: 90px;
+    flex: 1;
+  }
+
+  .stat-box .num {
+    font-size: 1.5rem;
+    font-weight: 800;
+    display: block;
+    line-height: 1.1;
+  }
+
+  .stat-box .lbl {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #b0d4e0;
+    margin-top: 4px;
+  }
+
+  .stat-box.good .num { color: #4caf50; }
+  .stat-box.bad .num { color: #ff5252; }
+  .stat-box.total .num { color: #ffd166; }
+
+  /* Прогресс-бар */
+  .progress {
+    width: 100%;
+    max-width: 700px;
+    height: 8px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 25px;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4caf50, #ffd166);
+    width: 0%;
+    transition: width 0.4s ease;
+  }
+
+  /* Карточка */
+  .card-wrap {
+    perspective: 1200px;
+    width: 100%;
+    max-width: 500px;
+    height: 340px;
+    margin-bottom: 22px;
+  }
+
+  .card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.7s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+  }
+
+  .card.flipped { transform: rotateY(180deg); }
+
+  .card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 18px;
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+    overflow-y: auto;
+  }
+
+  .front {
+    background: #fff;
+    border-top: 6px solid #ffd166;
+    text-align: center;
+  }
+
+  .front .category {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: #d97706;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+
+  .front .word {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: #1e3c72;
+    margin-bottom: 10px;
+    line-height: 1.25;
+  }
+
+  .front .pron {
+    font-size: 1.05rem;
+    color: #d97706;
+    font-style: italic;
+    margin-bottom: 10px;
+  }
+
+  .front .extra {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 8px;
+  }
+
+  .front .hint {
+    font-size: 0.72rem;
+    color: #bbb;
+    margin-top: 18px;
+  }
+
+  .back {
+    background: linear-gradient(160deg, #1e3c72, #2a5298);
+    color: #fff;
+    transform: rotateY(180deg);
+    text-align: center;
+  }
+
+  .back .translation {
+    font-size: 1.55rem;
+    font-weight: 800;
+    color: #ffd166;
+    margin-bottom: 16px;
+  }
+
+  .back .example {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    margin-bottom: 10px;
+  }
+
+  .back .example .de { font-weight: 600; color: #fff; }
+  .back .example .ru { color: #b0d4e0; font-size: 0.88rem; }
+
+  /* Кнопки */
+  .buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .btn {
+    padding: 14px 26px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+    font-family: inherit;
+    flex: 1;
+    min-width: 130px;
+  }
+
+  .btn:active { transform: scale(0.97); }
+
+  .btn-show {
+    background: #ffd166;
+    color: #7a2006;
+    box-shadow: 0 4px 12px rgba(255,209,102,0.4);
+  }
+
+  .btn-good {
+    background: #4caf50;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(76,175,80,0.4);
+  }
+
+  .btn-bad {
+    background: #ff5252;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(255,82,82,0.4);
+  }
+
+  .btn-reset {
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.3);
+    flex: 0 0 auto;
+    min-width: 0;
+    padding: 10px 18px;
+    font-size: 0.85rem;
+  }
+
+  .btn:disabled {
+    opacity: 0.4;
+    cursor: default;
+    transform: none;
+  }
+
+  /* Экран завершения */
+  .finish {
+    display: none;
+    max-width: 500px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 18px;
+    padding: 35px 30px;
+    text-align: center;
+    color: #fff;
+  }
+
+  .finish h2 {
+    font-size: 1.6rem;
+    margin-bottom: 14px;
+    color: #ffd166;
+  }
+
+  .finish p {
+    font-size: 1.05rem;
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+
+  .finish .score-big {
+    font-size: 2.6rem;
+    font-weight: 800;
+    color: #4caf50;
+    display: block;
+    margin: 10px 0;
+  }
+
+  .finish .btn {
+    display: inline-block;
+    margin: 5px;
+    flex: 0 0 auto;
+  }
+
+  @media (max-width: 480px) {
+    h1 { font-size: 1.25rem; }
+    .card-wrap { height: 380px; }
+    .front .word { font-size: 1.4rem; }
+    .back .translation { font-size: 1.3rem; }
+    .stat-box { padding: 8px 10px; min-width: 70px; }
+    .stat-box .num { font-size: 1.2rem; }
+    .btn { padding: 12px 16px; font-size: 0.92rem; min-width: 0; }
+  }
+</style>
+</head>
+<body>
+
+<h1>🎯 Тренажёр немецких карточек A1</h1>
+<p class="subtitle">Случайный порядок · Отмечай «Знаю» / «Не знаю»</p>
+
+<!-- Статистика -->
+<div class="stats">
+  <div class="stat-box total">
+    <span class="num" id="statTotal">0</span>
+    <div class="lbl">Всего</div>
+  </div>
+  <div class="stat-box good">
+    <span class="num" id="statGood">0</span>
+    <div class="lbl">Знаю</div>
+  </div>
+  <div class="stat-box bad">
+    <span class="num" id="statBad">0</span>
+    <div class="lbl">Не знаю</div>
+  </div>
+  <div class="stat-box">
+    <span class="num" id="statLeft">0</span>
+    <div class="lbl">Осталось</div>
+  </div>
+</div>
+
+<div class="progress"><div class="progress-fill" id="progressFill"></div></div>
+
+<!-- Карточка -->
+<div id="trainerView">
+  <div class="card-wrap">
+    <div class="card" id="card" onclick="flipCard()">
+      <div class="card-face front">
+        <div class="category" id="cardCategory">—</div>
+        <div class="word" id="cardWord">—</div>
+        <div class="pron" id="cardPron"></div>
+        <div class="extra" id="cardExtra"></div>
+        <div class="hint">нажми, чтобы перевернуть 🔄</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation" id="cardTrans">—</div>
+        <div class="example" id="cardExample"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="buttons">
+    <button class="btn btn-show" id="btnShow" onclick="flipCard()">Показать ответ</button>
+    <button class="btn btn-good" id="btnGood" onclick="answer(true)" disabled>✓ Знаю</button>
+    <button class="btn btn-bad" id="btnBad" onclick="answer(false)" disabled>✗ Не знаю</button>
+    <button class="btn btn-reset" onclick="resetAll()">⟲ Сброс</button>
+  </div>
+</div>
+
+<!-- Финал -->
+<div class="finish" id="finishView">
+  <h2>🎉 Тренировка завершена!</h2>
+  <p>Твой результат:</p>
+  <span class="score-big" id="finalScore">0%</span>
+  <p id="finalText"></p>
+  <button class="btn btn-good" onclick="resetAll()">Пройти заново</button>
+  <button class="btn btn-bad" onclick="retryMistakes()">Повторить ошибки</button>
+</div>
+
+<script>
+/* =====================================================
+   БАЗА КАРТОЧЕК
+   Формат: { c: категория, w: слово, p: произношение,
+             e: доп. инфо (артикль/спряжение), t: перевод,
+             ex: пример (DE), exr: пример (RU) }
+   ===================================================== */
+
+const CARDS = [
+  /* --- ГЛАГОЛЫ (44) --- */
+  {c:"Глаголы", w:"sein", p:"[зайн]", e:"ich bin, du bist, er ist...", t:"быть", ex:"Ich bin Student.", exr:"Я студент."},
+  {c:"Глаголы", w:"haben", p:"[хабэн]", e:"ich habe, du hast, er hat...", t:"иметь", ex:"Ich habe einen Hund.", exr:"У меня есть собака."},
+  {c:"Глаголы", w:"werden", p:"[вэрдэн]", e:"ich werde, du wirst...", t:"становиться", ex:"Ich werde Arzt.", exr:"Я становлюсь врачом."},
+  {c:"Глаголы", w:"können", p:"[кёнэн]", e:"ich kann, du kannst...", t:"мочь / уметь", ex:"Ich kann Deutsch sprechen.", exr:"Я умею говорить по-немецки."},
+  {c:"Глаголы", w:"müssen", p:"[мюсэн]", e:"ich muss, du musst...", t:"быть должным", ex:"Ich muss arbeiten.", exr:"Я должен работать."},
+  {c:"Глаголы", w:"wollen", p:"[волен]", e:"ich will, du willst...", t:"хотеть", ex:"Ich will nach Hause.", exr:"Я хочу домой."},
+  {c:"Глаголы", w:"sollen", p:"[золен]", e:"ich soll, du sollst...", t:"быть должным (по совету)", ex:"Du sollst mehr schlafen.", exr:"Тебе следует больше спать."},
+  {c:"Глаголы", w:"dürfen", p:"[дюрфэн]", e:"ich darf, du darfst...", t:"иметь разрешение", ex:"Darf ich hereinkommen?", exr:"Можно войти?"},
+  {c:"Глаголы", w:"mögen", p:"[мёгэн]", e:"ich mag, du magst...", t:"любить / нравиться", ex:"Ich mag Schokolade.", exr:"Я люблю шоколад."},
+  {c:"Глаголы", w:"möchten", p:"[мёхьтэн]", e:"ich möchte, du möchtest...", t:"хотел бы", ex:"Ich möchte einen Kaffee.", exr:"Я хотел бы кофе."},
+  {c:"Глаголы", w:"gehen", p:"[гэен]", e:"ich gehe, du gehst...", t:"идти / ходить", ex:"Ich gehe nach Hause.", exr:"Я иду домой."},
+  {c:"Глаголы", w:"kommen", p:"[комэн]", e:"ich komme, du kommst...", t:"приходить", ex:"Ich komme aus Russland.", exr:"Я из России."},
+  {c:"Глаголы", w:"machen", p:"[махэн]", e:"ich mache, du machst...", t:"делать", ex:"Was machst du?", exr:"Что ты делаешь?"},
+  {c:"Глаголы", w:"sprechen", p:"[шпрэхэн]", e:"du sprichst, er spricht", t:"говорить", ex:"Ich spreche Deutsch.", exr:"Я говорю по-немецки."},
+  {c:"Глаголы", w:"lesen", p:"[лезэн]", e:"du liest, er liest", t:"читать", ex:"Ich lese ein Buch.", exr:"Я читаю книгу."},
+  {c:"Глаголы", w:"schreiben", p:"[шрайбэн]", e:"ich schreibe, du schreibst...", t:"писать", ex:"Ich schreibe einen Brief.", exr:"Я пишу письмо."},
+  {c:"Глаголы", w:"essen", p:"[эсэн]", e:"du isst, er isst", t:"есть / кушать", ex:"Ich esse einen Apfel.", exr:"Я ем яблоко."},
+  {c:"Глаголы", w:"trinken", p:"[тринкэн]", e:"ich trinke, du trinkst...", t:"пить", ex:"Ich trinke Kaffee.", exr:"Я пью кофе."},
+  {c:"Глаголы", w:"schlafen", p:"[шлафэн]", e:"du schläfst, er schläft", t:"спать", ex:"Ich schlafe acht Stunden.", exr:"Я сплю восемь часов."},
+  {c:"Глаголы", w:"arbeiten", p:"[арбайтэн]", e:"ich arbeite, du arbeitest...", t:"работать", ex:"Ich arbeite in Berlin.", exr:"Я работаю в Берлине."},
+  {c:"Глаголы", w:"lernen", p:"[лернэн]", e:"ich lerne, du lernst...", t:"учить(ся)", ex:"Ich lerne Deutsch.", exr:"Я учу немецкий."},
+  {c:"Глаголы", w:"verstehen", p:"[фэрштэен]", e:"ich verstehe, du verstehst...", t:"понимать", ex:"Ich verstehe dich.", exr:"Я тебя понимаю."},
+  {c:"Глаголы", w:"fahren", p:"[фаарэн]", e:"du fährst, er fährt", t:"ехать", ex:"Ich fahre nach München.", exr:"Я еду в Мюнхен."},
+  {c:"Глаголы", w:"kaufen", p:"[кауфэн]", e:"ich kaufe, du kaufst...", t:"покупать", ex:"Ich kaufe Brot.", exr:"Я покупаю хлеб."},
+  {c:"Глаголы", w:"sehen", p:"[зэен]", e:"du siehst, er sieht", t:"видеть", ex:"Ich sehe einen Vogel.", exr:"Я вижу птицу."},
+  {c:"Глаголы", w:"hören", p:"[хёэрэн]", e:"ich höre, du hörst...", t:"слышать / слушать", ex:"Ich höre Musik.", exr:"Я слушаю музыку."},
+  {c:"Глаголы", w:"wohnen", p:"[воэнэн]", e:"ich wohne, du wohnst...", t:"жить (проживать)", ex:"Ich wohne in Moskau.", exr:"Я живу в Москве."},
+  {c:"Глаголы", w:"spielen", p:"[шпилен]", e:"ich spiele, du spielst...", t:"играть", ex:"Ich spiele Fußball.", exr:"Я играю в футбол."},
+  {c:"Глаголы", w:"geben", p:"[гебэн]", e:"du gibst, er gibt", t:"давать", ex:"Ich gebe dir ein Buch.", exr:"Я даю тебе книгу."},
+  {c:"Глаголы", w:"nehmen", p:"[немэн]", e:"du nimmst, er nimmt", t:"брать", ex:"Ich nehme den Bus.", exr:"Я еду на автобусе."},
+  {c:"Глаголы", w:"heißen", p:"[хайсэн]", e:"ich heiße, du heißt...", t:"зваться", ex:"Ich heiße Anna.", exr:"Меня зовут Анна."},
+  {c:"Глаголы", w:"sagen", p:"[загэн]", e:"ich sage, du sagst...", t:"говорить / сказать", ex:"Was sagst du?", exr:"Что ты говоришь?"},
+  {c:"Глаголы", w:"fragen", p:"[фрагэн]", e:"ich frage, du fragst...", t:"спрашивать", ex:"Ich frage den Lehrer.", exr:"Я спрашиваю учителя."},
+  {c:"Глаголы", w:"antworten", p:"[антвортэн]", e:"ich antworte, du antwortest...", t:"отвечать", ex:"Ich antworte auf die Frage.", exr:"Я отвечаю на вопрос."},
+  {c:"Глаголы", w:"brauchen", p:"[браухэн]", e:"ich brauche, du brauchst...", t:"нуждаться", ex:"Ich brauche Hilfe.", exr:"Мне нужна помощь."},
+  {c:"Глаголы", w:"finden", p:"[финдэн]", e:"ich finde, du findest...", t:"находить; считать", ex:"Ich finde den Schlüssel.", exr:"Я нахожу ключ."},
+  {c:"Глаголы", w:"suchen", p:"[зухэн]", e:"ich suche, du suchst...", t:"искать", ex:"Ich suche meine Brille.", exr:"Я ищу свои очки."},
+  {c:"Глаголы", w:"helfen", p:"[хельфэн]", e:"du hilfst, er hilft", t:"помогать", ex:"Ich helfe meiner Mutter.", exr:"Я помогаю маме."},
+  {c:"Глаголы", w:"bleiben", p:"[бляйбэн]", e:"ich bleibe, du bleibst...", t:"оставаться", ex:"Ich bleibe zu Hause.", exr:"Я остаюсь дома."},
+  {c:"Глаголы", w:"aufstehen", p:"[ауфштэен]", e:"ich stehe auf, du stehst auf...", t:"вставать", ex:"Ich stehe um 7 Uhr auf.", exr:"Я встаю в 7 часов."},
+  {c:"Глаголы", w:"einkaufen", p:"[айнкауфэн]", e:"ich kaufe ein, du kaufst ein...", t:"делать покупки", ex:"Ich kaufe im Supermarkt ein.", exr:"Я делаю покупки в супермаркете."},
+  {c:"Глаголы", w:"anrufen", p:"[анруфэн]", e:"ich rufe an, du rufst an...", t:"звонить", ex:"Ich rufe dich morgen an.", exr:"Я позвоню тебе завтра."},
+  {c:"Глаголы", w:"anfangen", p:"[анфангэн]", e:"du fängst an, er fängt an", t:"начинать", ex:"Der Film fängt um 8 an.", exr:"Фильм начинается в 8."},
+  {c:"Глаголы", w:"aufhören", p:"[ауфхёэрэн]", e:"ich höre auf, du hörst auf...", t:"прекращать", ex:"Hör bitte auf!", exr:"Прекрати, пожалуйста!"},
+
+  /* --- СЕМЬЯ / ПРОФЕССИИ (36) --- */
+  {c:"Семья, люди, профессии", w:"der Mann", p:"[ман]", e:"die Männer", t:"мужчина; муж", ex:"Der Mann liest eine Zeitung.", exr:"Мужчина читает газету."},
+  {c:"Семья, люди, профессии", w:"die Frau", p:"[фрау]", e:"die Frauen", t:"женщина; жена", ex:"Die Frau arbeitet im Büro.", exr:"Женщина работает в офисе."},
+  {c:"Семья, люди, профессии", w:"das Kind", p:"[кинт]", e:"die Kinder", t:"ребёнок", ex:"Das Kind spielt im Garten.", exr:"Ребёнок играет в саду."},
+  {c:"Семья, люди, профессии", w:"der Junge", p:"[юнгэ]", e:"die Jungen", t:"мальчик", ex:"Der Junge spielt Fußball.", exr:"Мальчик играет в футбол."},
+  {c:"Семья, люди, профессии", w:"das Mädchen", p:"[мэдхэн]", e:"die Mädchen", t:"девочка", ex:"Das Mädchen singt ein Lied.", exr:"Девочка поёт песню."},
+  {c:"Семья, люди, профессии", w:"der Vater", p:"[фатэр]", e:"die Väter", t:"отец", ex:"Mein Vater arbeitet viel.", exr:"Мой отец много работает."},
+  {c:"Семья, люди, профессии", w:"die Mutter", p:"[мутэр]", e:"die Mütter", t:"мать", ex:"Meine Mutter kocht sehr gut.", exr:"Моя мама хорошо готовит."},
+  {c:"Семья, люди, профессии", w:"die Eltern", p:"[эльтэрн]", e:"Plural", t:"родители", ex:"Meine Eltern wohnen in Berlin.", exr:"Мои родители живут в Берлине."},
+  {c:"Семья, люди, профессии", w:"der Bruder", p:"[брудэр]", e:"die Brüder", t:"брат", ex:"Ich habe einen Bruder.", exr:"У меня есть брат."},
+  {c:"Семья, люди, профессии", w:"die Schwester", p:"[швэстэр]", e:"die Schwestern", t:"сестра", ex:"Meine Schwester ist Ärztin.", exr:"Моя сестра — врач."},
+  {c:"Семья, люди, профессии", w:"die Geschwister", p:"[гэшвистэр]", e:"Plural", t:"братья и сёстры", ex:"Hast du Geschwister?", exr:"У тебя есть братья или сёстры?"},
+  {c:"Семья, люди, профессии", w:"die Familie", p:"[фамилиэ]", e:"die Familien", t:"семья", ex:"Meine Familie ist groß.", exr:"Моя семья большая."},
+  {c:"Семья, люди, профессии", w:"die Großmutter", p:"[гросмутэр]", e:"die Großmütter", t:"бабушка", ex:"Meine Großmutter ist 80.", exr:"Моей бабушке 80 лет."},
+  {c:"Семья, люди, профессии", w:"der Großvater", p:"[гросфатэр]", e:"die Großväter", t:"дедушка", ex:"Mein Großvater liest gern.", exr:"Мой дедушка любит читать."},
+  {c:"Семья, люди, профессии", w:"die Tochter", p:"[тохтэр]", e:"die Töchter", t:"дочь", ex:"Meine Tochter ist fünf.", exr:"Моей дочери пять лет."},
+  {c:"Семья, люди, профессии", w:"der Sohn", p:"[зон]", e:"die Söhne", t:"сын", ex:"Mein Sohn geht zur Schule.", exr:"Мой сын ходит в школу."},
+  {c:"Семья, люди, профессии", w:"der Freund", p:"[фройнт]", e:"die Freunde", t:"друг; парень", ex:"Mein Freund heißt Thomas.", exr:"Моего друга зовут Томас."},
+  {c:"Семья, люди, профессии", w:"die Freundin", p:"[фройндин]", e:"die Freundinnen", t:"подруга; девушка", ex:"Meine Freundin wohnt in Hamburg.", exr:"Моя подруга живёт в Гамбурге."},
+  {c:"Семья, люди, профессии", w:"der Mensch", p:"[мэнш]", e:"die Menschen", t:"человек", ex:"Viele Menschen wohnen in der Stadt.", exr:"Многие люди живут в городе."},
+  {c:"Семья, люди, профессии", w:"der Name", p:"[намэ]", e:"die Namen", t:"имя, фамилия", ex:"Mein Name ist Anna.", exr:"Моё имя Анна."},
+  {c:"Семья, люди, профессии", w:"der Beruf", p:"[бэруф]", e:"die Berufe", t:"профессия", ex:"Was ist Ihr Beruf?", exr:"Какая у вас профессия?"},
+  {c:"Семья, люди, профессии", w:"der Lehrer", p:"[лерэр]", e:"die Lehrer", t:"учитель", ex:"Mein Lehrer heißt Herr Müller.", exr:"Моего учителя зовут господин Мюллер."},
+  {c:"Семья, люди, профессии", w:"der Arzt", p:"[арцт]", e:"die Ärzte", t:"врач", ex:"Ich gehe zum Arzt.", exr:"Я иду к врачу."},
+  {c:"Семья, люди, профессии", w:"der Student", p:"[штудэнт]", e:"die Studenten", t:"студент", ex:"Ich bin Student.", exr:"Я студент."},
+  {c:"Семья, люди, профессии", w:"der Ingenieur", p:"[инжэньёр]", e:"die Ingenieure", t:"инженер", ex:"Er arbeitet als Ingenieur.", exr:"Он работает инженером."},
+  {c:"Семья, люди, профессии", w:"der Koch", p:"[кох]", e:"die Köche", t:"повар", ex:"Der Koch macht eine Suppe.", exr:"Повар готовит суп."},
+  {c:"Семья, люди, профессии", w:"der Verkäufer", p:"[фэркойфэр]", e:"die Verkäufer", t:"продавец", ex:"Der Verkäufer ist freundlich.", exr:"Продавец приветливый."},
+  {c:"Семья, люди, профессии", w:"der Kellner", p:"[кельнэр]", e:"die Kellner", t:"официант", ex:"Der Kellner bringt die Speisekarte.", exr:"Официант приносит меню."},
+  {c:"Семья, люди, профессии", w:"der Polizist", p:"[полицист]", e:"die Polizisten", t:"полицейский", ex:"Der Polizist hilft den Menschen.", exr:"Полицейский помогает людям."},
+  {c:"Семья, люди, профессии", w:"der Fahrer", p:"[фарэр]", e:"die Fahrer", t:"водитель", ex:"Der Fahrer fährt den Bus.", exr:"Водитель ведёт автобус."},
+  {c:"Семья, люди, профессии", w:"der Kollege", p:"[коллегэ]", e:"die Kollegen", t:"коллега", ex:"Mein Kollege ist sehr nett.", exr:"Мой коллега очень милый."},
+  {c:"Семья, люди, профессии", w:"der Chef", p:"[шеф]", e:"die Chefs", t:"начальник", ex:"Mein Chef ist heute nicht da.", exr:"Начальника сегодня нет."},
+  {c:"Семья, люди, профессии", w:"der Nachbar", p:"[нахбар]", e:"die Nachbarn", t:"сосед", ex:"Mein Nachbar ist freundlich.", exr:"Мой сосед дружелюбный."},
+  {c:"Семья, люди, профессии", w:"der Herr", p:"[хэр]", e:"die Herren", t:"господин", ex:"Guten Tag, Herr Schmidt!", exr:"Добрый день, господин Шмидт!"},
+  {c:"Семья, люди, профессии", w:"die Dame", p:"[дамэ]", e:"die Damen", t:"дама", ex:"Die Dame möchte einen Kaffee.", exr:"Дама хотела бы кофе."},
+  {c:"Семья, люди, профессии", w:"die Kellnerin", p:"[кельнэрин]", e:"die Kellnerinnen", t:"официантка", ex:"Die Kellnerin bringt das Wasser.", exr:"Официантка приносит воду."},
+
+  /* --- ДОМ / МЕБЕЛЬ (32) --- */
+  {c:"Дом, квартира, мебель", w:"das Haus", p:"[хаус]", e:"die Häuser", t:"дом", ex:"Das Haus ist sehr groß.", exr:"Дом очень большой."},
+  {c:"Дом, квартира, мебель", w:"die Wohnung", p:"[вонунг]", e:"die Wohnungen", t:"квартира", ex:"Meine Wohnung ist klein.", exr:"Моя квартира маленькая."},
+  {c:"Дом, квартира, мебель", w:"das Zimmer", p:"[цимэр]", e:"die Zimmer", t:"комната", ex:"Das Zimmer ist hell.", exr:"Комната светлая."},
+  {c:"Дом, квартира, мебель", w:"die Küche", p:"[кюхэ]", e:"die Küchen", t:"кухня", ex:"Ich koche in der Küche.", exr:"Я готовлю на кухне."},
+  {c:"Дом, квартира, мебель", w:"das Bad", p:"[бат]", e:"die Bäder", t:"ванная", ex:"Das Bad ist neu.", exr:"Ванная новая."},
+  {c:"Дом, квартира, мебель", w:"das Schlafzimmer", p:"[шлафцимэр]", e:"die Schlafzimmer", t:"спальня", ex:"Das Schlafzimmer ist oben.", exr:"Спальня наверху."},
+  {c:"Дом, квартира, мебель", w:"das Wohnzimmer", p:"[вонцимэр]", e:"die Wohnzimmer", t:"гостиная", ex:"Wir sitzen im Wohnzimmer.", exr:"Мы сидим в гостиной."},
+  {c:"Дом, квартира, мебель", w:"der Balkon", p:"[балькон]", e:"die Balkone", t:"балкон", ex:"Der Balkon ist im Süden.", exr:"Балкон на южной стороне."},
+  {c:"Дом, квартира, мебель", w:"der Garten", p:"[гартэн]", e:"die Gärten", t:"сад", ex:"Der Garten ist hinter dem Haus.", exr:"Сад за домом."},
+  {c:"Дом, квартира, мебель", w:"die Tür", p:"[тюр]", e:"die Türen", t:"дверь", ex:"Mach bitte die Tür zu!", exr:"Закрой дверь!"},
+  {c:"Дом, квартира, мебель", w:"das Fenster", p:"[фэнстэр]", e:"die Fenster", t:"окно", ex:"Das Fenster ist offen.", exr:"Окно открыто."},
+  {c:"Дом, квартира, мебель", w:"der Tisch", p:"[тиш]", e:"die Tische", t:"стол", ex:"Das Buch liegt auf dem Tisch.", exr:"Книга лежит на столе."},
+  {c:"Дом, квартира, мебель", w:"der Stuhl", p:"[штуль]", e:"die Stühle", t:"стул", ex:"Der Stuhl ist bequem.", exr:"Стул удобный."},
+  {c:"Дом, квартира, мебель", w:"das Sofa", p:"[зофа]", e:"die Sofas", t:"диван", ex:"Ich sitze auf dem Sofa.", exr:"Я сижу на диване."},
+  {c:"Дом, квартира, мебель", w:"das Bett", p:"[бэт]", e:"die Betten", t:"кровать", ex:"Ich schlafe im Bett.", exr:"Я сплю в кровати."},
+  {c:"Дом, квартира, мебель", w:"der Schrank", p:"[шранк]", e:"die Schränke", t:"шкаф", ex:"Die Kleidung ist im Schrank.", exr:"Одежда в шкафу."},
+  {c:"Дом, квартира, мебель", w:"das Regal", p:"[рэгаль]", e:"die Regale", t:"полка", ex:"Die Bücher stehen im Regal.", exr:"Книги на полке."},
+  {c:"Дом, квартира, мебель", w:"die Lampe", p:"[лампа]", e:"die Lampen", t:"лампа", ex:"Die Lampe ist kaputt.", exr:"Лампа сломана."},
+  {c:"Дом, квартира, мебель", w:"der Teppich", p:"[тэпихь]", e:"die Teppiche", t:"ковёр", ex:"Der Teppich ist blau.", exr:"Ковёр синий."},
+  {c:"Дом, квартира, мебель", w:"das Bild", p:"[бильт]", e:"die Bilder", t:"картина", ex:"Das Bild hängt an der Wand.", exr:"Картина висит на стене."},
+  {c:"Дом, квартира, мебель", w:"die Wand", p:"[вант]", e:"die Wände", t:"стена", ex:"Die Wand ist weiß.", exr:"Стена белая."},
+  {c:"Дом, квартира, мебель", w:"der Boden", p:"[бодэн]", e:"die Böden", t:"пол", ex:"Der Boden ist aus Holz.", exr:"Пол деревянный."},
+  {c:"Дом, квартира, мебель", w:"die Decke", p:"[дэкэ]", e:"die Decken", t:"потолок; одеяло", ex:"Die Decke ist hoch.", exr:"Потолок высокий."},
+  {c:"Дом, квартира, мебель", w:"der Kühlschrank", p:"[кюльшранк]", e:"die Kühlschränke", t:"холодильник", ex:"Das Essen ist im Kühlschrank.", exr:"Еда в холодильнике."},
+  {c:"Дом, квартира, мебель", w:"der Herd", p:"[хэрт]", e:"die Herde", t:"плита", ex:"Der Herd ist in der Küche.", exr:"Плита на кухне."},
+  {c:"Дом, квартира, мебель", w:"die Dusche", p:"[душэ]", e:"die Duschen", t:"душ", ex:"Ich gehe unter die Dusche.", exr:"Я иду в душ."},
+  {c:"Дом, квартира, мебель", w:"die Badewanne", p:"[бадэванэ]", e:"die Badewannen", t:"ванна", ex:"Die Badewanne ist groß.", exr:"Ванна большая."},
+  {c:"Дом, квартира, мебель", w:"die Treppe", p:"[трэпэ]", e:"die Treppen", t:"лестница", ex:"Ich gehe die Treppe hinauf.", exr:"Я поднимаюсь по лестнице."},
+  {c:"Дом, квартира, мебель", w:"der Aufzug", p:"[ауфцук]", e:"die Aufzüge", t:"лифт", ex:"Der Aufzug ist kaputt.", exr:"Лифт сломан."},
+  {c:"Дом, квартира, мебель", w:"der Keller", p:"[келлер]", e:"die Keller", t:"подвал", ex:"Die Fahrräder stehen im Keller.", exr:"Велосипеды в подвале."},
+  {c:"Дом, квартира, мебель", w:"der Stock", p:"[шток]", e:"die Stockwerke", t:"этаж", ex:"Wir wohnen im dritten Stock.", exr:"Мы живём на 4-м этаже."},
+  {c:"Дом, квартира, мебель", w:"der Schlüssel", p:"[шлюсэль]", e:"die Schlüssel", t:"ключ", ex:"Wo ist mein Schlüssel?", exr:"Где мой ключ?"},
+
+  /* --- ЕДА / МАГАЗИНЫ (36) --- */
+  {c:"Еда, напитки, магазины", w:"das Brot", p:"[брот]", e:"die Brote", t:"хлеб", ex:"Ich kaufe frisches Brot.", exr:"Я покупаю свежий хлеб."},
+  {c:"Еда, напитки, магазины", w:"das Brötchen", p:"[брётхэн]", e:"die Brötchen", t:"булочка", ex:"Ich esse ein Brötchen.", exr:"Я ем булочку."},
+  {c:"Еда, напитки, магазины", w:"die Butter", p:"[бутэр]", e:"—", t:"масло (слив.)", ex:"Butter und Brot, bitte.", exr:"Масло и хлеб, пожалуйста."},
+  {c:"Еда, напитки, магазины", w:"der Käse", p:"[кэзэ]", e:"—", t:"сыр", ex:"Der Käse ist lecker.", exr:"Сыр вкусный."},
+  {c:"Еда, напитки, магазины", w:"die Wurst", p:"[вурст]", e:"die Würste", t:"колбаса", ex:"Ich kaufe Wurst und Käse.", exr:"Я покупаю колбасу и сыр."},
+  {c:"Еда, напитки, магазины", w:"das Fleisch", p:"[фляйш]", e:"—", t:"мясо", ex:"Ich esse kein Fleisch.", exr:"Я не ем мясо."},
+  {c:"Еда, напитки, магазины", w:"der Fisch", p:"[фиш]", e:"die Fische", t:"рыба", ex:"Freitags esse ich Fisch.", exr:"По пятницам я ем рыбу."},
+  {c:"Еда, напитки, магазины", w:"das Ei", p:"[ай]", e:"die Eier", t:"яйцо", ex:"Ich esse ein Ei.", exr:"Я ем яйцо."},
+  {c:"Еда, напитки, магазины", w:"der Apfel", p:"[апфэль]", e:"die Äpfel", t:"яблоко", ex:"Der Apfel ist rot.", exr:"Яблоко красное."},
+  {c:"Еда, напитки, магазины", w:"die Banane", p:"[бананэ]", e:"die Bananen", t:"банан", ex:"Ich esse gern Bananen.", exr:"Я люблю бананы."},
+  {c:"Еда, напитки, магазины", w:"die Orange", p:"[оранжэ]", e:"die Orangen", t:"апельсин", ex:"Die Orange ist süß.", exr:"Апельсин сладкий."},
+  {c:"Еда, напитки, магазины", w:"die Tomate", p:"[томатэ]", e:"die Tomaten", t:"помидор", ex:"Tomaten sind gesund.", exr:"Помидоры полезны."},
+  {c:"Еда, напитки, магазины", w:"die Kartoffel", p:"[картофэль]", e:"die Kartoffeln", t:"картофель", ex:"Ich koche Kartoffeln.", exr:"Я варю картошку."},
+  {c:"Еда, напитки, магазины", w:"das Gemüse", p:"[гэмюзэ]", e:"—", t:"овощи", ex:"Gemüse ist gesund.", exr:"Овощи полезны."},
+  {c:"Еда, напитки, магазины", w:"das Obst", p:"[обст]", e:"—", t:"фрукты", ex:"Ich kaufe Obst.", exr:"Я покупаю фрукты."},
+  {c:"Еда, напитки, магазины", w:"der Reis", p:"[райс]", e:"—", t:"рис", ex:"Ich esse Reis mit Gemüse.", exr:"Я ем рис с овощами."},
+  {c:"Еда, напитки, магазины", w:"die Nudeln", p:"[нудэльн]", e:"Plural", t:"макароны", ex:"Ich koche Nudeln.", exr:"Я готовлю макароны."},
+  {c:"Еда, напитки, магазины", w:"die Suppe", p:"[зупэ]", e:"die Suppen", t:"суп", ex:"Die Suppe ist warm.", exr:"Суп тёплый."},
+  {c:"Еда, напитки, магазины", w:"der Salat", p:"[залат]", e:"die Salate", t:"салат", ex:"Ich esse einen Salat.", exr:"Я ем салат."},
+  {c:"Еда, напитки, магазины", w:"der Kuchen", p:"[кухэн]", e:"die Kuchen", t:"пирог, торт", ex:"Der Kuchen schmeckt gut.", exr:"Пирог вкусный."},
+  {c:"Еда, напитки, магазины", w:"der Zucker", p:"[цукэр]", e:"—", t:"сахар", ex:"Kaffee ohne Zucker.", exr:"Кофе без сахара."},
+  {c:"Еда, напитки, магазины", w:"das Salz", p:"[зальц]", e:"—", t:"соль", ex:"Gib mir das Salz.", exr:"Дай мне соль."},
+  {c:"Еда, напитки, магазины", w:"das Wasser", p:"[васэр]", e:"—", t:"вода", ex:"Ich trinke viel Wasser.", exr:"Я пью много воды."},
+  {c:"Еда, напитки, магазины", w:"der Kaffee", p:"[кафэ]", e:"die Kaffees", t:"кофе", ex:"Einen Kaffee, bitte.", exr:"Кофе, пожалуйста."},
+  {c:"Еда, напитки, магазины", w:"der Tee", p:"[тэ]", e:"die Tees", t:"чай", ex:"Tee mit Zucker.", exr:"Чай с сахаром."},
+  {c:"Еда, напитки, магазины", w:"die Milch", p:"[мильхь]", e:"—", t:"молоко", ex:"Milch zum Frühstück.", exr:"Молоко на завтрак."},
+  {c:"Еда, напитки, магазины", w:"der Saft", p:"[зафт]", e:"die Säfte", t:"сок", ex:"Ich trinke Orangensaft.", exr:"Я пью апельсиновый сок."},
+  {c:"Еда, напитки, магазины", w:"das Bier", p:"[бир]", e:"die Biere", t:"пиво", ex:"Ich trinke ein Bier.", exr:"Я пью пиво."},
+  {c:"Еда, напитки, магазины", w:"der Wein", p:"[вайн]", e:"die Weine", t:"вино", ex:"Ein Glas Wein, bitte.", exr:"Бокал вина."},
+  {c:"Еда, напитки, магазины", w:"der Supermarkt", p:"[зупэрмаркт]", e:"die Supermärkte", t:"супермаркет", ex:"Ich gehe in den Supermarkt.", exr:"Я иду в супермаркет."},
+  {c:"Еда, напитки, магазины", w:"der Markt", p:"[маркт]", e:"die Märkte", t:"рынок", ex:"Obst auf dem Markt.", exr:"Фрукты на рынке."},
+  {c:"Еда, напитки, магазины", w:"die Bäckerei", p:"[бэкэрай]", e:"die Bäckereien", t:"булочная", ex:"Brot in der Bäckerei.", exr:"Хлеб в булочной."},
+  {c:"Еда, напитки, магазины", w:"die Apotheke", p:"[апотекэ]", e:"die Apotheken", t:"аптека", ex:"Die Apotheke ist rechts.", exr:"Аптека справа."},
+  {c:"Еда, напитки, магазины", w:"der Preis", p:"[прайс]", e:"die Preise", t:"цена", ex:"Der Preis ist hoch.", exr:"Цена высокая."},
+  {c:"Еда, напитки, магазины", w:"der Euro", p:"[ойро]", e:"die Euro", t:"евро", ex:"Das kostet zehn Euro.", exr:"Это стоит 10 евро."},
+  {c:"Еда, напитки, магазины", w:"das Geld", p:"[гэльт]", e:"—", t:"деньги", ex:"Ich habe kein Geld dabei.", exr:"У меня нет с собой денег."},
+
+  /* --- ГОРОД / ТРАНСПОРТ (34) --- */
+  {c:"Город, транспорт, места", w:"die Stadt", p:"[штат]", e:"die Städte", t:"город", ex:"Berlin ist eine große Stadt.", exr:"Берлин — большой город."},
+  {c:"Город, транспорт, места", w:"das Dorf", p:"[дорф]", e:"die Dörfer", t:"деревня", ex:"Meine Oma wohnt in einem Dorf.", exr:"Моя бабушка живёт в деревне."},
+  {c:"Город, транспорт, места", w:"die Straße", p:"[штрасэ]", e:"die Straßen", t:"улица", ex:"Ich wohne in der Goethestraße.", exr:"Я живу на улице Гёте."},
+  {c:"Город, транспорт, места", w:"der Platz", p:"[плац]", e:"die Plätze", t:"площадь; место", ex:"Der Platz ist schön.", exr:"Площадь красивая."},
+  {c:"Город, транспорт, места", w:"der Bahnhof", p:"[банхоф]", e:"die Bahnhöfe", t:"вокзал", ex:"Der Bahnhof ist nicht weit.", exr:"Вокзал недалеко."},
+  {c:"Город, транспорт, места", w:"der Flughafen", p:"[флюкхафэн]", e:"die Flughäfen", t:"аэропорт", ex:"Wir fahren zum Flughafen.", exr:"Мы едем в аэропорт."},
+  {c:"Город, транспорт, места", w:"die Haltestelle", p:"[хальтэштэлэ]", e:"die Haltestellen", t:"остановка", ex:"Die Haltestelle ist vorne.", exr:"Остановка впереди."},
+  {c:"Город, транспорт, места", w:"die Post", p:"[пост]", e:"die Posten", t:"почта", ex:"Ich gehe zur Post.", exr:"Я иду на почту."},
+  {c:"Город, транспорт, места", w:"die Bank", p:"[банк]", e:"die Banken", t:"банк", ex:"Die Bank öffnet um 9 Uhr.", exr:"Банк открывается в 9."},
+  {c:"Город, транспорт, места", w:"die Bibliothek", p:"[библиотэк]", e:"die Bibliotheken", t:"библиотека", ex:"Ich lerne in der Bibliothek.", exr:"Я занимаюсь в библиотеке."},
+  {c:"Город, транспорт, места", w:"das Krankenhaus", p:"[кранкэнхаус]", e:"die Krankenhäuser", t:"больница", ex:"Er arbeitet im Krankenhaus.", exr:"Он работает в больнице."},
+  {c:"Город, транспорт, места", w:"die Schule", p:"[шулэ]", e:"die Schulen", t:"школа", ex:"Die Kinder gehen zur Schule.", exr:"Дети идут в школу."},
+  {c:"Город, транспорт, места", w:"die Universität", p:"[унивэрзитэт]", e:"die Universitäten", t:"университет", ex:"Sie studiert an der Uni.", exr:"Она учится в университете."},
+  {c:"Город, транспорт, места", w:"das Kino", p:"[кино]", e:"die Kinos", t:"кинотеатр", ex:"Wir gehen ins Kino.", exr:"Мы идём в кино."},
+  {c:"Город, транспорт, места", w:"das Theater", p:"[тэатэр]", e:"die Theater", t:"театр", ex:"Das Theater ist voll.", exr:"Театр полный."},
+  {c:"Город, транспорт, места", w:"das Museum", p:"[музэум]", e:"die Museen", t:"музей", ex:"Das Museum ist geschlossen.", exr:"Музей закрыт."},
+  {c:"Город, транспорт, места", w:"das Restaurant", p:"[рэсторан]", e:"die Restaurants", t:"ресторан", ex:"Wir essen im Restaurant.", exr:"Мы едим в ресторане."},
+  {c:"Город, транспорт, места", w:"das Café", p:"[кафэ]", e:"die Cafés", t:"кафе", ex:"Wir treffen uns im Café.", exr:"Мы встречаемся в кафе."},
+  {c:"Город, транспорт, места", w:"der Park", p:"[парк]", e:"die Parks", t:"парк", ex:"Ich laufe im Park.", exr:"Я гуляю в парке."},
+  {c:"Город, транспорт, места", w:"der Zoo", p:"[цо]", e:"die Zoos", t:"зоопарк", ex:"Wir gehen in den Zoo.", exr:"Мы идём в зоопарк."},
+  {c:"Город, транспорт, места", w:"die Kirche", p:"[кирхэ]", e:"die Kirchen", t:"церковь", ex:"Die Kirche ist alt.", exr:"Церковь старая."},
+  {c:"Город, транспорт, места", w:"das Hotel", p:"[хотэль]", e:"die Hotels", t:"отель", ex:"Wir schlafen im Hotel.", exr:"Мы ночуем в отеле."},
+  {c:"Город, транспорт, места", w:"der Bus", p:"[бус]", e:"die Busse", t:"автобус", ex:"Ich fahre mit dem Bus.", exr:"Я еду на автобусе."},
+  {c:"Город, транспорт, места", w:"der Zug", p:"[цук]", e:"die Züge", t:"поезд", ex:"Der Zug fährt um 8 Uhr.", exr:"Поезд отправляется в 8."},
+  {c:"Город, транспорт, места", w:"die U-Bahn", p:"[у-бан]", e:"die U-Bahnen", t:"метро", ex:"Ich fahre mit der U-Bahn.", exr:"Я еду на метро."},
+  {c:"Город, транспорт, места", w:"die S-Bahn", p:"[эс-бан]", e:"die S-Bahnen", t:"электричка", ex:"Die S-Bahn kommt in 5 Min.", exr:"Электричка через 5 минут."},
+  {c:"Город, транспорт, места", w:"das Auto", p:"[ауто]", e:"die Autos", t:"автомобиль", ex:"Mein Auto ist alt.", exr:"Моя машина старая."},
+  {c:"Город, транспорт, места", w:"das Fahrrad", p:"[фаррат]", e:"die Fahrräder", t:"велосипед", ex:"Ich fahre mit dem Fahrrad.", exr:"Я еду на велосипеде."},
+  {c:"Город, транспорт, места", w:"das Taxi", p:"[такси]", e:"die Taxis", t:"такси", ex:"Wir nehmen ein Taxi.", exr:"Мы берём такси."},
+  {c:"Город, транспорт, места", w:"das Flugzeug", p:"[флюкцойк]", e:"die Flugzeuge", t:"самолёт", ex:"Ich fliege mit dem Flugzeug.", exr:"Я лечу на самолёте."},
+  {c:"Город, транспорт, места", w:"die Fahrkarte", p:"[фаркартэ]", e:"die Fahrkarten", t:"билет", ex:"Ich kaufe eine Fahrkarte.", exr:"Я покупаю билет."},
+  {c:"Город, транспорт, места", w:"der Weg", p:"[век]", e:"die Wege", t:"дорога, путь", ex:"Kennst du den Weg?", exr:"Ты знаешь дорогу?"},
+  {c:"Город, транспорт, места", w:"die Ecke", p:"[экэ]", e:"die Ecken", t:"угол", ex:"Die Bank ist um die Ecke.", exr:"Банк за углом."},
+  {c:"Город, транспорт, места", w:"die Adresse", p:"[адрэсэ]", e:"die Adressen", t:"адрес", ex:"Wie ist deine Adresse?", exr:"Какой у тебя адрес?"},
+
+  /* --- ВРЕМЯ (38) --- */
+  {c:"Время, дни, месяцы", w:"der Tag", p:"[так]", e:"die Tage", t:"день", ex:"Guten Tag!", exr:"Добрый день!"},
+  {c:"Время, дни, месяцы", w:"die Woche", p:"[вохэ]", e:"die Wochen", t:"неделя", ex:"Die Woche hat sieben Tage.", exr:"В неделе семь дней."},
+  {c:"Время, дни, месяцы", w:"der Monat", p:"[монат]", e:"die Monate", t:"месяц", ex:"Der Monat ist fast zu Ende.", exr:"Месяц почти закончился."},
+  {c:"Время, дни, месяцы", w:"das Jahr", p:"[яр]", e:"die Jahre", t:"год", ex:"Ich bin 25 Jahre alt.", exr:"Мне 25 лет."},
+  {c:"Время, дни, месяцы", w:"die Stunde", p:"[штундэ]", e:"die Stunden", t:"час (длительность)", ex:"Der Kurs dauert zwei Stunden.", exr:"Курс длится два часа."},
+  {c:"Время, дни, месяцы", w:"die Minute", p:"[минутэ]", e:"die Minuten", t:"минута", ex:"Warte eine Minute.", exr:"Подожди минуту."},
+  {c:"Время, дни, месяцы", w:"die Uhr", p:"[ур]", e:"die Uhren", t:"час (на часах); часы", ex:"Es ist zehn Uhr.", exr:"Сейчас 10 часов."},
+  {c:"Время, дни, месяцы", w:"der Morgen", p:"[моргэн]", e:"die Morgen", t:"утро", ex:"Guten Morgen!", exr:"Доброе утро!"},
+  {c:"Время, дни, месяцы", w:"der Mittag", p:"[митак]", e:"die Mittage", t:"полдень", ex:"Zu Mittag esse ich Suppe.", exr:"В полдень я ем суп."},
+  {c:"Время, дни, месяцы", w:"der Abend", p:"[абэнт]", e:"die Abende", t:"вечер", ex:"Guten Abend!", exr:"Добрый вечер!"},
+  {c:"Время, дни, месяцы", w:"die Nacht", p:"[нахт]", e:"die Nächte", t:"ночь", ex:"Gute Nacht!", exr:"Спокойной ночи!"},
+  {c:"Время, дни, месяцы", w:"der Montag", p:"[монтаг]", e:"die Montage", t:"понедельник", ex:"Am Montag habe ich Deutsch.", exr:"В понедельник у меня немецкий."},
+  {c:"Время, дни, месяцы", w:"der Dienstag", p:"[динстаг]", e:"die Dienstage", t:"вторник", ex:"Am Dienstag arbeite ich.", exr:"Во вторник я работаю."},
+  {c:"Время, дни, месяцы", w:"der Mittwoch", p:"[митвох]", e:"die Mittwoche", t:"среда", ex:"Am Mittwoch habe ich frei.", exr:"В среду у меня выходной."},
+  {c:"Время, дни, месяцы", w:"der Donnerstag", p:"[донэрстаг]", e:"die Donnerstage", t:"четверг", ex:"Am Donnerstag habe ich Sport.", exr:"В четверг у меня спорт."},
+  {c:"Время, дни, месяцы", w:"der Freitag", p:"[фрайтаг]", e:"die Freitage", t:"пятница", ex:"Am Freitag gehe ich ins Kino.", exr:"В пятницу я иду в кино."},
+  {c:"Время, дни, месяцы", w:"der Samstag", p:"[замстаг]", e:"die Samstage", t:"суббота", ex:"Am Samstag schlafe ich lange.", exr:"В субботу я долго сплю."},
+  {c:"Время, дни, месяцы", w:"der Sonntag", p:"[зонтаг]", e:"die Sonntage", t:"воскресенье", ex:"Am Sonntag besuche ich Eltern.", exr:"В воскресенье навещаю родителей."},
+  {c:"Время, дни, месяцы", w:"das Wochenende", p:"[вохэнэндэ]", e:"die Wochenenden", t:"выходные", ex:"Am Wochenende habe ich frei.", exr:"На выходных я свободен."},
+  {c:"Время, дни, месяцы", w:"der Januar", p:"[януар]", e:"die Januare", t:"январь", ex:"Im Januar ist es kalt.", exr:"В январе холодно."},
+  {c:"Время, дни, месяцы", w:"der Februar", p:"[фэбруар]", e:"die Februare", t:"февраль", ex:"Im Februar habe ich Geburtstag.", exr:"В феврале у меня день рождения."},
+  {c:"Время, дни, месяцы", w:"der März", p:"[мэрц]", e:"die Märze", t:"март", ex:"Im März beginnt der Frühling.", exr:"В марте начинается весна."},
+  {c:"Время, дни, месяцы", w:"der April", p:"[априль]", e:"die Aprile", t:"апрель", ex:"Im April regnet es oft.", exr:"В апреле часто дождь."},
+  {c:"Время, дни, месяцы", w:"der Mai", p:"[май]", e:"die Maie", t:"май", ex:"Im Mai ist das Wetter schön.", exr:"В мае погода красивая."},
+  {c:"Время, дни, месяцы", w:"der Juni", p:"[юни]", e:"die Junis", t:"июнь", ex:"Im Juni fahre ich in den Urlaub.", exr:"В июне я еду в отпуск."},
+  {c:"Время, дни, месяцы", w:"der Juli", p:"[юли]", e:"die Julis", t:"июль", ex:"Im Juli ist es warm.", exr:"В июле тепло."},
+  {c:"Время, дни, месяцы", w:"der August", p:"[аугуст]", e:"die Auguste", t:"август", ex:"Im August schwimme ich oft.", exr:"В августе я часто плаваю."},
+  {c:"Время, дни, месяцы", w:"der September", p:"[зэптэмбэр]", e:"die September", t:"сентябрь", ex:"Im September beginnt die Schule.", exr:"В сентябре начинается школа."},
+  {c:"Время, дни, месяцы", w:"der Oktober", p:"[октобэр]", e:"die Oktober", t:"октябрь", ex:"Im Oktober fallen die Blätter.", exr:"В октябре падают листья."},
+  {c:"Время, дни, месяцы", w:"der November", p:"[новэмбэр]", e:"die November", t:"ноябрь", ex:"Im November ist es neblig.", exr:"В ноябре туманно."},
+  {c:"Время, дни, месяцы", w:"der Dezember", p:"[дэцэмбэр]", e:"die Dezember", t:"декабрь", ex:"Im Dezember feiern wir Weihnachten.", exr:"В декабре мы празднуем Рождество."},
+  {c:"Время, дни, месяцы", w:"heute", p:"[хойтэ]", e:"наречие", t:"сегодня", ex:"Heute ist Montag.", exr:"Сегодня понедельник."},
+  {c:"Время, дни, месяцы", w:"morgen", p:"[моргэн]", e:"наречие", t:"завтра", ex:"Morgen fahre ich nach Berlin.", exr:"Завтра я еду в Берлин."},
+  {c:"Время, дни, месяцы", w:"gestern", p:"[гэстэрн]", e:"наречие", t:"вчера", ex:"Gestern war ich zu Hause.", exr:"Вчера я был дома."},
+  {c:"Время, дни, месяцы", w:"jetzt", p:"[йецт]", e:"наречие", t:"сейчас", ex:"Jetzt lerne ich Deutsch.", exr:"Сейчас я учу немецкий."},
+  {c:"Время, дни, месяцы", w:"immer", p:"[иммэр]", e:"наречие", t:"всегда", ex:"Ich bin immer müde.", exr:"Я всегда уставший."},
+  {c:"Время, дни, месяцы", w:"oft", p:"[офт]", e:"наречие", t:"часто", ex:"Ich gehe oft spazieren.", exr:"Я часто гуляю."},
+  {c:"Время, дни, месяцы", w:"manchmal", p:"[манхьмаль]", e:"наречие", t:"иногда", ex:"Manchmal koche ich selbst.", exr:"Иногда я готовлю сам."},
+
+  /* --- ТЕЛО / ЗДОРОВЬЕ / ОДЕЖДА (34) --- */
+  {c:"Тело, здоровье, одежда", w:"der Kopf", p:"[копф]", e:"die Köpfe", t:"голова", ex:"Mein Kopf tut weh.", exr:"У меня болит голова."},
+  {c:"Тело, здоровье, одежда", w:"das Haar", p:"[хар]", e:"die Haare", t:"волос(ы)", ex:"Sie hat lange Haare.", exr:"У неё длинные волосы."},
+  {c:"Тело, здоровье, одежда", w:"das Auge", p:"[аугэ]", e:"die Augen", t:"глаз", ex:"Sie hat blaue Augen.", exr:"У неё голубые глаза."},
+  {c:"Тело, здоровье, одежда", w:"die Nase", p:"[назэ]", e:"die Nasen", t:"нос", ex:"Meine Nase ist verstopft.", exr:"У меня заложен нос."},
+  {c:"Тело, здоровье, одежда", w:"der Mund", p:"[мунт]", e:"die Münder", t:"рот", ex:"Mach den Mund auf!", exr:"Открой рот!"},
+  {c:"Тело, здоровье, одежда", w:"das Ohr", p:"[ор]", e:"die Ohren", t:"ухо", ex:"Mein Ohr tut weh.", exr:"У меня болит ухо."},
+  {c:"Тело, здоровье, одежда", w:"der Zahn", p:"[цан]", e:"die Zähne", t:"зуб", ex:"Ich habe Zahnschmerzen.", exr:"У меня болит зуб."},
+  {c:"Тело, здоровье, одежда", w:"der Hals", p:"[хальс]", e:"die Hälse", t:"шея; горло", ex:"Mein Hals tut weh.", exr:"У меня болит горло."},
+  {c:"Тело, здоровье, одежда", w:"der Arm", p:"[арм]", e:"die Arme", t:"рука (от плеча)", ex:"Mein Arm ist gebrochen.", exr:"У меня сломана рука."},
+  {c:"Тело, здоровье, одежда", w:"die Hand", p:"[хант]", e:"die Hände", t:"кисть руки", ex:"Wasch dir die Hände!", exr:"Помой руки!"},
+  {c:"Тело, здоровье, одежда", w:"der Finger", p:"[фингэр]", e:"die Finger", t:"палец", ex:"Ich habe mir den Finger geschnitten.", exr:"Я порезал палец."},
+  {c:"Тело, здоровье, одежда", w:"das Bein", p:"[байн]", e:"die Beine", t:"нога (вся)", ex:"Mein Bein tut weh.", exr:"У меня болит нога."},
+  {c:"Тело, здоровье, одежда", w:"der Fuß", p:"[фус]", e:"die Füße", t:"ступня", ex:"Meine Füße sind kalt.", exr:"У меня холодные ноги."},
+  {c:"Тело, здоровье, одежда", w:"der Bauch", p:"[баух]", e:"die Bäuche", t:"живот", ex:"Mein Bauch tut weh.", exr:"У меня болит живот."},
+  {c:"Тело, здоровье, одежда", w:"der Rücken", p:"[рюкэн]", e:"die Rücken", t:"спина", ex:"Mein Rücken tut weh.", exr:"У меня болит спина."},
+  {c:"Тело, здоровье, одежда", w:"das Herz", p:"[хэрц]", e:"die Herzen", t:"сердце", ex:"Mein Herz ist gesund.", exr:"Моё сердце здоровое."},
+  {c:"Тело, здоровье, одежда", w:"der Schmerz", p:"[шмэрц]", e:"die Schmerzen", t:"боль", ex:"Ich habe starke Schmerzen.", exr:"У меня сильная боль."},
+  {c:"Тело, здоровье, одежда", w:"die Krankheit", p:"[кранкхайт]", e:"die Krankheiten", t:"болезнь", ex:"Er hat eine schwere Krankheit.", exr:"У него тяжёлая болезнь."},
+  {c:"Тело, здоровье, одежда", w:"das Fieber", p:"[фибэр]", e:"—", t:"температура", ex:"Ich habe Fieber.", exr:"У меня температура."},
+  {c:"Тело, здоровье, одежда", w:"die Erkältung", p:"[эркэльтунг]", e:"die Erkältungen", t:"простуда", ex:"Ich habe eine Erkältung.", exr:"У меня простуда."},
+  {c:"Тело, здоровье, одежда", w:"die Tablette", p:"[таблэтэ]", e:"die Tabletten", t:"таблетка", ex:"Nehmen Sie diese Tabletten!", exr:"Принимайте эти таблетки!"},
+  {c:"Тело, здоровье, одежда", w:"das Rezept", p:"[рэцэпт]", e:"die Rezepte", t:"рецепт", ex:"Der Arzt schreibt ein Rezept.", exr:"Врач выписывает рецепт."},
+  {c:"Тело, здоровье, одежда", w:"die Kleidung", p:"[клайдунг]", e:"—", t:"одежда", ex:"Die Kleidung ist im Schrank.", exr:"Одежда в шкафу."},
+  {c:"Тело, здоровье, одежда", w:"das Hemd", p:"[хэмт]", e:"die Hemden", t:"рубашка", ex:"Das Hemd ist weiß.", exr:"Рубашка белая."},
+  {c:"Тело, здоровье, одежда", w:"die Hose", p:"[хозэ]", e:"die Hosen", t:"брюки", ex:"Die Hose ist zu lang.", exr:"Брюки слишком длинные."},
+  {c:"Тело, здоровье, одежда", w:"der Rock", p:"[рок]", e:"die Röcke", t:"юбка", ex:"Sie trägt einen roten Rock.", exr:"Она носит красную юбку."},
+  {c:"Тело, здоровье, одежда", w:"die Jacke", p:"[якэ]", e:"die Jacken", t:"куртка", ex:"Zieh die Jacke an!", exr:"Надень куртку!"},
+  {c:"Тело, здоровье, одежда", w:"der Mantel", p:"[мантэль]", e:"die Mäntel", t:"пальто", ex:"Im Winter trage ich einen Mantel.", exr:"Зимой я ношу пальто."},
+  {c:"Тело, здоровье, одежда", w:"das Kleid", p:"[клайт]", e:"die Kleider", t:"платье", ex:"Das Kleid ist schön.", exr:"Платье красивое."},
+  {c:"Тело, здоровье, одежда", w:"der Schuh", p:"[шу]", e:"die Schuhe", t:"обувь", ex:"Die Schuhe sind neu.", exr:"Туфли новые."},
+  {c:"Тело, здоровье, одежда", w:"die Socke", p:"[зокэ]", e:"die Socken", t:"носок", ex:"Ich brauche neue Socken.", exr:"Мне нужны новые носки."},
+  {c:"Тело, здоровье, одежда", w:"der Hut", p:"[хут]", e:"die Hüte", t:"шляпа", ex:"Der Hut ist zu groß.", exr:"Шляпа слишком большая."},
+  {c:"Тело, здоровье, одежда", w:"der Schal", p:"[шаль]", e:"die Schals", t:"шарф", ex:"Im Winter trage ich einen Schal.", exr:"Зимой я ношу шарф."},
+  {c:"Тело, здоровье, одежда", w:"die Brille", p:"[брилэ]", e:"die Brillen", t:"очки", ex:"Ich suche meine Brille.", exr:"Я ищу свои очки."},
+
+  /* --- ПРИЛАГАТЕЛЬНЫЕ (выборка 30) --- */
+  {c:"Прилагательные", w:"gut", p:"[гут]", e:"besser, am besten", t:"хороший", ex:"Das Essen ist sehr gut.", exr:"Еда очень хорошая."},
+  {c:"Прилагательные", w:"schlecht", p:"[шлехьт]", e:"schlechter, am schlechtesten", t:"плохой", ex:"Das Wetter ist schlecht.", exr:"Погода плохая."},
+  {c:"Прилагательные", w:"groß", p:"[грос]", e:"größer, am größten", t:"большой", ex:"Berlin ist groß.", exr:"Берлин большой."},
+  {c:"Прилагательные", w:"klein", p:"[клайн]", e:"kleiner, am kleinsten", t:"маленький", ex:"Meine Wohnung ist klein.", exr:"Моя квартира маленькая."},
+  {c:"Прилагательные", w:"neu", p:"[ной]", e:"neuer, am neuesten", t:"новый", ex:"Ich habe ein neues Auto.", exr:"У меня новая машина."},
+  {c:"Прилагательные", w:"alt", p:"[альт]", e:"älter, am ältesten", t:"старый", ex:"Mein Handy ist alt.", exr:"Мой телефон старый."},
+  {c:"Прилагательные", w:"jung", p:"[юнг]", e:"jünger, am jüngsten", t:"молодой", ex:"Sie ist noch jung.", exr:"Она ещё молодая."},
+  {c:"Прилагательные", w:"schön", p:"[шён]", e:"schöner, am schönsten", t:"красивый", ex:"Das ist ein schönes Bild.", exr:"Это красивая картина."},
+  {c:"Прилагательные", w:"teuer", p:"[тойэр]", e:"teurer, am teuersten", t:"дорогой", ex:"Das Auto ist zu teuer.", exr:"Машина слишком дорогая."},
+  {c:"Прилагательные", w:"billig", p:"[билихь]", e:"billiger, am billigsten", t:"дешёвый", ex:"Das Brot ist billig.", exr:"Хлеб дешёвый."},
+  {c:"Прилагательные", w:"schnell", p:"[шнэль]", e:"schneller, am schnellsten", t:"быстрый", ex:"Der Zug ist schnell.", exr:"Поезд быстрый."},
+  {c:"Прилагательные", w:"langsam", p:"[лангзам]", e:"langsamer, am langsamsten", t:"медленный", ex:"Sprich bitte langsam!", exr:"Говори медленно!"},
+  {c:"Прилагательные", w:"warm", p:"[варм]", e:"wärmer, am wärmsten", t:"тёплый", ex:"Heute ist es warm.", exr:"Сегодня тепло."},
+  {c:"Прилагательные", w:"kalt", p:"[кальт]", e:"kälter, am kältesten", t:"холодный", ex:"Im Winter ist es kalt.", exr:"Зимой холодно."},
+  {c:"Прилагательные", w:"leicht", p:"[ляйхьт]", e:"leichter, am leichtesten", t:"лёгкий", ex:"Die Tasche ist leicht.", exr:"Сумка лёгкая."},
+  {c:"Прилагательные", w:"schwer", p:"[швэр]", e:"schwerer, am schwersten", t:"тяжёлый; сложный", ex:"Deutsch ist nicht schwer.", exr:"Немецкий не сложный."},
+  {c:"Прилагательные", w:"glücklich", p:"[глюклихь]", e:"glücklicher, am glücklichsten", t:"счастливый", ex:"Ich bin sehr glücklich.", exr:"Я очень счастлив."},
+  {c:"Прилагательные", w:"traurig", p:"[траурихь]", e:"trauriger, am traurigsten", t:"грустный", ex:"Warum bist du traurig?", exr:"Почему ты грустный?"},
+  {c:"Прилагательные", w:"müde", p:"[мюдэ]", e:"müder, am müdesten", t:"усталый", ex:"Ich bin heute müde.", exr:"Я сегодня устал."},
+  {c:"Прилагательные", w:"krank", p:"[кранк]", e:"kränker, am kränksten", t:"больной", ex:"Mein Sohn ist krank.", exr:"Мой сын болен."},
+  {c:"Прилагательные", w:"gesund", p:"[гэзунт]", e:"gesünder, am gesündesten", t:"здоровый", ex:"Obst ist gesund.", exr:"Фрукты полезны."},
+  {c:"Прилагательные", w:"lecker", p:"[лекэр]", e:"leckerer, am leckersten", t:"вкусный", ex:"Der Kuchen ist lecker.", exr:"Пирог вкусный."},
+  {c:"Прилагательные", w:"nett", p:"[нэт]", e:"netter, am nettesten", t:"милый", ex:"Sie ist sehr nett.", exr:"Она очень милая."},
+  {c:"Прилагательные", w:"freundlich", p:"[фройнтлихь]", e:"freundlicher, am freundlichsten", t:"дружелюбный", ex:"Der Verkäufer ist freundlich.", exr:"Продавец приветливый."},
+  {c:"Прилагательные", w:"wichtig", p:"[вихьтихь]", e:"wichtiger, am wichtigsten", t:"важный", ex:"Das ist sehr wichtig.", exr:"Это очень важно."},
+  {c:"Прилагательные", w:"richtig", p:"[рихьтихь]", e:"richtiger, am richtigsten", t:"правильный", ex:"Die Antwort ist richtig.", exr:"Ответ правильный."},
+  {c:"Прилагательные", w:"falsch", p:"[фальш]", e:"falscher, am falschesten", t:"неправильный", ex:"Das ist die falsche Adresse.", exr:"Это неправильный адрес."},
+  {c:"Прилагательные", w:"interessant", p:"[интэрэсант]", e:"interessanter, am interessantesten", t:"интересный", ex:"Das Buch ist interessant.", exr:"Книга интересная."},
+  {c:"Прилагательные", w:"langweilig", p:"[лангвайлихь]", e:"langweiliger, am langweiligsten", t:"скучный", ex:"Der Film war langweilig.", exr:"Фильм был скучный."},
+  {c:"Прилагательные", w:"schwierig", p:"[швирихь]", e:"schwieriger, am schwierigsten", t:"трудный", ex:"Die Grammatik ist schwierig.", exr:"Грамматика сложная."},
+
+  /* --- НАРЕЧИЯ (20) --- */
+  {c:"Наречия", w:"hier", p:"[хир]", e:"место", t:"здесь", ex:"Ich wohne hier.", exr:"Я живу здесь."},
+  {c:"Наречия", w:"dort", p:"[дорт]", e:"место", t:"там", ex:"Der Bahnhof ist dort.", exr:"Вокзал там."},
+  {c:"Наречия", w:"links", p:"[линкс]", e:"направление", t:"слева", ex:"Gehen Sie nach links.", exr:"Идите налево."},
+  {c:"Наречия", w:"rechts", p:"[рэхьтс]", e:"направление", t:"справа", ex:"Die Bank ist rechts.", exr:"Банк справа."},
+  {c:"Наречия", w:"oben", p:"[обэн]", e:"место", t:"наверху", ex:"Das Schlafzimmer ist oben.", exr:"Спальня наверху."},
+  {c:"Наречия", w:"unten", p:"[унтэн]", e:"место", t:"внизу", ex:"Die Küche ist unten.", exr:"Кухня внизу."},
+  {c:"Наречия", w:"vorne", p:"[форнэ]", e:"место", t:"впереди", ex:"Die Haltestelle ist vorne.", exr:"Остановка впереди."},
+  {c:"Наречия", w:"hinten", p:"[хинтэн]", e:"место", t:"сзади", ex:"Der Garten ist hinten.", exr:"Сад сзади."},
+  {c:"Наречия", w:"weit", p:"[вайт]", e:"расстояние", t:"далеко", ex:"Der Bahnhof ist weit.", exr:"Вокзал далеко."},
+  {c:"Наречия", w:"nah", p:"[на]", e:"расстояние", t:"близко", ex:"Der Supermarkt ist nah.", exr:"Супермаркет близко."},
+  {c:"Наречия", w:"dann", p:"[дан]", e:"время", t:"потом", ex:"Zuerst lerne ich, dann spiele ich.", exr:"Сначала учусь, потом играю."},
+  {c:"Наречия", w:"selten", p:"[зэльтэн]", e:"частота", t:"редко", ex:"Er kommt selten.", exr:"Он редко приходит."},
+  {c:"Наречия", w:"nie", p:"[ни]", e:"частота", t:"никогда", ex:"Ich trinke nie Alkohol.", exr:"Я никогда не пью алкоголь."},
+  {c:"Наречия", w:"bald", p:"[бальт]", e:"время", t:"скоро", ex:"Ich komme bald.", exr:"Я скоро приду."},
+  {c:"Наречия", w:"früh", p:"[фрю]", e:"время", t:"рано", ex:"Ich stehe früh auf.", exr:"Я рано встаю."},
+  {c:"Наречия", w:"spät", p:"[шпэт]", e:"время", t:"поздно", ex:"Es ist schon spät.", exr:"Уже поздно."},
+  {c:"Наречия", w:"schon", p:"[шон]", e:"время", t:"уже", ex:"Ich bin schon fertig.", exr:"Я уже готов."},
+  {c:"Наречия", w:"noch", p:"[нох]", e:"время", t:"ещё", ex:"Ich habe noch Zeit.", exr:"У меня ещё есть время."},
+  {c:"Наречия", w:"wieder", p:"[видэр]", e:"время", t:"снова", ex:"Komm bald wieder!", exr:"Приходи скорее снова!"},
+  {c:"Наречия", w:"sehr", p:"[зэр]", e:"степень", t:"очень", ex:"Das ist sehr gut.", exr:"Это очень хорошо."},
+
+  /* --- СЛУЖЕБНЫЕ СЛОВА (выборка) --- */
+  {c:"Служебные слова", w:"ich", p:"[ихь]", e:"личное местоим.", t:"я", ex:"Ich bin Anna.", exr:"Я Анна."},
+  {c:"Служебные слова", w:"du", p:"[ду]", e:"личное местоим.", t:"ты", ex:"Woher kommst du?", exr:"Откуда ты?"},
+  {c:"Служебные слова", w:"er", p:"[эр]", e:"личное местоим.", t:"он", ex:"Er ist mein Bruder.", exr:"Он мой брат."},
+  {c:"Служебные слова", w:"sie", p:"[зи]", e:"личное местоим.", t:"она; они", ex:"Sie ist meine Schwester.", exr:"Она моя сестра."},
+  {c:"Служебные слова", w:"wir", p:"[вир]", e:"личное местоим.", t:"мы", ex:"Wir lernen zusammen.", exr:"Мы учимся вместе."},
+  {c:"Служебные слова", w:"mein", p:"[майн]", e:"притяжат.", t:"мой", ex:"Das ist mein Buch.", exr:"Это моя книга."},
+  {c:"Служебные слова", w:"dein", p:"[дайн]", e:"притяжат.", t:"твой", ex:"Wie ist deine Nummer?", exr:"Какой у тебя номер?"},
+  {c:"Служебные слова", w:"mit", p:"[мит]", e:"предлог + Dativ", t:"с (кем-то)", ex:"Ich fahre mit dem Bus.", exr:"Я еду на автобусе."},
+  {c:"Служебные слова", w:"nach", p:"[нах]", e:"предлог + Dativ", t:"после; в (город)", ex:"Nach dem Essen gehe ich.", exr:"После еды я иду."},
+  {c:"Служебные слова", w:"von", p:"[фон]", e:"предлог + Dativ", t:"от, из, о", ex:"Ich komme von der Arbeit.", exr:"Я иду с работы."},
+  {c:"Служебные слова", w:"zu", p:"[цу]", e:"предлог + Dativ", t:"к, в", ex:"Ich gehe zum Arzt.", exr:"Я иду к врачу."},
+  {c:"Служебные слова", w:"bei", p:"[бай]", e:"предлог + Dativ", t:"у (кого-то)", ex:"Ich wohne bei meinen Eltern.", exr:"Я живу у родителей."},
+  {c:"Служебные слова", w:"für", p:"[фюр]", e:"предлог + Akk.", t:"для, за", ex:"Das ist für dich.", exr:"Это для тебя."},
+  {c:"Служебные слова", w:"ohne", p:"[онэ]", e:"предлог + Akk.", t:"без", ex:"Kaffee ohne Zucker.", exr:"Кофе без сахара."},
+  {c:"Служебные слова", w:"um", p:"[ум]", e:"предлог + Akk.", t:"в (о времени)", ex:"Der Kurs beginnt um 9 Uhr.", exr:"Курс начинается в 9."},
+  {c:"Служебные слова", w:"in", p:"[ин]", e:"Dativ/Akkusativ", t:"в", ex:"Ich wohne in Berlin.", exr:"Я живу в Берлине."},
+  {c:"Служебные слова", w:"auf", p:"[ауф]", e:"Dativ/Akkusativ", t:"на (горизонт.)", ex:"Das Buch liegt auf dem Tisch.", exr:"Книга на столе."},
+  {c:"Служебные слова", w:"und", p:"[унт]", e:"союз", t:"и, а", ex:"Ich trinke Tee und esse Kuchen.", exr:"Я пью чай и ем пирог."},
+  {c:"Служебные слова", w:"oder", p:"[одэр]", e:"союз", t:"или", ex:"Tee oder Kaffee?", exr:"Чай или кофе?"},
+  {c:"Служебные слова", w:"aber", p:"[абэр]", e:"союз", t:"но, однако", ex:"Ich bin müde, aber glücklich.", exr:"Я устал, но счастлив."},
+  {c:"Служебные слова", w:"denn", p:"[дэн]", e:"союз", t:"потому что", ex:"Ich bleibe, denn ich bin krank.", exr:"Я остаюсь, потому что болен."},
+  {c:"Служебные слова", w:"weil", p:"[вайль]", e:"союз (глаг. в конце!)", t:"потому что", ex:"Ich bleibe, weil ich krank bin.", exr:"Я остаюсь, потому что болен."},
+  {c:"Служебные слова", w:"dass", p:"[дас]", e:"союз (глаг. в конце!)", t:"что", ex:"Ich weiß, dass du Recht hast.", exr:"Я знаю, что ты прав."},
+  {c:"Служебные слова", w:"wer", p:"[вэр]", e:"вопрос", t:"кто", ex:"Wer ist das?", exr:"Кто это?"},
+  {c:"Служебные слова", w:"was", p:"[вас]", e:"вопрос", t:"что", ex:"Was ist das?", exr:"Что это?"},
+  {c:"Служебные слова", w:"wo", p:"[во]", e:"вопрос", t:"где", ex:"Wo wohnst du?", exr:"Где ты живёшь?"},
+  {c:"Служебные слова", w:"wann", p:"[ван]", e:"вопрос", t:"когда", ex:"Wann kommst du?", exr:"Когда ты придёшь?"},
+  {c:"Служебные слова", w:"wie", p:"[ви]", e:"вопрос", t:"как", ex:"Wie geht's?", exr:"Как дела?"},
+  {c:"Служебные слова", w:"warum", p:"[варум]", e:"вопрос", t:"почему", ex:"Warum lernst du Deutsch?", exr:"Почему ты учишь немецкий?"},
+  {c:"Служебные слова", w:"nicht", p:"[нихьт]", e:"отрицание", t:"не", ex:"Ich bin nicht müde.", exr:"Я не устал."},
+  {c:"Служебные слова", w:"kein", p:"[кайн]", e:"отрицание", t:"никакой", ex:"Ich habe kein Geld.", exr:"У меня нет денег."},
+
+  /* --- ЧИСЛИТЕЛЬНЫЕ (выборка 20) --- */
+  {c:"Числительные", w:"eins", p:"[айнс]", e:"1", t:"один", ex:"Ich habe nur eins.", exr:"У меня только один."},
+  {c:"Числительные", w:"zwei", p:"[цвай]", e:"2", t:"два", ex:"Ich habe zwei Kinder.", exr:"У меня двое детей."},
+  {c:"Числительные", w:"drei", p:"[драй]", e:"3", t:"три", ex:"Es ist drei Uhr.", exr:"Три часа."},
+  {c:"Числительные", w:"vier", p:"[фир]", e:"4", t:"четыре", ex:"Vier Stühle, bitte.", exr:"Четыре стула, пожалуйста."},
+  {c:"Числительные", w:"fünf", p:"[фюнф]", e:"5", t:"пять", ex:"Das kostet fünf Euro.", exr:"Это стоит пять евро."},
+  {c:"Числительные", w:"sechs", p:"[зэкс]", e:"6", t:"шесть", ex:"Ich stehe um sechs auf.", exr:"Я встаю в шесть."},
+  {c:"Числительные", w:"sieben", p:"[зибэн]", e:"7", t:"семь", ex:"Sieben Tage in der Woche.", exr:"Семь дней в неделю."},
+  {c:"Числительные", w:"acht", p:"[ахт]", e:"8", t:"восемь", ex:"Um acht beginnt der Film.", exr:"В восемь начинается фильм."},
+  {c:"Числительные", w:"neun", p:"[нойн]", e:"9", t:"девять", ex:"Von neun bis fünf.", exr:"С девяти до пяти."},
+  {c:"Числительные", w:"zehn", p:"[цэн]", e:"10", t:"десять", ex:"Zehn Euro, bitte.", exr:"Десять евро, пожалуйста."},
+  {c:"Числительные", w:"elf", p:"[эльф]", e:"11", t:"одиннадцать", ex:"Es ist elf Uhr.", exr:"Одиннадцать часов."},
+  {c:"Числительные", w:"zwölf", p:"[цвёльф]", e:"12", t:"двенадцать", ex:"Mittag ist um zwölf.", exr:"Полдень в двенадцать."},
+  {c:"Числительные", w:"zwanzig", p:"[цванцихь]", e:"20", t:"двадцать", ex:"Das kostet zwanzig Euro.", exr:"Это стоит двадцать евро."},
+  {c:"Числительные", w:"dreißig", p:"[драйсихь]", e:"30", t:"тридцать", ex:"Ich bin dreißig.", exr:"Мне тридцать."},
+  {c:"Числительные", w:"hundert", p:"[хундэрт]", e:"100", t:"сто", ex:"Hundert Euro.", exr:"Сто евро."},
+  {c:"Числительные", w:"tausend", p:"[таузэнт]", e:"1000", t:"тысяча", ex:"Zehntausend Euro.", exr:"Десять тысяч евро."},
+  {c:"Числительные", w:"einundzwanzig", p:"[айн-унт-цванцихь]", e:"21 = eins+und+zwanzig", t:"двадцать один", ex:"Ich bin einundzwanzig.", exr:"Мне двадцать один."},
+  {c:"Числительные", w:"fünfunddreißig", p:"[фюнф-унт-драйсихь]", e:"35", t:"тридцать пять", ex:"Das kostet 35 Euro.", exr:"Это стоит 35 евро."},
+  {c:"Числительные", w:"erste", p:"[эрстэ]", e:"порядковое 1.", t:"первый", ex:"Heute ist der erste Mai.", exr:"Сегодня первое мая."},
+  {c:"Числительные", w:"dritte", p:"[дритэ]", e:"порядковое 3.", t:"третий", ex:"Ich wohne im dritten Stock.", exr:"Я живу на 4-м этаже."},
+
+  /* --- ФРАЗЫ (выборка 30) --- */
+  {c:"Полезные фразы", w:"Hallo!", p:"[халё]", e:"приветствие", t:"Привет!", ex:"Hallo, wie geht's?", exr:"Привет, как дела?"},
+  {c:"Полезные фразы", w:"Guten Morgen!", p:"[гутэн моргэн]", e:"приветствие", t:"Доброе утро!", ex:"Guten Morgen, Frau Schmidt!", exr:"Доброе утро, госпожа Шмидт!"},
+  {c:"Полезные фразы", w:"Guten Tag!", p:"[гутэн так]", e:"приветствие", t:"Добрый день!", ex:"Guten Tag! Wie geht es Ihnen?", exr:"Добрый день! Как вы?"},
+  {c:"Полезные фразы", w:"Guten Abend!", p:"[гутэн абэнт]", e:"приветствие", t:"Добрый вечер!", ex:"Guten Abend!", exr:"Добрый вечер!"},
+  {c:"Полезные фразы", w:"Tschüss!", p:"[чюс]", e:"прощание", t:"Пока!", ex:"Tschüss, bis morgen!", exr:"Пока, до завтра!"},
+  {c:"Полезные фразы", w:"Auf Wiedersehen!", p:"[ауф видэрзэен]", e:"прощание", t:"До свидания!", ex:"Auf Wiedersehen, Herr Müller!", exr:"До свидания, г-н Мюллер!"},
+  {c:"Полезные фразы", w:"Bis bald!", p:"[бис бальт]", e:"прощание", t:"До скорого!", ex:"Bis bald!", exr:"До скорого!"},
+  {c:"Полезные фразы", w:"Bitte", p:"[битэ]", e:"вежливость", t:"пожалуйста", ex:"Ein Wasser, bitte.", exr:"Воду, пожалуйста."},
+  {c:"Полезные фразы", w:"Danke schön", p:"[данкэ шён]", e:"вежливость", t:"Большое спасибо", ex:"Danke schön!", exr:"Большое спасибо!"},
+  {c:"Полезные фразы", w:"Entschuldigung", p:"[энтшульдигунг]", e:"вежливость", t:"Извините", ex:"Entschuldigung, wo ist der Bahnhof?", exr:"Извините, где вокзал?"},
+  {c:"Полезные фразы", w:"Es tut mir leid", p:"[эс тут мир ляйд]", e:"вежливость", t:"Мне жаль", ex:"Es tut mir leid, ich habe keine Zeit.", exr:"Мне жаль, у меня нет времени."},
+  {c:"Полезные фразы", w:"Freut mich!", p:"[фройт михь]", e:"знакомство", t:"Приятно познакомиться!", ex:"Ich heiße Anna. — Freut mich!", exr:"Я Анна. — Приятно!"},
+  {c:"Полезные фразы", w:"Wie bitte?", p:"[ви битэ]", e:"непонимание", t:"Простите?", ex:"Wie bitte? Ich habe nicht verstanden.", exr:"Простите? Я не понял."},
+  {c:"Полезные фразы", w:"Ich verstehe nicht.", p:"[ихь фэрштэе нихьт]", e:"непонимание", t:"Я не понимаю.", ex:"Können Sie wiederholen?", exr:"Можете повторить?"},
+  {c:"Полезные фразы", w:"Wie sagt man das?", p:"[ви загт ман дас]", e:"непонимание", t:"Как это сказать?", ex:"Wie sagt man das auf Deutsch?", exr:"Как это сказать по-немецки?"},
+  {c:"Полезные фразы", w:"Können Sie mir helfen?", p:"[кёнэн зи мир хельфэн]", e:"просьба", t:"Вы можете мне помочь?", ex:"Können Sie mir bitte helfen?", exr:"Помогите, пожалуйста."},
+  {c:"Полезные фразы", w:"Ich hätte gern...", p:"[ихь хэтэ гэрн]", e:"просьба", t:"Я хотел(а) бы...", ex:"Ich hätte gern einen Kaffee.", exr:"Я хотел(а) бы кофе."},
+  {c:"Полезные фразы", w:"Ja, gern!", p:"[я гэрн]", e:"согласие", t:"Да, с удовольствием!", ex:"Kommst du mit? — Ja, gern!", exr:"Пойдёшь? — Да, с удовольствием!"},
+  {c:"Полезные фразы", w:"Einverstanden!", p:"[айнфэрштандэн]", e:"согласие", t:"Договорились!", ex:"Um 8 Uhr? — Einverstanden!", exr:"В 8? — Договорились!"},
+  {c:"Полезные фразы", w:"Kein Problem.", p:"[кайн проблем]", e:"согласие", t:"Без проблем.", ex:"Kannst du kommen? — Kein Problem.", exr:"Можешь прийти? — Без проблем."},
+  {c:"Полезные фразы", w:"Nein, danke.", p:"[найн данкэ]", e:"отказ", t:"Нет, спасибо.", ex:"Noch einen Kaffee? — Nein, danke.", exr:"Ещё кофе? — Нет, спасибо."},
+  {c:"Полезные фразы", w:"Leider nicht.", p:"[ляйдэр нихьт]", e:"отказ", t:"К сожалению, нет.", ex:"Kommst du? — Leider nicht.", exr:"Пойдёшь? — К сожалению, нет."},
+  {c:"Полезные фразы", w:"Das geht nicht.", p:"[дас гэйт нихьт]", e:"отказ", t:"Не получится.", ex:"Um 5? — Das geht nicht.", exr:"В 5? — Не получится."},
+  {c:"Полезные фразы", w:"Viel Glück!", p:"[филь глюк]", e:"пожелание", t:"Удачи!", ex:"Viel Glück bei der Prüfung!", exr:"Удачи на экзамене!"},
+  {c:"Полезные фразы", w:"Gute Reise!", p:"[гутэ райзэ]", e:"пожелание", t:"Хорошей поездки!", ex:"Ich fahre nach Berlin. — Gute Reise!", exr:"Еду в Берлин. — Хорошей поездки!"},
+  {c:"Полезные фразы", w:"Gute Besserung!", p:"[гутэ бэсэрунг]", e:"пожелание", t:"Выздоравливай!", ex:"Ich bin krank. — Gute Besserung!", exr:"Болен. — Выздоравливай!"},
+  {c:"Полезные фразы", w:"Herzlichen Glückwunsch!", p:"[хэрцлихэн глюквунш]", e:"пожелание", t:"Поздравляю!", ex:"Zum Geburtstag!", exr:"С днём рождения!"},
+  {c:"Полезные фразы", w:"Guten Appetit!", p:"[гутэн апэтит]", e:"за столом", t:"Приятного аппетита!", ex:"Guten Appetit!", exr:"Приятного аппетита!"},
+  {c:"Полезные фразы", w:"Prost!", p:"[прост]", e:"за столом", t:"За здоровье!", ex:"Prost!", exr:"За здоровье!"},
+  {c:"Полезные фразы", w:"Ich weiß nicht.", p:"[ихь вайс нихьт]", e:"общее", t:"Я не знаю.", ex:"Wo ist die Post? — Ich weiß nicht.", exr:"Где почта? — Не знаю."},
+  {c:"Полезные фразы", w:"Alles klar!", p:"[алэс клар]", e:"общее", t:"Всё понятно!", ex:"Um 6? — Alles klar!", exr:"В 6? — Всё понятно!"},
+];
+
+/* =====================================================
+   ЛОГИКА ТРЕНАЖЁРА
+   ===================================================== */
+
+let deck = [];       // текущая перемешанная колода
+let currentIndex = 0;
+let stats = { good: 0, bad: 0, total: 0 };
+let mistakes = [];   // карточки с ошибками
+let isFlipped = false;
+
+const card = document.getElementById('card');
+const elCategory = document.getElementById('cardCategory');
+const elWord = document.getElementById('cardWord');
+const elPron = document.getElementById('cardPron');
+const elExtra = document.getElementById('cardExtra');
+const elTrans = document.getElementById('cardTrans');
+const elExample = document.getElementById('cardExample');
+const btnGood = document.getElementById('btnGood');
+const btnBad = document.getElementById('btnBad');
+const btnShow = document.getElementById('btnShow');
+const finishView = document.getElementById('finishView');
+const trainerView = document.getElementById('trainerView');
+
+/* Перемешивание Фишера-Йетса */
+function shuffle(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function initTrainer() {
+  deck = shuffle(CARDS);
+  currentIndex = 0;
+  stats = { good: 0, bad: 0, total: deck.length };
+  mistakes = [];
+  finishView.style.display = 'none';
+  trainerView.style.display = 'block';
+  showCard();
+  updateStats();
+}
+
+function showCard() {
+  if (currentIndex >= deck.length) {
+    finishTrainer();
+    return;
+  }
+  const c = deck[currentIndex];
+  elCategory.textContent = c.c || '';
+  elWord.textContent = c.w || '';
+  elPron.textContent = c.p || '';
+  elExtra.textContent = c.e || '';
+  elTrans.textContent = c.t || '';
+  elExample.innerHTML = `<div class="de">${c.ex || ''}</div><div class="ru">${c.exr || ''}</div>`;
+
+  card.classList.remove('flipped');
+  isFlipped = false;
+  btnGood.disabled = true;
+  btnBad.disabled = true;
+  btnShow.disabled = false;
+  updateStats();
+}
+
+function flipCard() {
+  if (!isFlipped) {
+    card.classList.add('flipped');
+    isFlipped = true;
+    btnGood.disabled = false;
+    btnBad.disabled = false;
+    btnShow.disabled = true;
+  }
+}
+
+function answer(known) {
+  if (!isFlipped) return;
+  const c = deck[currentIndex];
+  if (known) {
+    stats.good++;
+  } else {
+    stats.bad++;
+    mistakes.push(c);
+  }
+  currentIndex++;
+  showCard();
+  updateStats();
+}
+
+function updateStats() {
+  document.getElementById('statTotal').textContent = stats.total;
+  document.getElementById('statGood').textContent = stats.good;
+  document.getElementById('statBad').textContent = stats.bad;
+  const left = stats.total - (stats.good + stats.bad);
+  document.getElementById('statLeft').textContent = left;
+  const done = stats.good + stats.bad;
+  const pct = stats.total ? (done / stats.total) * 100 : 0;
+  document.getElementById('progressFill').style.width = pct + '%';
+}
+
+function finishTrainer() {
+  trainerView.style.display = 'none';
+  finishView.style.display = 'block';
+  const done = stats.good + stats.bad;
+  const pct = done ? Math.round((stats.good / done) * 100) : 0;
+  document.getElementById('finalScore').textContent = pct + '%';
+  const txt = document.getElementById('finalText');
+  if (pct >= 90) txt.textContent = 'Отличный результат! Ты почти готов(а) к A1. 🎉';
+  else if (pct >= 70) txt.textContent = 'Хорошо! Повтори сложные карточки — и будет отлично. 👍';
+  else if (pct >= 50) txt.textContent = 'Неплохо, но стоит ещё потренироваться. 💪';
+  else txt.textContent = 'Не расстраивайся — нажми «Повторить ошибки» и закрепи материал. 📚';
+}
+
+function resetAll() {
+  initTrainer();
+}
+
+function retryMistakes() {
+  if (!mistakes.length) {
+    alert('Ошибок нет — всё выучено! 🎉');
+    return;
+  }
+  deck = shuffle(mistakes);
+  currentIndex = 0;
+  stats = { good: 0, bad: 0, total: deck.length };
+  mistakes = [];
+  finishView.style.display = 'none';
+  trainerView.style.display = 'block';
+  showCard();
+  updateStats();
+}
+
+/* Обработка клавиатуры */
+document.addEventListener('keydown', (e) => {
+  if (e.code === 'Space') { e.preventDefault(); flipCard(); }
+  if (e.code === 'ArrowRight' && isFlipped) { e.preventDefault(); answer(true); }
+  if (e.code === 'ArrowLeft' && isFlipped) { e.preventDefault(); answer(false); }
+});
+
+/* Запуск */
+initTrainer();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Колода 3 — Еда, напитки, магазины (A1)</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: linear-gradient(135deg, #f7971e, #ffd200);
+    min-height: 100vh;
+    padding: 40px 20px;
+    color: #333;
+  }
+
+  h1 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 8px;
+    font-size: 1.9rem;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  }
+
+  .subtitle {
+    text-align: center;
+    color: #fff8e0;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  }
+
+  .counter {
+    text-align: center;
+    color: #fff2c4;
+    margin-bottom: 35px;
+    font-size: 0.85rem;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  .card {
+    perspective: 1200px;
+    height: 300px;
+    cursor: pointer;
+  }
+
+  .card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.7s;
+    transform-style: preserve-3d;
+  }
+
+  .card.flipped .card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    overflow-y: auto;
+  }
+
+  .front {
+    background: #ffffff;
+    border-top: 6px solid #f7971e;
+  }
+
+  .front .word {
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: #a35a00;
+    text-align: center;
+    margin-bottom: 4px;
+    line-height: 1.2;
+  }
+
+  .front .word .art {
+    color: #f7971e;
+    font-weight: 500;
+  }
+
+  .front .plural {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #c98a3a;
+    margin-bottom: 10px;
+    font-style: italic;
+  }
+
+  .front .pron {
+    text-align: center;
+    color: #d97706;
+    font-style: italic;
+    font-size: 1rem;
+    margin-bottom: 12px;
+  }
+
+  .front .hint {
+    text-align: center;
+    font-size: 0.7rem;
+    color: #bbb;
+    margin-top: auto;
+    padding-top: 10px;
+    border-top: 1px dashed #eee;
+  }
+
+  .back {
+    background: linear-gradient(160deg, #a35a00, #d97706);
+    color: #fff;
+    transform: rotateY(180deg);
+    border-top: 6px solid #ffd200;
+    justify-content: center;
+  }
+
+  .back .translation {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 16px;
+    color: #ffd166;
+  }
+
+  .back .label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #ffe9b0;
+    margin-bottom: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 4px;
+  }
+
+  .back .example {
+    font-size: 0.93rem;
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+
+  .back .example .de { font-weight: 600; color: #fff; }
+  .back .example .ru { color: #ffe9b0; font-size: 0.85rem; }
+
+  @media (max-width: 480px) {
+    .card { height: 320px; }
+    h1 { font-size: 1.35rem; }
+    .front .word { font-size: 1.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<h1>🍞 Колода 3 — Еда, напитки, магазины</h1>
+<p class="subtitle">Уровень A1 · Нажми на карточку, чтобы перевернуть 🔄</p>
+<p class="counter">36 карточек</p>
+
+<div class="grid">
+
+  <!-- 1 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">das</span> Brot</div>
+        <div class="plural">die Brote</div>
+        <div class="pron">[брот]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">хлеб</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich kaufe frisches Brot.</div><div class="ru">Я покупаю свежий хлеб.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">das</span> Brötchen</div>
+        <div class="plural">die Brötchen</div>
+        <div class="pron">[брётхэн]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">булочка</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich esse ein Brötchen zum Frühstück.</div><div class="ru">Я ем булочку на завтрак.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Butter</div>
+        <div class="plural">—</div>
+        <div class="pron">[бутэр]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">масло (сливочное)</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Butter und Brot, bitte.</div><div class="ru">Масло и хлеб, пожалуйста.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Käse</div>
+        <div class="plural">—</div>
+        <div class="pron">[кэзэ]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">сыр</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Der Käse ist lecker.</div><div class="ru">Сыр вкусный.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Wurst</div>
+        <div class="plural">die Würste</div>
+        <div class="pron">[вурст]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">колбаса</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich kaufe Wurst und Käse.</div><div class="ru">Я покупаю колбасу и сыр.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">das</span> Fleisch</div>
+        <div class="plural">—</div>
+        <div class="pron">[фляйш]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">мясо</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich esse kein Fleisch.</div><div class="ru">Я не ем мясо.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Fisch</div>
+        <div class="plural">die Fische</div>
+        <div class="pron">[фиш]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">рыба</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Freitags esse ich Fisch.</div><div class="ru">По пятницам я ем рыбу.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">das</span> Ei</div>
+        <div class="plural">die Eier</div>
+        <div class="pron">[ай]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">яйцо</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich esse ein Ei zum Frühstück.</div><div class="ru">Я ем яйцо на завтрак.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Apfel</div>
+        <div class="plural">die Äpfel</div>
+        <div class="pron">[апфэль]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">яблоко</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Der Apfel ist rot.</div><div class="ru">Яблоко красное.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Banane</div>
+        <div class="plural">die Bananen</div>
+        <div class="pron">[бананэ]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">банан</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich esse gern Bananen.</div><div class="ru">Я люблю бананы.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 11 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Orange</div>
+        <div class="plural">die Orangen</div>
+        <div class="pron">[оранжэ]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">апельсин</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Die Orange ist süß.</div><div class="ru">Апельсин сладкий.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 12 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Tomate</div>
+        <div class="plural">die Tomaten</div>
+        <div class="pron">[томатэ]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">помидор</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Tomaten sind gesund.</div><div class="ru">Помидоры полезны.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 13 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Kartoffel</div>
+        <div class="plural">die Kartoffeln</div>
+        <div class="pron">[картофэль]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">картофель</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich koche Kartoffeln.</div><div class="ru">Я варю картошку.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 14 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">das</span> Gemüse</div>
+        <div class="plural">—</div>
+        <div class="pron">[гэмюзэ]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">овощи</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Gemüse ist sehr gesund.</div><div class="ru">Овощи очень полезны.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 15 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">das</span> Obst</div>
+        <div class="plural">—</div>
+        <div class="pron">[обст]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">фрукты</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich kaufe Obst auf dem Markt.</div><div class="ru">Я покупаю фрукты на рынке.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 16 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Reis</div>
+        <div class="plural">—</div>
+        <div class="pron">[райс]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">рис</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich esse Reis mit Gemüse.</div><div class="ru">Я ем рис с овощами.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 17 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Nudeln <span style="font-size:0.85rem;color:#c98a3a;">(Pl.)</span></div>
+        <div class="plural">—</div>
+        <div class="pron">[нудэльн]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">макароны, лапша</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich koche Nudeln.</div><div class="ru">Я готовлю макароны.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 18 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Suppe</div>
+        <div class="plural">die Suppen</div>
+        <div class="pron">[зупэ]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">суп</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Die Suppe ist warm.</div><div class="ru">Суп тёплый.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 19 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Salat</div>
+        <div class="plural">die Salate</div>
+        <div class="pron">[залат]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">салат</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich esse einen Salat.</div><div class="ru">Я ем салат.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 20 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Kuchen</div>
+        <div class="plural">die Kuchen</div>
+        <div class="pron">[кухэн]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">пирог, торт</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Der Kuchen schmeckt sehr gut.</div><div class="ru">Пирог очень вкусный.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 21 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Zucker</div>
+        <div class="plural">—</div>
+        <div class="pron">[цукэр]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">сахар</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich trinke Kaffee ohne Zucker.</div><div class="ru">Я пью кофе без сахара.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 22 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">das</span> Salz</div>
+        <div class="plural">—</div>
+        <div class="pron">[зальц]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">соль</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Gib mir bitte das Salz.</div><div class="ru">Дай мне, пожалуйста, соль.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 23 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">das</span> Wasser</div>
+        <div class="plural">—</div>
+        <div class="pron">[васэр]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">вода</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich trinke viel Wasser.</div><div class="ru">Я пью много воды.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 24 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Kaffee</div>
+        <div class="plural">die Kaffees</div>
+        <div class="pron">[кафэ]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">кофе</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich möchte einen Kaffee, bitte.</div><div class="ru">Я хотел бы кофе, пожалуйста.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 25 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Tee</div>
+        <div class="plural">die Tees</div>
+        <div class="pron">[тэ]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">чай</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich trinke Tee mit Zucker.</div><div class="ru">Я пью чай с сахаром.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 26 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Milch</div>
+        <div class="plural">—</div>
+        <div class="pron">[мильхь]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">молоко</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich trinke Milch zum Frühstück.</div><div class="ru">Я пью молоко на завтрак.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 27 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Saft</div>
+        <div class="plural">die Säfte</div>
+        <div class="pron">[зафт]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">сок</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich trinke Orangensaft.</div><div class="ru">Я пью апельсиновый сок.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 28 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">das</span> Bier</div>
+        <div class="plural">die Biere</div>
+        <div class="pron">[бир]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">пиво</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich trinke ein Bier.</div><div class="ru">Я пью пиво.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 29 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Wein</div>
+        <div class="plural">die Weine</div>
+        <div class="pron">[вайн]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">вино</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ein Glas Wein, bitte.</div><div class="ru">Бокал вина, пожалуйста.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 30 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Supermarkt</div>
+        <div class="plural">die Supermärkte</div>
+        <div class="pron">[зупэрмаркт]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">супермаркет</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich gehe in den Supermarkt.</div><div class="ru">Я иду в супермаркет.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 31 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Markt</div>
+        <div class="plural">die Märkte</div>
+        <div class="pron">[маркт]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">рынок</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Wir kaufen Obst auf dem Markt.</div><div class="ru">Мы покупаем фрукты на рынке.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 32 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Bäckerei</div>
+        <div class="plural">die Bäckereien</div>
+        <div class="pron">[бэкэрай]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">булочная, пекарня</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich kaufe Brot in der Bäckerei.</div><div class="ru">Я покупаю хлеб в булочной.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 33 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Apotheke</div>
+        <div class="plural">die Apotheken</div>
+        <div class="pron">[апотекэ]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">аптека</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Die Apotheke ist dort rechts.</div><div class="ru">Аптека там справа.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 34 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Preis</div>
+        <div class="plural">die Preise</div>
+        <div class="pron">[прайс]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">цена</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Der Preis ist zu hoch.</div><div class="ru">Цена слишком высокая.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 35 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Euro</div>
+        <div class="plural">die Euro</div>
+        <div class="pron">[ойро]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">евро</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Das kostet zehn Euro.</div><div class="ru">Это стоит десять евро.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 36 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">das</span> Geld</div>
+        <div class="plural">—</div>
+        <div class="pron">[гэльт]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">деньги</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich habe kein Geld dabei.</div><div class="ru">У меня с собой нет денег.</div></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

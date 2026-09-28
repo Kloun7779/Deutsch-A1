@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Колода 1 — Семья, люди, профессии (A1)</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: linear-gradient(135deg, #6a3093, #a044ff);
+    min-height: 100vh;
+    padding: 40px 20px;
+    color: #333;
+  }
+
+  h1 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 8px;
+    font-size: 1.9rem;
+  }
+
+  .subtitle {
+    text-align: center;
+    color: #e8d5ff;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+  }
+
+  .counter {
+    text-align: center;
+    color: #c9a8ff;
+    margin-bottom: 35px;
+    font-size: 0.85rem;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  .card {
+    perspective: 1200px;
+    height: 300px;
+    cursor: pointer;
+  }
+
+  .card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.7s;
+    transform-style: preserve-3d;
+  }
+
+  .card.flipped .card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    overflow-y: auto;
+  }
+
+  .front {
+    background: #ffffff;
+    border-top: 6px solid #a044ff;
+  }
+
+  .front .word {
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: #4a1a75;
+    text-align: center;
+    margin-bottom: 4px;
+    line-height: 1.2;
+  }
+
+  .front .word .art {
+    color: #a044ff;
+    font-weight: 500;
+  }
+
+  .front .plural {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #8e5bb8;
+    margin-bottom: 10px;
+    font-style: italic;
+  }
+
+  .front .pron {
+    text-align: center;
+    color: #d97706;
+    font-style: italic;
+    font-size: 1rem;
+    margin-bottom: 12px;
+  }
+
+  .front .hint {
+    text-align: center;
+    font-size: 0.7rem;
+    color: #bbb;
+    margin-top: auto;
+    padding-top: 10px;
+    border-top: 1px dashed #eee;
+  }
+
+  .back {
+    background: linear-gradient(160deg, #4a1a75, #6a3093);
+    color: #fff;
+    transform: rotateY(180deg);
+    border-top: 6px solid #a044ff;
+    justify-content: center;
+  }
+
+  .back .translation {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 16px;
+    color: #ffd166;
+  }
+
+  .back .label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #d4b3ff;
+    margin-bottom: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 4px;
+  }
+
+  .back .example {
+    font-size: 0.93rem;
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+
+  .back .example .de { font-weight: 600; color: #fff; }
+  .back .example .ru { color: #d4b3ff; font-size: 0.85rem; }
+
+  @media (max-width: 480px) {
+    .card { height: 320px; }
+    h1 { font-size: 1.35rem; }
+    .front .word { font-size: 1.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<h1>👨‍👩‍👧 Колода 1 — Семья, люди, профессии</h1>
+<p class="subtitle">Уровень A1 · Нажми на карточку, чтобы перевернуть 🔄</p>
+<p class="counter">36 карточек</p>
+
+<div class="grid">
+
+  <!-- 1 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Mann</div>
+        <div class="plural">die Männer</div>
+        <div class="pron">[ман]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">мужчина; муж</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Der Mann liest eine Zeitung.</div><div class="ru">Мужчина читает газету.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Frau</div>
+        <div class="plural">die Frauen</div>
+        <div class="pron">[фрау]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">женщина; жена</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Die Frau arbeitet im Büro.</div><div class="ru">Женщина работает в офисе.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">das</span> Kind</div>
+        <div class="plural">die Kinder</div>
+        <div class="pron">[кинт]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">ребёнок</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Das Kind spielt im Garten.</div><div class="ru">Ребёнок играет в саду.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Junge</div>
+        <div class="plural">die Jungen</div>
+        <div class="pron">[юнгэ]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">мальчик</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Der Junge spielt Fußball.</div><div class="ru">Мальчик играет в футбол.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">das</span> Mädchen</div>
+        <div class="plural">die Mädchen</div>
+        <div class="pron">[мэдхэн]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">девочка</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Das Mädchen singt ein Lied.</div><div class="ru">Девочка поёт песню.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Vater</div>
+        <div class="plural">die Väter</div>
+        <div class="pron">[фатэр]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">отец</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Mein Vater arbeitet viel.</div><div class="ru">Мой отец много работает.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Mutter</div>
+        <div class="plural">die Mütter</div>
+        <div class="pron">[мутэр]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">мать</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Meine Mutter kocht sehr gut.</div><div class="ru">Моя мама очень хорошо готовит.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Eltern <span style="font-size:0.85rem;color:#8e5bb8;">(Pl.)</span></div>
+        <div class="plural">—</div>
+        <div class="pron">[эльтэрн]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">родители</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Meine Eltern wohnen in Berlin.</div><div class="ru">Мои родители живут в Берлине.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Bruder</div>
+        <div class="plural">die Brüder</div>
+        <div class="pron">[брудэр]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">брат</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich habe einen Bruder.</div><div class="ru">У меня есть брат.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Schwester</div>
+        <div class="plural">die Schwestern</div>
+        <div class="pron">[швэстэр]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">сестра</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Meine Schwester ist Ärztin.</div><div class="ru">Моя сестра — врач.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 11 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Geschwister <span style="font-size:0.85rem;color:#8e5bb8;">(Pl.)</span></div>
+        <div class="plural">—</div>
+        <div class="pron">[гэшвистэр]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">братья и сёстры</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Hast du Geschwister?</div><div class="ru">У тебя есть братья или сёстры?</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 12 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Familie</div>
+        <div class="plural">die Familien</div>
+        <div class="pron">[фамилиэ]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">семья</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Meine Familie ist groß.</div><div class="ru">Моя семья большая.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 13 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Großmutter</div>
+        <div class="plural">die Großmütter</div>
+        <div class="pron">[гросмутэр]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">бабушка</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Meine Großmutter ist 80 Jahre alt.</div><div class="ru">Моей бабушке 80 лет.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 14 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Großvater</div>
+        <div class="plural">die Großväter</div>
+        <div class="pron">[гросфатэр]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">дедушка</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Mein Großvater liest gern.</div><div class="ru">Мой дедушка любит читать.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 15 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Tochter</div>
+        <div class="plural">die Töchter</div>
+        <div class="pron">[тохтэр]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">дочь</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Meine Tochter ist fünf Jahre alt.</div><div class="ru">Моей дочери пять лет.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 16 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Sohn</div>
+        <div class="plural">die Söhne</div>
+        <div class="pron">[зон]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">сын</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Mein Sohn geht zur Schule.</div><div class="ru">Мой сын ходит в школу.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 17 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Freund</div>
+        <div class="plural">die Freunde</div>
+        <div class="pron">[фройнт]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">друг; парень</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Mein Freund heißt Thomas.</div><div class="ru">Моего друга зовут Томас.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 18 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Freundin</div>
+        <div class="plural">die Freundinnen</div>
+        <div class="pron">[фройндин]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">подруга; девушка</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Meine Freundin wohnt in Hamburg.</div><div class="ru">Моя подруга живёт в Гамбурге.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 19 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Mensch</div>
+        <div class="plural">die Menschen</div>
+        <div class="pron">[мэнш]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">человек</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Viele Menschen wohnen in der Stadt.</div><div class="ru">Многие люди живут в городе.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 20 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Name</div>
+        <div class="plural">die Namen</div>
+        <div class="pron">[намэ]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">имя, фамилия</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Mein Name ist Anna.</div><div class="ru">Моё имя Анна.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 21 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Beruf</div>
+        <div class="plural">die Berufe</div>
+        <div class="pron">[бэруф]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">профессия</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Was ist Ihr Beruf?</div><div class="ru">Какая у вас профессия?</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 22 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Lehrer</div>
+        <div class="plural">die Lehrer</div>
+        <div class="pron">[лерэр]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">учитель</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Mein Lehrer heißt Herr Müller.</div><div class="ru">Моего учителя зовут господин Мюллер.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 23 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Arzt</div>
+        <div class="plural">die Ärzte</div>
+        <div class="pron">[арцт]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">врач</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich gehe zum Arzt.</div><div class="ru">Я иду к врачу.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 24 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Student</div>
+        <div class="plural">die Studenten</div>
+        <div class="pron">[штудэнт]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">студент</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich bin Student an der Universität.</div><div class="ru">Я студент университета.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 25 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Ingenieur</div>
+        <div class="plural">die Ingenieure</div>
+        <div class="pron">[инжэньёр]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">инженер</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Er arbeitet als Ingenieur.</div><div class="ru">Он работает инженером.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 26 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Koch</div>
+        <div class="plural">die Köche</div>
+        <div class="pron">[кох]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">повар</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Der Koch macht eine Suppe.</div><div class="ru">Повар готовит суп.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 27 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Verkäufer</div>
+        <div class="plural">die Verkäufer</div>
+        <div class="pron">[фэркойфэр]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">продавец</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Der Verkäufer ist freundlich.</div><div class="ru">Продавец приветливый.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 28 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Kellner</div>
+        <div class="plural">die Kellner</div>
+        <div class="pron">[кельнэр]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">официант</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Der Kellner bringt die Speisekarte.</div><div class="ru">Официант приносит меню.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 29 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Polizist</div>
+        <div class="plural">die Polizisten</div>
+        <div class="pron">[полицист]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">полицейский</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Der Polizist hilft den Menschen.</div><div class="ru">Полицейский помогает людям.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 30 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Fahrer</div>
+        <div class="plural">die Fahrer</div>
+        <div class="pron">[фарэр]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">водитель</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Der Fahrer fährt den Bus.</div><div class="ru">Водитель ведёт автобус.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 31 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Kellner / die Kellnerin</div>
+        <div class="plural">—</div>
+        <div class="pron">[кельнэрин]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">официант / официантка</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Die Kellnerin bringt das Wasser.</div><div class="ru">Официантка приносит воду.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 32 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Kollege</div>
+        <div class="plural">die Kollegen</div>
+        <div class="pron">[коллегэ]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">коллега</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Mein Kollege ist sehr nett.</div><div class="ru">Мой коллега очень милый.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 33 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Chef</div>
+        <div class="plural">die Chefs</div>
+        <div class="pron">[шеф]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">начальник, шеф</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Mein Chef ist heute nicht da.</div><div class="ru">Моего начальника сегодня нет.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 34 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Nachbar</div>
+        <div class="plural">die Nachbarn</div>
+        <div class="pron">[нахбар]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">сосед</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Mein Nachbar ist sehr freundlich.</div><div class="ru">Мой сосед очень дружелюбный.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 35 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Herr</div>
+        <div class="plural">die Herren</div>
+        <div class="pron">[хэр]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">господин</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Guten Tag, Herr Schmidt!</div><div class="ru">Добрый день, господин Шмидт!</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 36 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Dame</div>
+        <div class="plural">die Damen</div>
+        <div class="pron">[дамэ]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">дама, госпожа</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Die Dame möchte einen Kaffee.</div><div class="ru">Дама хотела бы кофе.</div></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

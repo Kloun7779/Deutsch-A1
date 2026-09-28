@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Немецкие вопросы A1 — карточки</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: linear-gradient(135deg, #134e5e, #71b280);
+    min-height: 100vh;
+    padding: 40px 20px;
+    color: #333;
+  }
+
+  h1 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 10px;
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    text-align: center;
+    color: #d7f0e0;
+    margin-bottom: 40px;
+    font-size: 1rem;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 22px;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  .card {
+    perspective: 1200px;
+    height: 380px;
+    cursor: pointer;
+  }
+
+  .card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.7s;
+    transform-style: preserve-3d;
+  }
+
+  .card.flipped .card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    overflow-y: auto;
+  }
+
+  .front {
+    background: #ffffff;
+    border-top: 6px solid #2ecc71;
+  }
+
+  .front .category {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #2ecc71;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  .front .question {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #134e5e;
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+
+  .front .pron {
+    color: #16a085;
+    font-style: italic;
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+  }
+
+  .front .trans {
+    font-size: 0.95rem;
+    color: #555;
+    padding-top: 10px;
+    border-top: 1px dashed #ddd;
+    margin-bottom: 10px;
+  }
+
+  .front .hint {
+    text-align: center;
+    font-size: 0.7rem;
+    color: #aaa;
+    margin-top: auto;
+    padding-top: 8px;
+  }
+
+  .back {
+    background: linear-gradient(160deg, #134e5e, #1c6e57);
+    color: #fff;
+    transform: rotateY(180deg);
+    border-top: 6px solid #2ecc71;
+  }
+
+  .back .label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #a8e6cf;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 4px;
+  }
+
+  .back .answer {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 12px;
+    padding-left: 8px;
+    border-left: 3px solid #2ecc71;
+  }
+
+  .back .answer .de {
+    font-weight: 600;
+    color: #fff;
+  }
+
+  .back .answer .ru {
+    color: #b8e6d5;
+    font-size: 0.85rem;
+  }
+
+  .back .hint {
+    text-align: center;
+    font-size: 0.7rem;
+    color: #7fb8a5;
+    margin-top: auto;
+    padding-top: 8px;
+  }
+
+  @media (max-width: 480px) {
+    .card { height: 420px; }
+    h1 { font-size: 1.4rem; }
+    .front .question { font-size: 1.15rem; }
+  }
+</style>
+</head>
+<body>
+
+<h1>🇩🇪 Основные вопросы — уровень A1</h1>
+<p class="subtitle">Нажми на карточку, чтобы увидеть ответы 🔄</p>
+
+<div class="grid">
+
+  <!-- 1. Wie geht's? -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Приветствие</div>
+        <div class="question">Wie geht's?</div>
+        <div class="pron">[ви гэйтс]</div>
+        <div class="trans">Как дела?</div>
+        <div class="hint">нажми, чтобы увидеть ответы</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Ответы</div>
+        <div class="answer">
+          <div class="de">Mir geht es gut, danke.</div>
+          <div class="ru">У меня всё хорошо, спасибо.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Es geht. Und dir?</div>
+          <div class="ru">Нормально. А у тебя?</div>
+        </div>
+        <div class="answer">
+          <div class="de">Nicht so gut.</div>
+          <div class="ru">Не очень хорошо.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Wie heißt du? -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Знакомство</div>
+        <div class="question">Wie heißt du?</div>
+        <div class="pron">[ви хайст ду]</div>
+        <div class="trans">Как тебя зовут?</div>
+        <div class="hint">нажми, чтобы увидеть ответы</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Ответы</div>
+        <div class="answer">
+          <div class="de">Ich heiße Anna.</div>
+          <div class="ru">Меня зовут Анна.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Mein Name ist Ivan.</div>
+          <div class="ru">Моё имя Иван.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Ich bin Maria.</div>
+          <div class="ru">Я Мария.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Woher kommst du? -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Происхождение</div>
+        <div class="question">Woher kommst du?</div>
+        <div class="pron">[вохэр комст ду]</div>
+        <div class="trans">Откуда ты?</div>
+        <div class="hint">нажми, чтобы увидеть ответы</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Ответы</div>
+        <div class="answer">
+          <div class="de">Ich komme aus Russland.</div>
+          <div class="ru">Я из России.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Ich komme aus Moskau.</div>
+          <div class="ru">Я из Москвы.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Ich bin aus Deutschland.</div>
+          <div class="ru">Я из Германии.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Wo wohnst du? -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Место жительства</div>
+        <div class="question">Wo wohnst du?</div>
+        <div class="pron">[во вонст ду]</div>
+        <div class="trans">Где ты живёшь?</div>
+        <div class="hint">нажми, чтобы увидеть ответы</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Ответы</div>
+        <div class="answer">
+          <div class="de">Ich wohne in Berlin.</div>
+          <div class="ru">Я живу в Берлине.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Ich wohne in der Hauptstraße.</div>
+          <div class="ru">Я живу на Хауптштрассе.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Ich wohne bei meinen Eltern.</div>
+          <div class="ru">Я живу у родителей.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Wie alt bist du? -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Возраст</div>
+        <div class="question">Wie alt bist du?</div>
+        <div class="pron">[ви альт бист ду]</div>
+        <div class="trans">Сколько тебе лет?</div>
+        <div class="hint">нажми, чтобы увидеть ответы</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Ответы</div>
+        <div class="answer">
+          <div class="de">Ich bin 25 Jahre alt.</div>
+          <div class="ru">Мне 25 лет.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Ich bin 30.</div>
+          <div class="ru">Мне 30.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Ich bin achtzehn Jahre alt.</div>
+          <div class="ru">Мне восемнадцать лет.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Was machst du? (профессия) -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Профессия</div>
+        <div class="question">Was machst du (beruflich)?</div>
+        <div class="pron">[вас махст ду (бэруфлихь)]</div>
+        <div class="trans">Чем ты занимаешься? / Кто ты по профессии?</div>
+        <div class="hint">нажми, чтобы увидеть ответы</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Ответы</div>
+        <div class="answer">
+          <div class="de">Ich bin Lehrer.</div>
+          <div class="ru">Я учитель.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Ich arbeite als Ingenieur.</div>
+          <div class="ru">Я работаю инженером.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Ich bin Student.</div>
+          <div class="ru">Я студент.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. Sprichst du Deutsch? -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Языки</div>
+        <div class="question">Sprichst du Deutsch?</div>
+        <div class="pron">[шприхьст ду дойч]</div>
+        <div class="trans">Ты говоришь по-немецки?</div>
+        <div class="hint">нажми, чтобы увидеть ответы</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Ответы</div>
+        <div class="answer">
+          <div class="de">Ja, ein bisschen.</div>
+          <div class="ru">Да, немного.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Ja, ich spreche Deutsch und Englisch.</div>
+          <div class="ru">Да, я говорю по-немецки и по-английски.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Nein, leider nicht.</div>
+          <div class="ru">Нет, к сожалению, нет.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. Wie ist deine Telefonnummer? -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Контакты</div>
+        <div class="question">Wie ist deine Telefonnummer?</div>
+        <div class="pron">[ви ист дайне телефоннумэр]</div>
+        <div class="trans">Какой у тебя номер телефона?</div>
+        <div class="hint">нажми, чтобы увидеть ответы</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Ответы</div>
+        <div class="answer">
+          <div class="de">Meine Nummer ist 0176 1234567.</div>
+          <div class="ru">Мой номер 0176 1234567.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Das ist 8 9 1 2 3 4 5.</div>
+          <div class="ru">Это 8 9 1 2 3 4 5.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9. Wann hast du Geburtstag? -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Дата</div>
+        <div class="question">Wann hast du Geburtstag?</div>
+        <div class="pron">[ван хаст ду гебуртстаг]</div>
+        <div class="trans">Когда у тебя день рождения?</div>
+        <div class="hint">нажми, чтобы увидеть ответы</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Ответы</div>
+        <div class="answer">
+          <div class="de">Ich habe am 5. Mai Geburtstag.</div>
+          <div class="ru">У меня день рождения 5 мая.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Mein Geburtstag ist im Juli.</div>
+          <div class="ru">Мой день рождения в июле.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Am zwanzigsten Januar.</div>
+          <div class="ru">Двадцатого января.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10. Was ist das? -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Предметы</div>
+        <div class="question">Was ist das?</div>
+        <div class="pron">[вас ист дас]</div>
+        <div class="trans">Что это?</div>
+        <div class="hint">нажми, чтобы увидеть ответы</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Ответы</div>
+        <div class="answer">
+          <div class="de">Das ist ein Buch.</div>
+          <div class="ru">Это книга.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Das ist ein Tisch.</div>
+          <div class="ru">Это стол.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Das weiß ich nicht.</div>
+          <div class="ru">Я не знаю.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 11. Wann? -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Время</div>
+        <div class="question">Wann beginnt der Unterricht?</div>
+        <div class="pron">[ван бэгинт дэр унтеррихьт]</div>
+        <div class="trans">Когда начинается занятие?</div>
+        <div class="hint">нажми, чтобы увидеть ответы</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Ответы</div>
+        <div class="answer">
+          <div class="de">Um 9 Uhr.</div>
+          <div class="ru">В 9 часов.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Um halb zehn.</div>
+          <div class="ru">В половине десятого.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Um Viertel nach acht.</div>
+          <div class="ru">В четверть девятого.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 12. Wie viel kostet das? -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Покупки</div>
+        <div class="question">Wie viel kostet das?</div>
+        <div class="pron">[ви филь костэт дас]</div>
+        <div class="trans">Сколько это стоит?</div>
+        <div class="hint">нажми, чтобы увидеть ответы</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Ответы</div>
+        <div class="answer">
+          <div class="de">Das kostet 5 Euro.</div>
+          <div class="ru">Это стоит 5 евро.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Es kostet 2,50 Euro.</div>
+          <div class="ru">Это стоит 2,50 евро.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Das ist zu teuer.</div>
+          <div class="ru">Это слишком дорого.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 13. Wo ist...? -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Ориентация в городе</div>
+        <div class="question">Wo ist der Bahnhof?</div>
+        <div class="pron">[во ист дэр банхоф]</div>
+        <div class="trans">Где вокзал?</div>
+        <div class="hint">нажми, чтобы увидеть ответы</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Ответы</div>
+        <div class="answer">
+          <div class="de">Der Bahnhof ist dort rechts.</div>
+          <div class="ru">Вокзал там справа.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Gehen Sie geradeaus.</div>
+          <div class="ru">Идите прямо.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Es ist ganz in der Nähe.</div>
+          <div class="ru">Это совсем рядом.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 14. Was möchtest du? -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">В кафе / ресторане</div>
+        <div class="question">Was möchtest du trinken?</div>
+        <div class="pron">[вас мёхьтэст ду тринкэн]</div>
+        <div class="trans">Что ты хочешь выпить?</div>
+        <div class="hint">нажми, чтобы увидеть ответы</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Ответы</div>
+        <div class="answer">
+          <div class="de">Ich möchte einen Kaffee, bitte.</div>
+          <div class="ru">Я хотел бы кофе, пожалуйста.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Ein Wasser, bitte.</div>
+          <div class="ru">Воду, пожалуйста.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Ich nehme einen Tee.</div>
+          <div class="ru">Я возьму чай.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 15. Was isst du gern? -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Еда</div>
+        <div class="question">Was isst du gern?</div>
+        <div class="pron">[вас ист ду гэрн]</div>
+        <div class="trans">Что ты любишь есть?</div>
+        <div class="hint">нажми, чтобы увидеть ответы</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Ответы</div>
+        <div class="answer">
+          <div class="de">Ich esse gern Pizza.</div>
+          <div class="ru">Я люблю пиццу.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Ich esse gern Fisch.</div>
+          <div class="ru">Я люблю рыбу.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Ich mag keine Tomaten.</div>
+          <div class="ru">Я не люблю помидоры.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 16. Wie ist das Wetter? -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Погода</div>
+        <div class="question">Wie ist das Wetter heute?</div>
+        <div class="pron">[ви ист дас вэтэр хойтэ]</div>
+        <div class="trans">Какая сегодня погода?</div>
+        <div class="hint">нажми, чтобы увидеть ответы</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Ответы</div>
+        <div class="answer">
+          <div class="de">Die Sonne scheint.</div>
+          <div class="ru">Солнце светит.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Es regnet.</div>
+          <div class="ru">Идёт дождь.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Es ist kalt und windig.</div>
+          <div class="ru">Холодно и ветрено.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 17. Wie kommst du zur Arbeit? -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Транспорт</div>
+        <div class="question">Wie kommst du zur Arbeit?</div>
+        <div class="pron">[ви комст ду цур арбайт]</div>
+        <div class="trans">Как ты добираешься до работы?</div>
+        <div class="hint">нажми, чтобы увидеть ответы</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Ответы</div>
+        <div class="answer">
+          <div class="de">Ich fahre mit dem Bus.</div>
+          <div class="ru">Я еду на автобусе.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Ich gehe zu Fuß.</div>
+          <div class="ru">Я иду пешком.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Ich fahre mit dem Fahrrad.</div>
+          <div class="ru">Я еду на велосипеде.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 18. Was hast du am Wochenende gemacht? -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Прошедшее время</div>
+        <div class="question">Was hast du am Wochenende gemacht?</div>
+        <div class="pron">[вас хаст ду ам вохэнэндэ гэмахт]</div>
+        <div class="trans">Что ты делал на выходных?</div>
+        <div class="hint">нажми, чтобы увидеть ответы</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Ответы</div>
+        <div class="answer">
+          <div class="de">Ich habe Freunde getroffen.</div>
+          <div class="ru">Я встречался с друзьями.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Ich habe einen Film gesehen.</div>
+          <div class="ru">Я смотрел фильм.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Ich bin ins Kino gegangen.</div>
+          <div class="ru">Я ходил в кино.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 19. Kannst du mir helfen? -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Просьбы</div>
+        <div class="question">Kannst du mir helfen?</div>
+        <div class="pron">[канст ду мир хельфэн]</div>
+        <div class="trans">Ты можешь мне помочь?</div>
+        <div class="hint">нажми, чтобы увидеть ответы</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Ответы</div>
+        <div class="answer">
+          <div class="de">Ja, natürlich.</div>
+          <div class="ru">Да, конечно.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Ja, gern.</div>
+          <div class="ru">Да, с удовольствием.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Tut mir leid, ich habe keine Zeit.</div>
+          <div class="ru">Извини, у меня нет времени.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 20. Wie sagt man das auf Deutsch? -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">На уроке</div>
+        <div class="question">Wie sagt man das auf Deutsch?</div>
+        <div class="pron">[ви загт ман дас ауф дойч]</div>
+        <div class="trans">Как это сказать по-немецки?</div>
+        <div class="hint">нажми, чтобы увидеть ответы</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Ответы</div>
+        <div class="answer">
+          <div class="de">Man sagt „Buch“.</div>
+          <div class="ru">Говорят «Buch».</div>
+        </div>
+        <div class="answer">
+          <div class="de">Das heißt „Tisch“.</div>
+          <div class="ru">Это называется «Tisch».</div>
+        </div>
+        <div class="answer">
+          <div class="de">Ich weiß es nicht. Wie sagt man das?</div>
+          <div class="ru">Я не знаю. Как это сказать?</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 21. Woher wissen Sie das? (вежливая форма) -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Вежливая форма (Sie)</div>
+        <div class="question">Wie heißen Sie?</div>
+        <div class="pron">[ви хайсэн зи]</div>
+        <div class="trans">Как вас зовут? (вежливо)</div>
+        <div class="hint">нажми, чтобы увидеть ответы</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Ответы</div>
+        <div class="answer">
+          <div class="de">Ich heiße Schmidt.</div>
+          <div class="ru">Меня зовут Шмидт.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Mein Name ist Müller.</div>
+          <div class="ru">Моё имя Мюллер.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 22. Möchten Sie etwas trinken? -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">В кафе (вежливо)</div>
+        <div class="question">Möchten Sie etwas trinken?</div>
+        <div class="pron">[мёхьтэн зи этвас тринкэн]</div>
+        <div class="trans">Вы хотели бы что-нибудь выпить?</div>
+        <div class="hint">нажми, чтобы увидеть ответы</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Ответы</div>
+        <div class="answer">
+          <div class="de">Ja, einen Kaffee, bitte.</div>
+          <div class="ru">Да, кофе, пожалуйста.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Nein, danke.</div>
+          <div class="ru">Нет, спасибо.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Ein Glas Wasser, bitte.</div>
+          <div class="ru">Стакан воды, пожалуйста.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 23. Entschuldigung, wo ist die Toilette? -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">В общественном месте</div>
+        <div class="question">Entschuldigung, wo ist die Toilette?</div>
+        <div class="pron">[энтшульдигунг, во ист ди тойлетэ]</div>
+        <div class="trans">Извините, где туалет?</div>
+        <div class="hint">нажми, чтобы увидеть ответы</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Ответы</div>
+        <div class="answer">
+          <div class="de">Dort links.</div>
+          <div class="ru">Там слева.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Im ersten Stock.</div>
+          <div class="ru">На втором этаже.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Gleich um die Ecke.</div>
+          <div class="ru">Сразу за углом.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 24. Was kostet die Fahrkarte? -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Транспорт</div>
+        <div class="question">Was kostet die Fahrkarte nach Berlin?</div>
+        <div class="pron">[вас костэт ди фаркартэ нах бэрлин]</div>
+        <div class="trans">Сколько стоит билет до Берлина?</div>
+        <div class="hint">нажми, чтобы увидеть ответы</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Ответы</div>
+        <div class="answer">
+          <div class="de">Sie kostet 25 Euro.</div>
+          <div class="ru">Он стоит 25 евро.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Einfach oder hin und zurück?</div>
+          <div class="ru">В одну сторону или туда и обратно?</div>
+        </div>
+        <div class="answer">
+          <div class="de">Das ist ein Sonderangebot.</div>
+          <div class="ru">Это специальное предложение.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 25. Wohnst du gern in Deutschland? -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Мнение</div>
+        <div class="question">Wohnst du gern in Deutschland?</div>
+        <div class="pron">[вонст ду гэрн ин дойчланд]</div>
+        <div class="trans">Тебе нравится жить в Германии?</div>
+        <div class="hint">нажми, чтобы увидеть ответы</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Ответы</div>
+        <div class="answer">
+          <div class="de">Ja, sehr gern.</div>
+          <div class="ru">Да, очень нравится.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Es geht. Nicht so gut.</div>
+          <div class="ru">Нормально. Не очень.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Ja, aber das Wetter ist nicht so gut.</div>
+          <div class="ru">Да, но погода не очень.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 26. Hast du Geschwister? -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Семья</div>
+        <div class="question">Hast du Geschwister?</div>
+        <div class="pron">[хаст ду гэшвистэр]</div>
+        <div class="trans">У тебя есть братья или сёстры?</div>
+        <div class="hint">нажми, чтобы увидеть ответы</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Ответы</div>
+        <div class="answer">
+          <div class="de">Ja, ich habe einen Bruder.</div>
+          <div class="ru">Да, у меня есть брат.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Ja, eine Schwester.</div>
+          <div class="ru">Да, сестра.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Nein, ich bin Einzelkind.</div>
+          <div class="ru">Нет, я единственный ребёнок.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 27. Was ist dein Hobby? -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Свободное время</div>
+        <div class="question">Was ist dein Hobby?</div>
+        <div class="pron">[вас ист дайн хобби]</div>
+        <div class="trans">Какое у тебя хобби?</div>
+        <div class="hint">нажми, чтобы увидеть ответы</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Ответы</div>
+        <div class="answer">
+          <div class="de">Ich lese gern.</div>
+          <div class="ru">Я люблю читать.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Ich spiele gern Fußball.</div>
+          <div class="ru">Я люблю играть в футбол.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Ich höre gern Musik.</div>
+          <div class="ru">Я люблю слушать музыку.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 28. Wie viele Sprachen sprichst du? -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Языки</div>
+        <div class="question">Wie viele Sprachen sprichst du?</div>
+        <div class="pron">[ви фильэ шпрархэн шприхьст ду]</div>
+        <div class="trans">На скольких языках ты говоришь?</div>
+        <div class="hint">нажми, чтобы увидеть ответы</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Ответы</div>
+        <div class="answer">
+          <div class="de">Ich spreche zwei Sprachen.</div>
+          <div class="ru">Я говорю на двух языках.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Ich spreche Russisch und ein bisschen Deutsch.</div>
+          <div class="ru">Я говорю по-русски и немного по-немецки.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Nur eine Sprache.</div>
+          <div class="ru">Только на одном языке.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 29. Wann hast du Zeit? -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Планы</div>
+        <div class="question">Wann hast du Zeit?</div>
+        <div class="pron">[ван хаст ду цайт]</div>
+        <div class="trans">Когда у тебя есть время?</div>
+        <div class="hint">нажми, чтобы увидеть ответы</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Ответы</div>
+        <div class="answer">
+          <div class="de">Am Montag um 15 Uhr.</div>
+          <div class="ru">В понедельник в 15 часов.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Am Abend.</div>
+          <div class="ru">Вечером.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Leider habe ich keine Zeit.</div>
+          <div class="ru">К сожалению, у меня нет времени.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 30. Wo warst du gestern? -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Прошедшее время</div>
+        <div class="question">Wo warst du gestern?</div>
+        <div class="pron">[во варст ду гэстэрн]</div>
+        <div class="trans">Где ты был вчера?</div>
+        <div class="hint">нажми, чтобы увидеть ответы</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Ответы</div>
+        <div class="answer">
+          <div class="de">Ich war zu Hause.</div>
+          <div class="ru">Я был дома.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Ich war bei meiner Freundin.</div>
+          <div class="ru">Я был у подруги.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Ich war im Supermarkt.</div>
+          <div class="ru">Я был в супермаркете.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 31. Kann ich mit Karte zahlen? -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Оплата</div>
+        <div class="question">Kann ich mit Karte zahlen?</div>
+        <div class="pron">[кан ихь мит картэ цален]</div>
+        <div class="trans">Можно оплатить картой?</div>
+        <div class="hint">нажми, чтобы увидеть ответы</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Ответы</div>
+        <div class="answer">
+          <div class="de">Ja, natürlich.</div>
+          <div class="ru">Да, конечно.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Nein, nur bar.</div>
+          <div class="ru">Нет, только наличными.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Ja, aber erst ab 10 Euro.</div>
+          <div class="ru">Да, но только от 10 евро.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 32. Was ist dein Lieblings...? -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Предпочтения</div>
+        <div class="question">Was ist dein Lieblingsessen?</div>
+        <div class="pron">[вас ист дайн либлингсэсэн]</div>
+        <div class="trans">Какое твоё любимое блюдо?</div>
+        <div class="hint">нажми, чтобы увидеть ответы</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Ответы</div>
+        <div class="answer">
+          <div class="de">Mein Lieblingsessen ist Pizza.</div>
+          <div class="ru">Моё любимое блюдо — пицца.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Ich esse am liebsten Pasta.</div>
+          <div class="ru">Больше всего я люблю пасту.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Ich mag Suppe sehr.</div>
+          <div class="ru">Я очень люблю суп.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 33. Entschuldigung, können Sie das wiederholen? -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">На уроке / в разговоре</div>
+        <div class="question">Können Sie das bitte wiederholen?</div>
+        <div class="pron">[кёнэн зи дас битэ видэрхолен]</div>
+        <div class="trans">Вы можете это повторить, пожалуйста?</div>
+        <div class="hint">нажми, чтобы увидеть ответы</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Ответы</div>
+        <div class="answer">
+          <div class="de">Ja, gern. Also...</div>
+          <div class="ru">Да, конечно. Итак...</div>
+        </div>
+        <div class="answer">
+          <div class="de">Natürlich. Noch einmal...</div>
+          <div class="ru">Конечно. Ещё раз...</div>
+        </div>
+        <div class="answer">
+          <div class="de">Wie bitte? Ich habe Sie nicht verstanden.</div>
+          <div class="ru">Простите? Я вас не понял.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 34. Seit wann lernst du Deutsch? -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Опыт</div>
+        <div class="question">Seit wann lernst du Deutsch?</div>
+        <div class="pron">[зайт ван лернст ду дойч]</div>
+        <div class="trans">С каких пор ты учишь немецкий?</div>
+        <div class="hint">нажми, чтобы увидеть ответы</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Ответы</div>
+        <div class="answer">
+          <div class="de">Seit einem Jahr.</div>
+          <div class="ru">С одного года (год).</div>
+        </div>
+        <div class="answer">
+          <div class="de">Seit zwei Monaten.</div>
+          <div class="ru">Два месяца.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Ich lerne seit September Deutsch.</div>
+          <div class="ru">Я учу немецкий с сентября.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 35. Wie oft? -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Частота</div>
+        <div class="question">Wie oft gehst du ins Fitnessstudio?</div>
+        <div class="pron">[ви офт гэйст ду инс фитнэсштудио]</div>
+        <div class="trans">Как часто ты ходишь в спортзал?</div>
+        <div class="hint">нажми, чтобы увидеть ответы</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Ответы</div>
+        <div class="answer">
+          <div class="de">Zweimal pro Woche.</div>
+          <div class="ru">Два раза в неделю.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Jeden Tag.</div>
+          <div class="ru">Каждый день.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Selten. Einmal im Monat.</div>
+          <div class="ru">Редко. Раз в месяц.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 36. Wie spät ist es? -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Время</div>
+        <div class="question">Wie spät ist es?</div>
+        <div class="pron">[ви шпэт ист эс]</div>
+        <div class="trans">Который час?</div>
+        <div class="hint">нажми, чтобы увидеть ответы</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Ответы</div>
+        <div class="answer">
+          <div class="de">Es ist drei Uhr.</div>
+          <div class="ru">Три часа.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Es ist halb fünf.</div>
+          <div class="ru">Половина пятого.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Es ist Viertel vor sieben.</div>
+          <div class="ru">Без пятнадцати семь.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 37. Was trinkst du lieber? -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Предпочтения</div>
+        <div class="question">Was trinkst du lieber: Tee oder Kaffee?</div>
+        <div class="pron">[вас тринкст ду либэр: тэ одэр кафэ]</div>
+        <div class="trans">Что ты пьёшь охотнее: чай или кофе?</div>
+        <div class="hint">нажми, чтобы увидеть ответы</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Ответы</div>
+        <div class="answer">
+          <div class="de">Ich trinke lieber Tee.</div>
+          <div class="ru">Я охотнее пью чай.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Kaffee, natürlich!</div>
+          <div class="ru">Кофе, конечно!</div>
+        </div>
+        <div class="answer">
+          <div class="de">Beides. Es kommt darauf an.</div>
+          <div class="ru">И то и другое. Зависит от ситуации.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 38. Hast du das schon gemacht? -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Опыт</div>
+        <div class="question">Warst du schon in Deutschland?</div>
+        <div class="pron">[варст ду шон ин дойчланд]</div>
+        <div class="trans">Ты уже был в Германии?</div>
+        <div class="hint">нажми, чтобы увидеть ответы</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Ответы</div>
+        <div class="answer">
+          <div class="de">Ja, ich war schon in Berlin.</div>
+          <div class="ru">Да, я уже был в Берлине.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Nein, noch nicht. Aber ich möchte.</div>
+          <div class="ru">Нет, ещё нет. Но хотел бы.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Ja, zweimal.</div>
+          <div class="ru">Да, дважды.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 39. Wo hast du das gekauft? -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Покупки</div>
+        <div class="question">Wo hast du das gekauft?</div>
+        <div class="pron">[во хаст ду дас гэкауфт]</div>
+        <div class="trans">Где ты это купил?</div>
+        <div class="hint">нажми, чтобы увидеть ответы</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Ответы</div>
+        <div class="answer">
+          <div class="de">Ich habe das im Supermarkt gekauft.</div>
+          <div class="ru">Я купил это в супермаркете.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Im Internet.</div>
+          <div class="ru">В интернете.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Das war ein Geschenk.</div>
+          <div class="ru">Это был подарок.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 40. Was hast du gesagt? -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="category">Уточнение</div>
+        <div class="question">Was hast du gesagt?</div>
+        <div class="pron">[вас хаст ду гэзагт]</div>
+        <div class="trans">Что ты сказал?</div>
+        <div class="hint">нажми, чтобы увидеть ответы</div>
+      </div>
+      <div class="card-face back">
+        <div class="label">Ответы</div>
+        <div class="answer">
+          <div class="de">Ich habe gesagt, dass ich müde bin.</div>
+          <div class="ru">Я сказал, что устал.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Nichts Wichtiges.</div>
+          <div class="ru">Ничего важного.</div>
+        </div>
+        <div class="answer">
+          <div class="de">Ich habe nach dem Weg gefragt.</div>
+          <div class="ru">Я спрашивал дорогу.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Колода 4 — Город, транспорт, места (A1)</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: linear-gradient(135deg, #2c3e50, #4ca1af);
+    min-height: 100vh;
+    padding: 40px 20px;
+    color: #333;
+  }
+
+  h1 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 8px;
+    font-size: 1.9rem;
+  }
+
+  .subtitle {
+    text-align: center;
+    color: #d6eef2;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+  }
+
+  .counter {
+    text-align: center;
+    color: #a8d8e0;
+    margin-bottom: 35px;
+    font-size: 0.85rem;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  .card {
+    perspective: 1200px;
+    height: 300px;
+    cursor: pointer;
+  }
+
+  .card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.7s;
+    transform-style: preserve-3d;
+  }
+
+  .card.flipped .card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    overflow-y: auto;
+  }
+
+  .front {
+    background: #ffffff;
+    border-top: 6px solid #4ca1af;
+  }
+
+  .front .word {
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: #1c4a52;
+    text-align: center;
+    margin-bottom: 4px;
+    line-height: 1.2;
+  }
+
+  .front .word .art {
+    color: #4ca1af;
+    font-weight: 500;
+  }
+
+  .front .plural {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #5a8f99;
+    margin-bottom: 10px;
+    font-style: italic;
+  }
+
+  .front .pron {
+    text-align: center;
+    color: #d97706;
+    font-style: italic;
+    font-size: 1rem;
+    margin-bottom: 12px;
+  }
+
+  .front .hint {
+    text-align: center;
+    font-size: 0.7rem;
+    color: #bbb;
+    margin-top: auto;
+    padding-top: 10px;
+    border-top: 1px dashed #eee;
+  }
+
+  .back {
+    background: linear-gradient(160deg, #1c4a52, #2c3e50);
+    color: #fff;
+    transform: rotateY(180deg);
+    border-top: 6px solid #4ca1af;
+    justify-content: center;
+  }
+
+  .back .translation {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 16px;
+    color: #ffd166;
+  }
+
+  .back .label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #b5dee6;
+    margin-bottom: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 4px;
+  }
+
+  .back .example {
+    font-size: 0.93rem;
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+
+  .back .example .de { font-weight: 600; color: #fff; }
+  .back .example .ru { color: #b5dee6; font-size: 0.85rem; }
+
+  @media (max-width: 480px) {
+    .card { height: 320px; }
+    h1 { font-size: 1.35rem; }
+    .front .word { font-size: 1.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<h1>🏙️ Колода 4 — Город, транспорт, места</h1>
+<p class="subtitle">Уровень A1 · Нажми на карточку, чтобы перевернуть 🔄</p>
+<p class="counter">34 карточки</p>
+
+<div class="grid">
+
+  <!-- 1 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Stadt</div>
+        <div class="plural">die Städte</div>
+        <div class="pron">[штат]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">город</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Berlin ist eine große Stadt.</div><div class="ru">Берлин — большой город.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">das</span> Dorf</div>
+        <div class="plural">die Dörfer</div>
+        <div class="pron">[дорф]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">деревня</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Meine Oma wohnt in einem Dorf.</div><div class="ru">Моя бабушка живёт в деревне.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Straße</div>
+        <div class="plural">die Straßen</div>
+        <div class="pron">[штрасэ]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">улица</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich wohne in der Goethestraße.</div><div class="ru">Я живу на улице Гёте.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Platz</div>
+        <div class="plural">die Plätze</div>
+        <div class="pron">[плац]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">площадь; место</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Der Platz ist sehr schön.</div><div class="ru">Площадь очень красивая.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Bahnhof</div>
+        <div class="plural">die Bahnhöfe</div>
+        <div class="pron">[банхоф]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">вокзал</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Der Bahnhof ist nicht weit von hier.</div><div class="ru">Вокзал недалеко отсюда.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Flughafen</div>
+        <div class="plural">die Flughäfen</div>
+        <div class="pron">[флюкхафэн]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">аэропорт</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Wir fahren zum Flughafen.</div><div class="ru">Мы едем в аэропорт.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Haltestelle</div>
+        <div class="plural">die Haltestellen</div>
+        <div class="pron">[хальтэштэлэ]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">остановка</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Die Haltestelle ist dort vorne.</div><div class="ru">Остановка вон там впереди.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Post</div>
+        <div class="plural">die Posten</div>
+        <div class="pron">[пост]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">почта</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich gehe zur Post.</div><div class="ru">Я иду на почту.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Bank</div>
+        <div class="plural">die Banken</div>
+        <div class="pron">[банк]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">банк</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Die Bank öffnet um 9 Uhr.</div><div class="ru">Банк открывается в 9 часов.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Bibliothek</div>
+        <div class="plural">die Bibliotheken</div>
+        <div class="pron">[библиотэк]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">библиотека</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich lerne in der Bibliothek.</div><div class="ru">Я занимаюсь в библиотеке.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 11 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">das</span> Krankenhaus</div>
+        <div class="plural">die Krankenhäuser</div>
+        <div class="pron">[кранкэнхаус]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">больница</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Er arbeitet im Krankenhaus.</div><div class="ru">Он работает в больнице.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 12 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Schule</div>
+        <div class="plural">die Schulen</div>
+        <div class="pron">[шулэ]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">школа</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Die Kinder gehen zur Schule.</div><div class="ru">Дети идут в школу.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 13 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Universität</div>
+        <div class="plural">die Universitäten</div>
+        <div class="pron">[унивэрзитэт]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">университет</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Sie studiert an der Universität.</div><div class="ru">Она учится в университете.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 14 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">das</span> Kino</div>
+        <div class="plural">die Kinos</div>
+        <div class="pron">[кино]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">кинотеатр</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Wir gehen ins Kino.</div><div class="ru">Мы идём в кино.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 15 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">das</span> Theater</div>
+        <div class="plural">die Theater</div>
+        <div class="pron">[тэатэр]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">театр</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Das Theater ist heute voll.</div><div class="ru">Театр сегодня полон.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 16 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">das</span> Museum</div>
+        <div class="plural">die Museen</div>
+        <div class="pron">[музэум]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">музей</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Das Museum ist am Montag geschlossen.</div><div class="ru">Музей закрыт по понедельникам.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 17 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">das</span> Restaurant</div>
+        <div class="plural">die Restaurants</div>
+        <div class="pron">[рэсторан]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">ресторан</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Wir essen im Restaurant.</div><div class="ru">Мы едим в ресторане.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 18 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">das</span> Café</div>
+        <div class="plural">die Cafés</div>
+        <div class="pron">[кафэ]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">кафе</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Wir treffen uns im Café.</div><div class="ru">Мы встречаемся в кафе.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 19 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Park</div>
+        <div class="plural">die Parks</div>
+        <div class="pron">[парк]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">парк</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich laufe im Park.</div><div class="ru">Я гуляю в парке.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 20 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Zoo</div>
+        <div class="plural">die Zoos</div>
+        <div class="pron">[цо]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">зоопарк</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Wir gehen in den Zoo.</div><div class="ru">Мы идём в зоопарк.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 21 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Kirche</div>
+        <div class="plural">die Kirchen</div>
+        <div class="pron">[кирхэ]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">церковь</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Die Kirche ist sehr alt.</div><div class="ru">Церковь очень старая.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 22 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">das</span> Hotel</div>
+        <div class="plural">die Hotels</div>
+        <div class="pron">[хотэль]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">отель</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Wir schlafen im Hotel.</div><div class="ru">Мы ночуем в отеле.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 23 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Bus</div>
+        <div class="plural">die Busse</div>
+        <div class="pron">[бус]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">автобус</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich fahre mit dem Bus.</div><div class="ru">Я еду на автобусе.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 24 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Zug</div>
+        <div class="plural">die Züge</div>
+        <div class="pron">[цук]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">поезд</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Der Zug fährt um 8 Uhr.</div><div class="ru">Поезд отправляется в 8 часов.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 25 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> U-Bahn</div>
+        <div class="plural">die U-Bahnen</div>
+        <div class="pron">[у-бан]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">метро</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich fahre mit der U-Bahn.</div><div class="ru">Я еду на метро.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 26 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> S-Bahn</div>
+        <div class="plural">die S-Bahnen</div>
+        <div class="pron">[эс-бан]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">городская электричка</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Die S-Bahn kommt in 5 Minuten.</div><div class="ru">Электричка придёт через 5 минут.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 27 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">das</span> Auto</div>
+        <div class="plural">die Autos</div>
+        <div class="pron">[ауто]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">автомобиль</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Mein Auto ist alt.</div><div class="ru">Моя машина старая.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 28 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">das</span> Fahrrad</div>
+        <div class="plural">die Fahrräder</div>
+        <div class="pron">[фаррат]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">велосипед</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich fahre mit dem Fahrrad.</div><div class="ru">Я еду на велосипеде.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 29 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">das</span> Taxi</div>
+        <div class="plural">die Taxis</div>
+        <div class="pron">[такси]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">такси</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Wir nehmen ein Taxi.</div><div class="ru">Мы берём такси.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 30 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">das</span> Flugzeug</div>
+        <div class="plural">die Flugzeuge</div>
+        <div class="pron">[флюкцойк]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">самолёт</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich fliege mit dem Flugzeug.</div><div class="ru">Я лечу на самолёте.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 31 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Fahrkarte</div>
+        <div class="plural">die Fahrkarten</div>
+        <div class="pron">[фаркартэ]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">билет (на транспорт)</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich kaufe eine Fahrkarte.</div><div class="ru">Я покупаю билет.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 32 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Weg</div>
+        <div class="plural">die Wege</div>
+        <div class="pron">[век]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">дорога, путь</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Kennst du den Weg zum Bahnhof?</div><div class="ru">Ты знаешь дорогу к вокзалу?</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 33 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Ecke</div>
+        <div class="plural">die Ecken</div>
+        <div class="pron">[экэ]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">угол</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Die Bank ist um die Ecke.</div><div class="ru">Банк за углом.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 34 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Adresse</div>
+        <div class="plural">die Adressen</div>
+        <div class="pron">[адрэсэ]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">адрес</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Wie ist deine Adresse?</div><div class="ru">Какой у тебя адрес?</div></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

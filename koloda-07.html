@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Колода 7 — Прилагательные (A1)</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: linear-gradient(135deg, #00b09b, #96c93d);
+    min-height: 100vh;
+    padding: 40px 20px;
+    color: #333;
+  }
+
+  h1 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 8px;
+    font-size: 1.9rem;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  }
+
+  .subtitle {
+    text-align: center;
+    color: #eafbd5;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+  }
+
+  .counter {
+    text-align: center;
+    color: #d4eeaa;
+    margin-bottom: 35px;
+    font-size: 0.85rem;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  .card {
+    perspective: 1200px;
+    height: 320px;
+    cursor: pointer;
+  }
+
+  .card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.7s;
+    transform-style: preserve-3d;
+  }
+
+  .card.flipped .card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    overflow-y: auto;
+  }
+
+  .front {
+    background: #ffffff;
+    border-top: 6px solid #00b09b;
+  }
+
+  .front .word {
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: #046b5e;
+    text-align: center;
+    margin-bottom: 6px;
+    line-height: 1.2;
+  }
+
+  .front .pron {
+    text-align: center;
+    color: #d97706;
+    font-style: italic;
+    font-size: 1rem;
+    margin-bottom: 14px;
+  }
+
+  .front .label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #999;
+    margin-bottom: 6px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 3px;
+  }
+
+  .front .stufen {
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: #333;
+  }
+
+  .front .stufen span {
+    color: #046b5e;
+    font-weight: 600;
+  }
+
+  .front .hint {
+    text-align: center;
+    font-size: 0.7rem;
+    color: #bbb;
+    margin-top: auto;
+    padding-top: 10px;
+    border-top: 1px dashed #eee;
+  }
+
+  .back {
+    background: linear-gradient(160deg, #046b5e, #00b09b);
+    color: #fff;
+    transform: rotateY(180deg);
+    border-top: 6px solid #96c93d;
+    justify-content: center;
+  }
+
+  .back .translation {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 12px;
+    color: #ffd166;
+  }
+
+  .back .antonym {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #d4eeaa;
+    margin-bottom: 14px;
+    padding: 6px;
+    background: rgba(0,0,0,0.15);
+    border-radius: 8px;
+  }
+
+  .back .antonym strong { color: #fff; }
+
+  .back .label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #d4eeaa;
+    margin-bottom: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 4px;
+  }
+
+  .back .example {
+    font-size: 0.93rem;
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+
+  .back .example .de { font-weight: 600; color: #fff; }
+  .back .example .ru { color: #d4eeaa; font-size: 0.85rem; }
+
+  @media (max-width: 480px) {
+    .card { height: 340px; }
+    h1 { font-size: 1.35rem; }
+    .front .word { font-size: 1.45rem; }
+  }
+</style>
+</head>
+<body>
+
+<h1>🎨 Колода 7 — Прилагательные</h1>
+<p class="subtitle">Уровень A1 · Степени сравнения · Нажми на карточку 🔄</p>
+<p class="counter">42 карточки</p>
+
+<div class="grid">
+
+  <!-- 1. gut -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">gut</div>
+        <div class="pron">[гут]</div>
+        <div class="label">Степени сравнения</div>
+        <div class="stufen">
+          Positiv: <span>gut</span><br>
+          Komparativ: <span>besser</span><br>
+          Superlativ: <span>am besten</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">хороший</div>
+        <div class="antonym">антоним: <strong>schlecht</strong></div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Das Essen ist sehr gut.</div><div class="ru">Еда очень хорошая.</div></div>
+        <div class="example"><div class="de">Heute geht es mir besser.</div><div class="ru">Сегодня мне лучше.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. schlecht -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">schlecht</div>
+        <div class="pron">[шлехьт]</div>
+        <div class="label">Степени сравнения</div>
+        <div class="stufen">
+          Positiv: <span>schlecht</span><br>
+          Komparativ: <span>schlechter</span><br>
+          Superlativ: <span>am schlechtesten</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">плохой</div>
+        <div class="antonym">антоним: <strong>gut</strong></div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Das Wetter ist heute schlecht.</div><div class="ru">Погода сегодня плохая.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. groß -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">groß</div>
+        <div class="pron">[грос]</div>
+        <div class="label">Степени сравнения</div>
+        <div class="stufen">
+          Positiv: <span>groß</span><br>
+          Komparativ: <span>größer</span><br>
+          Superlativ: <span>am größten</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">большой</div>
+        <div class="antonym">антоним: <strong>klein</strong></div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Berlin ist eine große Stadt.</div><div class="ru">Берлин — большой город.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. klein -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">klein</div>
+        <div class="pron">[клайн]</div>
+        <div class="label">Степени сравнения</div>
+        <div class="stufen">
+          Positiv: <span>klein</span><br>
+          Komparativ: <span>kleiner</span><br>
+          Superlativ: <span>am kleinsten</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">маленький</div>
+        <div class="antonym">антоним: <strong>groß</strong></div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Meine Wohnung ist klein.</div><div class="ru">Моя квартира маленькая.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. neu -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">neu</div>
+        <div class="pron">[ной]</div>
+        <div class="label">Степени сравнения</div>
+        <div class="stufen">
+          Positiv: <span>neu</span><br>
+          Komparativ: <span>neuer</span><br>
+          Superlativ: <span>am neuesten</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">новый</div>
+        <div class="antonym">антоним: <strong>alt</strong></div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich habe ein neues Auto.</div><div class="ru">У меня новая машина.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. alt -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">alt</div>
+        <div class="pron">[альт]</div>
+        <div class="label">Степени сравнения</div>
+        <div class="stufen">
+          Positiv: <span>alt</span><br>
+          Komparativ: <span>älter</span><br>
+          Superlativ: <span>am ältesten</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">старый</div>
+        <div class="antonym">антоним: <strong>neu</strong> / <strong>jung</strong></div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Mein Handy ist alt.</div><div class="ru">Мой телефон старый.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. jung -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">jung</div>
+        <div class="pron">[юнг]</div>
+        <div class="label">Степени сравнения</div>
+        <div class="stufen">
+          Positiv: <span>jung</span><br>
+          Komparativ: <span>jünger</span><br>
+          Superlativ: <span>am jüngsten</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">молодой</div>
+        <div class="antonym">антоним: <strong>alt</strong></div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Sie ist noch sehr jung.</div><div class="ru">Она ещё очень молодая.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. schön -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">schön</div>
+        <div class="pron">[шён]</div>
+        <div class="label">Степени сравнения</div>
+        <div class="stufen">
+          Positiv: <span>schön</span><br>
+          Komparativ: <span>schöner</span><br>
+          Superlativ: <span>am schönsten</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">красивый</div>
+        <div class="antonym">антоним: <strong>hässlich</strong></div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Das ist ein schönes Bild.</div><div class="ru">Это красивая картина.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9. teuer -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">teuer</div>
+        <div class="pron">[тойэр]</div>
+        <div class="label">Степени сравнения</div>
+        <div class="stufen">
+          Positiv: <span>teuer</span><br>
+          Komparativ: <span>teurer</span><br>
+          Superlativ: <span>am teuersten</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">дорогой</div>
+        <div class="antonym">антоним: <strong>billig / günstig</strong></div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Das Auto ist zu teuer.</div><div class="ru">Машина слишком дорогая.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10. billig -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">billig</div>
+        <div class="pron">[билихь]</div>
+        <div class="label">Степени сравнения</div>
+        <div class="stufen">
+          Positiv: <span>billig</span><br>
+          Komparativ: <span>billiger</span><br>
+          Superlativ: <span>am billigsten</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">дешёвый</div>
+        <div class="antonym">антоним: <strong>teuer</strong></div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Das Brot ist billig.</div><div class="ru">Хлеб дешёвый.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 11. schnell -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">schnell</div>
+        <div class="pron">[шнэль]</div>
+        <div class="label">Степени сравнения</div>
+        <div class="stufen">
+          Positiv: <span>schnell</span><br>
+          Komparativ: <span>schneller</span><br>
+          Superlativ: <span>am schnellsten</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">быстрый</div>
+        <div class="antonym">антоним: <strong>langsam</strong></div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Der Zug ist sehr schnell.</div><div class="ru">Поезд очень быстрый.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 12. langsam -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">langsam</div>
+        <div class="pron">[лангзам]</div>
+        <div class="label">Степени сравнения</div>
+        <div class="stufen">
+          Positiv: <span>langsam</span><br>
+          Komparativ: <span>langsamer</span><br>
+          Superlativ: <span>am langsamsten</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">медленный</div>
+        <div class="antonym">антоним: <strong>schnell</strong></div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Sprich bitte langsam!</div><div class="ru">Говори, пожалуйста, медленно!</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 13. warm -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">warm</div>
+        <div class="pron">[варм]</div>
+        <div class="label">Степени сравнения</div>
+        <div class="stufen">
+          Positiv: <span>warm</span><br>
+          Komparativ: <span>wärmer</span><br>
+          Superlativ: <span>am wärmsten</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">тёплый</div>
+        <div class="antonym">антоним: <strong>kalt</strong></div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Heute ist es warm.</div><div class="ru">Сегодня тепло.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 14. kalt -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">kalt</div>
+        <div class="pron">[кальт]</div>
+        <div class="label">Степени сравнения</div>
+        <div class="stufen">
+          Positiv: <span>kalt</span><br>
+          Komparativ: <span>kälter</span><br>
+          Superlativ: <span>am kältesten</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">холодный</div>
+        <div class="antonym">антоним: <strong>warm</strong></div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Im Winter ist es kalt.</div><div class="ru">Зимой холодно.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 15. leicht -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">leicht</div>
+        <div class="pron">[ляйхьт]</div>
+        <div class="label">Степени сравнения</div>
+        <div class="stufen">
+          Positiv: <span>leicht</span><br>
+          Komparativ: <span>leichter</span><br>
+          Superlativ: <span>am leichtesten</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">лёгкий (по весу; простой)</div>
+        <div class="antonym">антоним: <strong>schwer</strong></div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Die Tasche ist leicht.</div><div class="ru">Сумка лёгкая.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 16. schwer -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">schwer</div>
+        <div class="pron">[швэр]</div>
+        <div class="label">Степени сравнения</div>
+        <div class="stufen">
+          Positiv: <span>schwer</span><br>
+          Komparativ: <span>schwerer</span><br>
+          Superlativ: <span>am schwersten</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">тяжёлый; сложный</div>
+        <div class="antonym">антоним: <strong>leicht</strong></div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Deutsch ist nicht schwer.</div><div class="ru">Немецкий не сложный.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 17. glücklich -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">glücklich</div>
+        <div class="pron">[глюклихь]</div>
+        <div class="label">Степени сравнения</div>
+        <div class="stufen">
+          Positiv: <span>glücklich</span><br>
+          Komparativ: <span>glücklicher</span><br>
+          Superlativ: <span>am glücklichsten</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">счастливый</div>
+        <div class="antonym">антоним: <strong>traurig</strong></div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich bin sehr glücklich.</div><div class="ru">Я очень счастлив.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 18. traurig -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">traurig</div>
+        <div class="pron">[траурихь]</div>
+        <div class="label">Степени сравнения</div>
+        <div class="stufen">
+          Positiv: <span>traurig</span><br>
+          Komparativ: <span>trauriger</span><br>
+          Superlativ: <span>am traurigsten</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">грустный</div>
+        <div class="antonym">антоним: <strong>glücklich</strong></div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Warum bist du traurig?</div><div class="ru">Почему ты грустный?</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 19. müde -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">müde</div>
+        <div class="pron">[мюдэ]</div>
+        <div class="label">Степени сравнения</div>
+        <div class="stufen">
+          Positiv: <span>müde</span><br>
+          Komparativ: <span>müder</span><br>
+          Superlativ: <span>am müdesten</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">усталый</div>
+        <div class="antonym">антоним: <strong>fit / munter</strong></div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich bin heute sehr müde.</div><div class="ru">Я сегодня очень устал.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 20. krank -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">krank</div>
+        <div class="pron">[кранк]</div>
+        <div class="label">Степени сравнения</div>
+        <div class="stufen">
+          Positiv: <span>krank</span><br>
+          Komparativ: <span>kränker</span><br>
+          Superlativ: <span>am kränksten</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">больной</div>
+        <div class="antonym">антоним: <strong>gesund</strong></div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Mein Sohn ist krank.</div><div class="ru">Мой сын болен.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 21. gesund -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">gesund</div>
+        <div class="pron">[гэзунт]</div>
+        <div class="label">Степени сравнения</div>
+        <div class="stufen">
+          Positiv: <span>gesund</span><br>
+          Komparativ: <span>gesünder</span><br>
+          Superlativ: <span>am gesündesten</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">здоровый</div>
+        <div class="antonym">антоним: <strong>krank</strong></div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Obst ist gesund.</div><div class="ru">Фрукты полезны для здоровья.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 22. lecker -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">lecker</div>
+        <div class="pron">[лекэр]</div>
+        <div class="label">Степени сравнения</div>
+        <div class="stufen">
+          Positiv: <span>lecker</span><br>
+          Komparativ: <span>leckerer</span><br>
+          Superlativ: <span>am leckersten</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">вкусный</div>
+        <div class="antonym">—</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Der Kuchen ist sehr lecker.</div><div class="ru">Пирог очень вкусный.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 23. nett -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">nett</div>
+        <div class="pron">[нэт]</div>
+        <div class="label">Степени сравнения</div>
+        <div class="stufen">
+          Positiv: <span>nett</span><br>
+          Komparativ: <span>netter</span><br>
+          Superlativ: <span>am nettesten</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">милый, приятный</div>
+        <div class="antonym">антоним: <strong>unfreundlich</strong></div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Sie ist sehr nett.</div><div class="ru">Она очень милая.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 24. freundlich -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">freundlich</div>
+        <div class="pron">[фройнтлихь]</div>
+        <div class="label">Степени сравнения</div>
+        <div class="stufen">
+          Positiv: <span>freundlich</span><br>
+          Komparativ: <span>freundlicher</span><br>
+          Superlativ: <span>am freundlichsten</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">дружелюбный, приветливый</div>
+        <div class="antonym">антоним: <strong>unfreundlich</strong></div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Der Verkäufer ist freundlich.</div><div class="ru">Продавец приветливый.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 25. wichtig -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">wichtig</div>
+        <div class="pron">[вихьтихь]</div>
+        <div class="label">Степени сравнения</div>
+        <div class="stufen">
+          Positiv: <span>wichtig</span><br>
+          Komparativ: <span>wichtiger</span><br>
+          Superlativ: <span>am wichtigsten</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">важный</div>
+        <div class="antonym">антоним: <strong>unwichtig</strong></div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Das ist sehr wichtig.</div><div class="ru">Это очень важно.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 26. richtig -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">richtig</div>
+        <div class="pron">[рихьтихь]</div>
+        <div class="label">Степени сравнения</div>
+        <div class="stufen">
+          Positiv: <span>richtig</span><br>
+          Komparativ: <span>richtiger</span><br>
+          Superlativ: <span>am richtigsten</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">правильный</div>
+        <div class="antonym">антоним: <strong>falsch</strong></div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Die Antwort ist richtig.</div><div class="ru">Ответ правильный.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 27. falsch -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">falsch</div>
+        <div class="pron">[фальш]</div>
+        <div class="label">Степени сравнения</div>
+        <div class="stufen">
+          Positiv: <span>falsch</span><br>
+          Komparativ: <span>falscher</span><br>
+          Superlativ: <span>am falschesten</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">неправильный</div>
+        <div class="antonym">антоним: <strong>richtig</strong></div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Das ist die falsche Adresse.</div><div class="ru">Это неправильный адрес.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 28. frei -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">frei</div>
+        <div class="pron">[фрай]</div>
+        <div class="label">Степени сравнения</div>
+        <div class="stufen">
+          Positiv: <span>frei</span><br>
+          Komparativ: <span>freier</span><br>
+          Superlativ: <span>am freiesten</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">свободный</div>
+        <div class="antonym">антоним: <strong>besetzt</strong></div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ist dieser Platz frei?</div><div class="ru">Это место свободно?</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 29. voll -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">voll</div>
+        <div class="pron">[фоль]</div>
+        <div class="label">Степени сравнения</div>
+        <div class="stufen">
+          Positiv: <span>voll</span><br>
+          Komparativ: <span>voller</span><br>
+          Superlativ: <span>am vollsten</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">полный</div>
+        <div class="antonym">антоним: <strong>leer</strong></div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Der Bus ist voll.</div><div class="ru">Автобус полный.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 30. leer -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">leer</div>
+        <div class="pron">[лэр]</div>
+        <div class="label">Степени сравнения</div>
+        <div class="stufen">
+          Positiv: <span>leer</span><br>
+          Komparativ: <span>leerer</span><br>
+          Superlativ: <span>am leersten</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">пустой</div>
+        <div class="antonym">антоним: <strong>voll</strong></div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Die Flasche ist leer.</div><div class="ru">Бутылка пустая.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 31. sauber -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">sauber</div>
+        <div class="pron">[заубэр]</div>
+        <div class="label">Степени сравнения</div>
+        <div class="stufen">
+          Positiv: <span>sauber</span><br>
+          Komparativ: <span>sauberer</span><br>
+          Superlativ: <span>am saubersten</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">чистый</div>
+        <div class="antonym">антоним: <strong>schmutzig</strong></div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Die Küche ist sauber.</div><div class="ru">Кухня чистая.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 32. schmutzig -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">schmutzig</div>
+        <div class="pron">[шмуцихь]</div>
+        <div class="label">Степени сравнения</div>
+        <div class="stufen">
+          Positiv: <span>schmutzig</span><br>
+          Komparativ: <span>schmutziger</span><br>
+          Superlativ: <span>am schmutzigsten</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">грязный</div>
+        <div class="antonym">антоним: <strong>sauber</strong></div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Meine Schuhe sind schmutzig.</div><div class="ru">Мои ботинки грязные.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 33. einfach -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">einfach</div>
+        <div class="pron">[айнфах]</div>
+        <div class="label">Степени сравнения</div>
+        <div class="stufen">
+          Positiv: <span>einfach</span><br>
+          Komparativ: <span>einfacher</span><br>
+          Superlativ: <span>am einfachsten</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">простой, легко</div>
+        <div class="antonym">антоним: <strong>schwer / kompliziert</strong></div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Die Aufgabe ist einfach.</div><div class="ru">Задание простое.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 34. interessant -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">interessant</div>
+        <div class="pron">[интэрэсант]</div>
+        <div class="label">Степени сравнения</div>
+        <div class="stufen">
+          Positiv: <span>interessant</span><br>
+          Komparativ: <span>interessanter</span><br>
+          Superlativ: <span>am interessantesten</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">интересный</div>
+        <div class="antonym">антоним: <strong>langweilig</strong></div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Das Buch ist interessant.</div><div class="ru">Книга интересная.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 35. langweilig -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">langweilig</div>
+        <div class="pron">[лангвайлихь]</div>
+        <div class="label">Степени сравнения</div>
+        <div class="stufen">
+          Positiv: <span>langweilig</span><br>
+          Komparativ: <span>langweiliger</span><br>
+          Superlativ: <span>am langweiligsten</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">скучный</div>
+        <div class="antonym">антоним: <strong>interessant</strong></div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Der Film war langweilig.</div><div class="ru">Фильм был скучный.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 36. schwierig -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">schwierig</div>
+        <div class="pron">[швирихь]</div>
+        <div class="label">Степени сравнения</div>
+        <div class="stufen">
+          Positiv: <span>schwierig</span><br>
+          Komparativ: <span>schwieriger</span><br>
+          Superlativ: <span>am schwierigsten</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">трудный, сложный</div>
+        <div class="antonym">антоним: <strong>einfach</strong></div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Die Grammatik ist schwierig.</div><div class="ru">Грамматика сложная.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 37. ruhig -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">ruhig</div>
+        <div class="pron">[руихь]</div>
+        <div class="label">Степени сравнения</div>
+        <div class="stufen">
+          Positiv: <span>ruhig</span><br>
+          Komparativ: <span>ruhiger</span><br>
+          Superlativ: <span>am ruhigsten</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">спокойный, тихий</div>
+        <div class="antonym">антоним: <strong>laut</strong></div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Die Straße ist sehr ruhig.</div><div class="ru">Улица очень тихая.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 38. laut -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">laut</div>
+        <div class="pron">[лаут]</div>
+        <div class="label">Степени сравнения</div>
+        <div class="stufen">
+          Positiv: <span>laut</span><br>
+          Komparativ: <span>lauter</span><br>
+          Superlativ: <span>am lautesten</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">громкий</div>
+        <div class="antonym">антоним: <strong>leise / ruhig</strong></div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Die Musik ist zu laut.</div><div class="ru">Музыка слишком громкая.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 39. leise -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">leise</div>
+        <div class="pron">[ляйзэ]</div>
+        <div class="label">Степени сравнения</div>
+        <div class="stufen">
+          Positiv: <span>leise</span><br>
+          Komparativ: <span>leiser</span><br>
+          Superlativ: <span>am leisesten</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">тихий</div>
+        <div class="antonym">антоним: <strong>laut</strong></div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Sprich bitte leise!</div><div class="ru">Говори, пожалуйста, тихо!</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 40. schön (для людей - приятно) -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">reich</div>
+        <div class="pron">[райхь]</div>
+        <div class="label">Степени сравнения</div>
+        <div class="stufen">
+          Positiv: <span>reich</span><br>
+          Komparativ: <span>reicher</span><br>
+          Superlativ: <span>am reichsten</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">богатый</div>
+        <div class="antonym">антоним: <strong>arm</strong></div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Er ist sehr reich.</div><div class="ru">Он очень богатый.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 41. arm -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">arm</div>
+        <div class="pron">[арм]</div>
+        <div class="label">Степени сравнения</div>
+        <div class="stufen">
+          Positiv: <span>arm</span><br>
+          Komparativ: <span>ärmer</span><br>
+          Superlativ: <span>am ärmsten</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">бедный</div>
+        <div class="antonym">антоним: <strong>reich</strong></div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Das Land ist arm.</div><div class="ru">Страна бедная.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 42. modern -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word">modern</div>
+        <div class="pron">[модэрн]</div>
+        <div class="label">Степени сравнения</div>
+        <div class="stufen">
+          Positiv: <span>modern</span><br>
+          Komparativ: <span>moderner</span><br>
+          Superlativ: <span>am modernsten</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">современный</div>
+        <div class="antonym">антоним: <strong>altmodisch</strong></div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Die Wohnung ist modern.</div><div class="ru">Квартира современная.</div></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

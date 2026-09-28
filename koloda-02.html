@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Колода 2 — Дом, квартира, мебель (A1)</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: linear-gradient(135deg, #b24592, #f15f79);
+    min-height: 100vh;
+    padding: 40px 20px;
+    color: #333;
+  }
+
+  h1 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 8px;
+    font-size: 1.9rem;
+  }
+
+  .subtitle {
+    text-align: center;
+    color: #ffe0e8;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+  }
+
+  .counter {
+    text-align: center;
+    color: #ffc4d0;
+    margin-bottom: 35px;
+    font-size: 0.85rem;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  .card {
+    perspective: 1200px;
+    height: 300px;
+    cursor: pointer;
+  }
+
+  .card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.7s;
+    transform-style: preserve-3d;
+  }
+
+  .card.flipped .card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    overflow-y: auto;
+  }
+
+  .front {
+    background: #ffffff;
+    border-top: 6px solid #f15f79;
+  }
+
+  .front .word {
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: #8c1f4a;
+    text-align: center;
+    margin-bottom: 4px;
+    line-height: 1.2;
+  }
+
+  .front .word .art {
+    color: #f15f79;
+    font-weight: 500;
+  }
+
+  .front .plural {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #c96a86;
+    margin-bottom: 10px;
+    font-style: italic;
+  }
+
+  .front .pron {
+    text-align: center;
+    color: #d97706;
+    font-style: italic;
+    font-size: 1rem;
+    margin-bottom: 12px;
+  }
+
+  .front .hint {
+    text-align: center;
+    font-size: 0.7rem;
+    color: #bbb;
+    margin-top: auto;
+    padding-top: 10px;
+    border-top: 1px dashed #eee;
+  }
+
+  .back {
+    background: linear-gradient(160deg, #8c1f4a, #b24592);
+    color: #fff;
+    transform: rotateY(180deg);
+    border-top: 6px solid #f15f79;
+    justify-content: center;
+  }
+
+  .back .translation {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 16px;
+    color: #ffd166;
+  }
+
+  .back .label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #ffc4d0;
+    margin-bottom: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 4px;
+  }
+
+  .back .example {
+    font-size: 0.93rem;
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+
+  .back .example .de { font-weight: 600; color: #fff; }
+  .back .example .ru { color: #ffc4d0; font-size: 0.85rem; }
+
+  @media (max-width: 480px) {
+    .card { height: 320px; }
+    h1 { font-size: 1.35rem; }
+    .front .word { font-size: 1.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<h1>🏠 Колода 2 — Дом, квартира, мебель</h1>
+<p class="subtitle">Уровень A1 · Нажми на карточку, чтобы перевернуть 🔄</p>
+<p class="counter">32 карточки</p>
+
+<div class="grid">
+
+  <!-- 1 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">das</span> Haus</div>
+        <div class="plural">die Häuser</div>
+        <div class="pron">[хаус]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">дом</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Das Haus ist sehr groß.</div><div class="ru">Дом очень большой.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Wohnung</div>
+        <div class="plural">die Wohnungen</div>
+        <div class="pron">[вонунг]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">квартира</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Meine Wohnung ist klein.</div><div class="ru">Моя квартира маленькая.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">das</span> Zimmer</div>
+        <div class="plural">die Zimmer</div>
+        <div class="pron">[цимэр]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">комната</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Das Zimmer ist hell.</div><div class="ru">Комната светлая.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Küche</div>
+        <div class="plural">die Küchen</div>
+        <div class="pron">[кюхэ]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">кухня</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich koche in der Küche.</div><div class="ru">Я готовлю на кухне.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">das</span> Bad</div>
+        <div class="plural">die Bäder</div>
+        <div class="pron">[бат]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">ванная</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Das Bad ist neu.</div><div class="ru">Ванная новая.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">das</span> Schlafzimmer</div>
+        <div class="plural">die Schlafzimmer</div>
+        <div class="pron">[шлафцимэр]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">спальня</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Das Schlafzimmer ist oben.</div><div class="ru">Спальня наверху.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">das</span> Wohnzimmer</div>
+        <div class="plural">die Wohnzimmer</div>
+        <div class="pron">[вонцимэр]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">гостиная</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Wir sitzen im Wohnzimmer.</div><div class="ru">Мы сидим в гостиной.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Balkon</div>
+        <div class="plural">die Balkone</div>
+        <div class="pron">[балькон]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">балкон</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Der Balkon ist im Süden.</div><div class="ru">Балкон на южной стороне.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Garten</div>
+        <div class="plural">die Gärten</div>
+        <div class="pron">[гартэн]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">сад</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Der Garten ist hinter dem Haus.</div><div class="ru">Сад за домом.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Tür</div>
+        <div class="plural">die Türen</div>
+        <div class="pron">[тюр]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">дверь</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Mach bitte die Tür zu!</div><div class="ru">Закрой, пожалуйста, дверь!</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 11 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">das</span> Fenster</div>
+        <div class="plural">die Fenster</div>
+        <div class="pron">[фэнстэр]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">окно</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Das Fenster ist offen.</div><div class="ru">Окно открыто.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 12 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Tisch</div>
+        <div class="plural">die Tische</div>
+        <div class="pron">[тиш]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">стол</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Das Buch liegt auf dem Tisch.</div><div class="ru">Книга лежит на столе.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 13 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Stuhl</div>
+        <div class="plural">die Stühle</div>
+        <div class="pron">[штуль]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">стул</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Der Stuhl ist bequem.</div><div class="ru">Стул удобный.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 14 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">das</span> Sofa</div>
+        <div class="plural">die Sofas</div>
+        <div class="pron">[зофа]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">диван</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich sitze auf dem Sofa.</div><div class="ru">Я сижу на диване.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 15 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">das</span> Bett</div>
+        <div class="plural">die Betten</div>
+        <div class="pron">[бэт]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">кровать</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich schlafe im Bett.</div><div class="ru">Я сплю в кровати.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 16 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Schrank</div>
+        <div class="plural">die Schränke</div>
+        <div class="pron">[шранк]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">шкаф</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Die Kleidung ist im Schrank.</div><div class="ru">Одежда в шкафу.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 17 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">das</span> Regal</div>
+        <div class="plural">die Regale</div>
+        <div class="pron">[рэгаль]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">полка</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Die Bücher stehen im Regal.</div><div class="ru">Книги стоят на полке.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 18 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Lampe</div>
+        <div class="plural">die Lampen</div>
+        <div class="pron">[лампа]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">лампа</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Die Lampe ist kaputt.</div><div class="ru">Лампа сломана.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 19 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Teppich</div>
+        <div class="plural">die Teppiche</div>
+        <div class="pron">[тэпихь]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">ковёр</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Der Teppich ist blau.</div><div class="ru">Ковёр синий.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 20 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">das</span> Bild</div>
+        <div class="plural">die Bilder</div>
+        <div class="pron">[бильт]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">картина</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Das Bild hängt an der Wand.</div><div class="ru">Картина висит на стене.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 21 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Wand</div>
+        <div class="plural">die Wände</div>
+        <div class="pron">[вант]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">стена</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Die Wand ist weiß.</div><div class="ru">Стена белая.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 22 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Boden</div>
+        <div class="plural">die Böden</div>
+        <div class="pron">[бодэн]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">пол</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Der Boden ist aus Holz.</div><div class="ru">Пол деревянный.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 23 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Decke</div>
+        <div class="plural">die Decken</div>
+        <div class="pron">[дэкэ]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">потолок; одеяло</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Die Decke ist hoch.</div><div class="ru">Потолок высокий.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 24 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Kühlschrank</div>
+        <div class="plural">die Kühlschränke</div>
+        <div class="pron">[кюльшранк]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">холодильник</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Das Essen ist im Kühlschrank.</div><div class="ru">Еда в холодильнике.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 25 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Herd</div>
+        <div class="plural">die Herde</div>
+        <div class="pron">[хэрт]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">плита</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Der Herd ist in der Küche.</div><div class="ru">Плита на кухне.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 26 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Dusche</div>
+        <div class="plural">die Duschen</div>
+        <div class="pron">[душэ]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">душ</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich gehe unter die Dusche.</div><div class="ru">Я иду в душ.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 27 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Badewanne</div>
+        <div class="plural">die Badewannen</div>
+        <div class="pron">[бадэванэ]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">ванна</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Die Badewanne ist groß.</div><div class="ru">Ванна большая.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 28 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Treppe</div>
+        <div class="plural">die Treppen</div>
+        <div class="pron">[трэпэ]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">лестница</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich gehe die Treppe hinauf.</div><div class="ru">Я поднимаюсь по лестнице.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 29 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Aufzug</div>
+        <div class="plural">die Aufzüge</div>
+        <div class="pron">[ауфцук]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">лифт</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Der Aufzug ist kaputt.</div><div class="ru">Лифт сломан.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 30 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Keller</div>
+        <div class="plural">die Keller</div>
+        <div class="pron">[келлер]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">подвал</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Die Fahrräder stehen im Keller.</div><div class="ru">Велосипеды стоят в подвале.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 31 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Stock</div>
+        <div class="plural">die Stockwerke</div>
+        <div class="pron">[шток]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">этаж</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Wir wohnen im dritten Stock.</div><div class="ru">Мы живём на четвёртом этаже.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 32 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Schlüssel</div>
+        <div class="plural">die Schlüssel</div>
+        <div class="pron">[шлюсэль]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">ключ</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Wo ist mein Schlüssel?</div><div class="ru">Где мой ключ?</div></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

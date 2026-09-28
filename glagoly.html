@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Немецкие глаголы A1 — карточки (44 шт.)</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    min-height: 100vh;
+    padding: 40px 20px;
+    color: #333;
+  }
+
+  h1 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 10px;
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    text-align: center;
+    color: #cfe0ff;
+    margin-bottom: 40px;
+    font-size: 1rem;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 22px;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  .card {
+    perspective: 1200px;
+    height: 360px;
+    cursor: pointer;
+  }
+
+  .card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.7s;
+    transform-style: preserve-3d;
+  }
+
+  .card.flipped .card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    overflow-y: auto;
+  }
+
+  .front {
+    background: #ffffff;
+    border-top: 6px solid #ffb703;
+  }
+
+  .front .verb {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #1e3c72;
+    text-align: center;
+    margin-bottom: 4px;
+  }
+
+  .front .pron {
+    text-align: center;
+    color: #d97706;
+    font-style: italic;
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+  }
+
+  .front .label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #888;
+    margin-bottom: 6px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 3px;
+  }
+
+  .conj {
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: #333;
+  }
+
+  .conj span {
+    color: #1e3c72;
+    font-weight: 600;
+  }
+
+  .back {
+    background: linear-gradient(160deg, #2a5298, #1e3c72);
+    color: #fff;
+    transform: rotateY(180deg);
+    border-top: 6px solid #ffb703;
+    justify-content: center;
+  }
+
+  .back .translation {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 16px;
+    color: #ffd166;
+  }
+
+  .back .label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #9fb8e8;
+    margin-bottom: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 4px;
+  }
+
+  .back .example {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+
+  .back .example .de {
+    font-weight: 600;
+    color: #fff;
+  }
+
+  .back .example .ru {
+    color: #bcd0f7;
+    font-size: 0.88rem;
+  }
+
+  .hint {
+    text-align: center;
+    font-size: 0.7rem;
+    color: #aaa;
+    margin-top: auto;
+    padding-top: 8px;
+  }
+
+  .back .hint { color: #7f9fd4; }
+
+  @media (max-width: 480px) {
+    .card { height: 400px; }
+    h1 { font-size: 1.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<h1>🇩🇪 Немецкие глаголы — уровень A1</h1>
+<p class="subtitle">44 карточки · Нажми на карточку, чтобы перевернуть 🔄</p>
+
+<div class="grid">
+
+  <!-- 1. sein -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="verb">sein</div>
+        <div class="pron">[зайн]</div>
+        <div class="label">Präsens</div>
+        <div class="conj">
+          ich <span>bin</span><br>du <span>bist</span><br>er/sie/es <span>ist</span><br>
+          wir <span>sind</span><br>ihr <span>seid</span><br>sie/Sie <span>sind</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">быть</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich bin Student.</div><div class="ru">Я студент.</div></div>
+        <div class="example"><div class="de">Wo bist du?</div><div class="ru">Где ты?</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. haben -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="verb">haben</div>
+        <div class="pron">[хабэн]</div>
+        <div class="label">Präsens</div>
+        <div class="conj">
+          ich <span>habe</span><br>du <span>hast</span><br>er/sie/es <span>hat</span><br>
+          wir <span>haben</span><br>ihr <span>habt</span><br>sie/Sie <span>haben</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">иметь</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich habe einen Hund.</div><div class="ru">У меня есть собака.</div></div>
+        <div class="example"><div class="de">Hast du Zeit?</div><div class="ru">У тебя есть время?</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. werden -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="verb">werden</div>
+        <div class="pron">[вэрдэн]</div>
+        <div class="label">Präsens</div>
+        <div class="conj">
+          ich <span>werde</span><br>du <span>wirst</span><br>er/sie/es <span>wird</span><br>
+          wir <span>werden</span><br>ihr <span>werdet</span><br>sie/Sie <span>werden</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">становиться</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich werde Arzt.</div><div class="ru">Я становлюсь врачом.</div></div>
+        <div class="example"><div class="de">Es wird kalt.</div><div class="ru">Становится холодно.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. können -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="verb">können</div>
+        <div class="pron">[кёнэн]</div>
+        <div class="label">Präsens (модальный)</div>
+        <div class="conj">
+          ich <span>kann</span><br>du <span>kannst</span><br>er/sie/es <span>kann</span><br>
+          wir <span>können</span><br>ihr <span>könnt</span><br>sie/Sie <span>können</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">мочь / уметь</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich kann Deutsch sprechen.</div><div class="ru">Я умею говорить по-немецки.</div></div>
+        <div class="example"><div class="de">Kannst du mir helfen?</div><div class="ru">Ты можешь мне помочь?</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. müssen -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="verb">müssen</div>
+        <div class="pron">[мюсэн]</div>
+        <div class="label">Präsens (модальный)</div>
+        <div class="conj">
+          ich <span>muss</span><br>du <span>musst</span><br>er/sie/es <span>muss</span><br>
+          wir <span>müssen</span><br>ihr <span>müsst</span><br>sie/Sie <span>müssen</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">быть должным</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich muss arbeiten.</div><div class="ru">Я должен работать.</div></div>
+        <div class="example"><div class="de">Musst du gehen?</div><div class="ru">Ты должен идти?</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. wollen -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="verb">wollen</div>
+        <div class="pron">[волен]</div>
+        <div class="label">Präsens (модальный)</div>
+        <div class="conj">
+          ich <span>will</span><br>du <span>willst</span><br>er/sie/es <span>will</span><br>
+          wir <span>wollen</span><br>ihr <span>wollt</span><br>sie/Sie <span>wollen</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">хотеть</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich will nach Hause.</div><div class="ru">Я хочу домой.</div></div>
+        <div class="example"><div class="de">Willst du kommen?</div><div class="ru">Ты хочешь прийти?</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. sollen -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="verb">sollen</div>
+        <div class="pron">[золен]</div>
+        <div class="label">Präsens (модальный)</div>
+        <div class="conj">
+          ich <span>soll</span><br>du <span>sollst</span><br>er/sie/es <span>soll</span><br>
+          wir <span>sollen</span><br>ihr <span>sollt</span><br>sie/Sie <span>sollen</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">быть должным (по совету)</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Du sollst mehr schlafen.</div><div class="ru">Тебе следует больше спать.</div></div>
+        <div class="example"><div class="de">Was soll ich machen?</div><div class="ru">Что мне делать?</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. dürfen -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="verb">dürfen</div>
+        <div class="pron">[дюрфэн]</div>
+        <div class="label">Präsens (модальный)</div>
+        <div class="conj">
+          ich <span>darf</span><br>du <span>darfst</span><br>er/sie/es <span>darf</span><br>
+          wir <span>dürfen</span><br>ihr <span>dürft</span><br>sie/Sie <span>dürfen</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">иметь разрешение / мочь</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Darf ich hereinkommen?</div><div class="ru">Можно войти?</div></div>
+        <div class="example"><div class="de">Hier darf man nicht rauchen.</div><div class="ru">Здесь нельзя курить.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9. mögen -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="verb">mögen</div>
+        <div class="pron">[мёгэн]</div>
+        <div class="label">Präsens (модальный)</div>
+        <div class="conj">
+          ich <span>mag</span><br>du <span>magst</span><br>er/sie/es <span>mag</span><br>
+          wir <span>mögen</span><br>ihr <span>mögt</span><br>sie/Sie <span>mögen</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">любить / нравиться</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich mag Schokolade.</div><div class="ru">Я люблю шоколад.</div></div>
+        <div class="example"><div class="de">Magst du Kaffee?</div><div class="ru">Ты любишь кофе?</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10. möchten -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="verb">möchten</div>
+        <div class="pron">[мёхьтэн]</div>
+        <div class="label">Präsens (вежливое «хотел бы»)</div>
+        <div class="conj">
+          ich <span>möchte</span><br>du <span>möchtest</span><br>er/sie/es <span>möchte</span><br>
+          wir <span>möchten</span><br>ihr <span>möchtet</span><br>sie/Sie <span>möchten</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">хотел бы</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich möchte einen Kaffee.</div><div class="ru">Я хотел бы кофе.</div></div>
+        <div class="example"><div class="de">Möchtest du mitkommen?</div><div class="ru">Ты хотел бы пойти со мной?</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 11. gehen -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="verb">gehen</div>
+        <div class="pron">[гэен]</div>
+        <div class="label">Präsens</div>
+        <div class="conj">
+          ich <span>gehe</span><br>du <span>gehst</span><br>er/sie/es <span>geht</span><br>
+          wir <span>gehen</span><br>ihr <span>geht</span><br>sie/Sie <span>gehen</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">идти / ходить</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich gehe nach Hause.</div><div class="ru">Я иду домой.</div></div>
+        <div class="example"><div class="de">Wir gehen ins Kino.</div><div class="ru">Мы идём в кино.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 12. kommen -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="verb">kommen</div>
+        <div class="pron">[комэн]</div>
+        <div class="label">Präsens</div>
+        <div class="conj">
+          ich <span>komme</span><br>du <span>kommst</span><br>er/sie/es <span>kommt</span><br>
+          wir <span>kommen</span><br>ihr <span>kommt</span><br>sie/Sie <span>kommen</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">приходить</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich komme aus Russland.</div><div class="ru">Я из России.</div></div>
+        <div class="example"><div class="de">Kommst du morgen?</div><div class="ru">Ты придёшь завтра?</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 13. machen -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="verb">machen</div>
+        <div class="pron">[махэн]</div>
+        <div class="label">Präsens</div>
+        <div class="conj">
+          ich <span>mache</span><br>du <span>machst</span><br>er/sie/es <span>macht</span><br>
+          wir <span>machen</span><br>ihr <span>macht</span><br>sie/Sie <span>machen</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">делать</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Was machst du?</div><div class="ru">Что ты делаешь?</div></div>
+        <div class="example"><div class="de">Ich mache Hausaufgaben.</div><div class="ru">Я делаю домашнее задание.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 14. sprechen -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="verb">sprechen</div>
+        <div class="pron">[шпрэхэн]</div>
+        <div class="label">Präsens</div>
+        <div class="conj">
+          ich <span>spreche</span><br>du <span>sprichst</span><br>er/sie/es <span>spricht</span><br>
+          wir <span>sprechen</span><br>ihr <span>sprecht</span><br>sie/Sie <span>sprechen</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">говорить</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich spreche Deutsch.</div><div class="ru">Я говорю по-немецки.</div></div>
+        <div class="example"><div class="de">Sprichst du Englisch?</div><div class="ru">Ты говоришь по-английски?</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 15. lesen -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="verb">lesen</div>
+        <div class="pron">[лезэн]</div>
+        <div class="label">Präsens</div>
+        <div class="conj">
+          ich <span>lese</span><br>du <span>liest</span><br>er/sie/es <span>liest</span><br>
+          wir <span>lesen</span><br>ihr <span>lest</span><br>sie/Sie <span>lesen</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">читать</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich lese ein Buch.</div><div class="ru">Я читаю книгу.</div></div>
+        <div class="example"><div class="de">Liest du gern?</div><div class="ru">Ты любишь читать?</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 16. schreiben -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="verb">schreiben</div>
+        <div class="pron">[шрайбэн]</div>
+        <div class="label">Präsens</div>
+        <div class="conj">
+          ich <span>schreibe</span><br>du <span>schreibst</span><br>er/sie/es <span>schreibt</span><br>
+          wir <span>schreiben</span><br>ihr <span>schreibt</span><br>sie/Sie <span>schreiben</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">писать</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich schreibe einen Brief.</div><div class="ru">Я пишу письмо.</div></div>
+        <div class="example"><div class="de">Schreib mir bitte!</div><div class="ru">Напиши мне, пожалуйста!</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 17. essen -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="verb">essen</div>
+        <div class="pron">[эсэн]</div>
+        <div class="label">Präsens</div>
+        <div class="conj">
+          ich <span>esse</span><br>du <span>isst</span><br>er/sie/es <span>isst</span><br>
+          wir <span>essen</span><br>ihr <span>esst</span><br>sie/Sie <span>essen</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">есть / кушать</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich esse einen Apfel.</div><div class="ru">Я ем яблоко.</div></div>
+        <div class="example"><div class="de">Was isst du zum Frühstück?</div><div class="ru">Что ты ешь на завтрак?</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 18. trinken -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="verb">trinken</div>
+        <div class="pron">[тринкэн]</div>
+        <div class="label">Präsens</div>
+        <div class="conj">
+          ich <span>trinke</span><br>du <span>trinkst</span><br>er/sie/es <span>trinkt</span><br>
+          wir <span>trinken</span><br>ihr <span>trinkt</span><br>sie/Sie <span>trinken</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">пить</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich trinke Kaffee.</div><div class="ru">Я пью кофе.</div></div>
+        <div class="example"><div class="de">Trinkst du Tee?</div><div class="ru">Ты пьёшь чай?</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 19. schlafen -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="verb">schlafen</div>
+        <div class="pron">[шлафэн]</div>
+        <div class="label">Präsens</div>
+        <div class="conj">
+          ich <span>schlafe</span><br>du <span>schläfst</span><br>er/sie/es <span>schläft</span><br>
+          wir <span>schlafen</span><br>ihr <span>schlaft</span><br>sie/Sie <span>schlafen</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">спать</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich schlafe acht Stunden.</div><div class="ru">Я сплю восемь часов.</div></div>
+        <div class="example"><div class="de">Schläfst du gut?</div><div class="ru">Ты хорошо спишь?</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 20. arbeiten -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="verb">arbeiten</div>
+        <div class="pron">[арбайтэн]</div>
+        <div class="label">Präsens</div>
+        <div class="conj">
+          ich <span>arbeite</span><br>du <span>arbeitest</span><br>er/sie/es <span>arbeitet</span><br>
+          wir <span>arbeiten</span><br>ihr <span>arbeitet</span><br>sie/Sie <span>arbeiten</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">работать</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich arbeite in Berlin.</div><div class="ru">Я работаю в Берлине.</div></div>
+        <div class="example"><div class="de">Wo arbeitest du?</div><div class="ru">Где ты работаешь?</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 21. lernen -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="verb">lernen</div>
+        <div class="pron">[лернэн]</div>
+        <div class="label">Präsens</div>
+        <div class="conj">
+          ich <span>lerne</span><br>du <span>lernst</span><br>er/sie/es <span>lernt</span><br>
+          wir <span>lernen</span><br>ihr <span>lernt</span><br>sie/Sie <span>lernen</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">учить(ся)</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich lerne Deutsch.</div><div class="ru">Я учу немецкий.</div></div>
+        <div class="example"><div class="de">Wir lernen zusammen.</div><div class="ru">Мы учимся вместе.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 22. verstehen -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="verb">verstehen</div>
+        <div class="pron">[фэрштэен]</div>
+        <div class="label">Präsens</div>
+        <div class="conj">
+          ich <span>verstehe</span><br>du <span>verstehst</span><br>er/sie/es <span>versteht</span><br>
+          wir <span>verstehen</span><br>ihr <span>versteht</span><br>sie/Sie <span>verstehen</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">понимать</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich verstehe dich.</div><div class="ru">Я тебя понимаю.</div></div>
+        <div class="example"><div class="de">Verstehst du das?</div><div class="ru">Ты это понимаешь?</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 23. fahren -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="verb">fahren</div>
+        <div class="pron">[фаарэн]</div>
+        <div class="label">Präsens</div>
+        <div class="conj">
+          ich <span>fahre</span><br>du <span>fährst</span><br>er/sie/es <span>fährt</span><br>
+          wir <span>fahren</span><br>ihr <span>fahrt</span><br>sie/Sie <span>fahren</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">ехать (на транспорте)</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich fahre nach München.</div><div class="ru">Я еду в Мюнхен.</div></div>
+        <div class="example"><div class="de">Fährst du mit dem Auto?</div><div class="ru">Ты едешь на машине?</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 24. kaufen -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="verb">kaufen</div>
+        <div class="pron">[кауфэн]</div>
+        <div class="label">Präsens</div>
+        <div class="conj">
+          ich <span>kaufe</span><br>du <span>kaufst</span><br>er/sie/es <span>kauft</span><br>
+          wir <span>kaufen</span><br>ihr <span>kauft</span><br>sie/Sie <span>kaufen</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">покупать</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich kaufe Brot.</div><div class="ru">Я покупаю хлеб.</div></div>
+        <div class="example"><div class="de">Was kaufst du?</div><div class="ru">Что ты покупаешь?</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 25. sehen -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="verb">sehen</div>
+        <div class="pron">[зэен]</div>
+        <div class="label">Präsens</div>
+        <div class="conj">
+          ich <span>sehe</span><br>du <span>siehst</span><br>er/sie/es <span>sieht</span><br>
+          wir <span>sehen</span><br>ihr <span>seht</span><br>sie/Sie <span>sehen</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">видеть</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich sehe einen Vogel.</div><div class="ru">Я вижу птицу.</div></div>
+        <div class="example"><div class="de">Siehst du das?</div><div class="ru">Ты это видишь?</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 26. hören -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="verb">hören</div>
+        <div class="pron">[хёэрэн]</div>
+        <div class="label">Präsens</div>
+        <div class="conj">
+          ich <span>höre</span><br>du <span>hörst</span><br>er/sie/es <span>hört</span><br>
+          wir <span>hören</span><br>ihr <span>hört</span><br>sie/Sie <span>hören</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">слышать / слушать</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich höre Musik.</div><div class="ru">Я слушаю музыку.</div></div>
+        <div class="example"><div class="de">Hörst du mich?</div><div class="ru">Ты меня слышишь?</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 27. wohnen -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="verb">wohnen</div>
+        <div class="pron">[воэнэн]</div>
+        <div class="label">Präsens</div>
+        <div class="conj">
+          ich <span>wohne</span><br>du <span>wohnst</span><br>er/sie/es <span>wohnt</span><br>
+          wir <span>wohnen</span><br>ihr <span>wohnt</span><br>sie/Sie <span>wohnen</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">жить (проживать)</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich wohne in Moskau.</div><div class="ru">Я живу в Москве.</div></div>
+        <div class="example"><div class="de">Wo wohnst du?</div><div class="ru">Где ты живёшь?</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 28. spielen -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="verb">spielen</div>
+        <div class="pron">[шпилен]</div>
+        <div class="label">Präsens</div>
+        <div class="conj">
+          ich <span>spiele</span><br>du <span>spielst</span><br>er/sie/es <span>spielt</span><br>
+          wir <span>spielen</span><br>ihr <span>spielt</span><br>sie/Sie <span>spielen</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">играть</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich spiele Fußball.</div><div class="ru">Я играю в футбол.</div></div>
+        <div class="example"><div class="de">Spielst du Klavier?</div><div class="ru">Ты играешь на пианино?</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 29. geben -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="verb">geben</div>
+        <div class="pron">[гебэн]</div>
+        <div class="label">Präsens</div>
+        <div class="conj">
+          ich <span>gebe</span><br>du <span>gibst</span><br>er/sie/es <span>gibt</span><br>
+          wir <span>geben</span><br>ihr <span>gebt</span><br>sie/Sie <span>geben</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">давать</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich gebe dir ein Buch.</div><div class="ru">Я даю тебе книгу.</div></div>
+        <div class="example"><div class="de">Gib mir bitte das Wasser.</div><div class="ru">Дай мне, пожалуйста, воду.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 30. nehmen -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="verb">nehmen</div>
+        <div class="pron">[немэн]</div>
+        <div class="label">Präsens</div>
+        <div class="conj">
+          ich <span>nehme</span><br>du <span>nimmst</span><br>er/sie/es <span>nimmt</span><br>
+          wir <span>nehmen</span><br>ihr <span>nehmt</span><br>sie/Sie <span>nehmen</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">брать</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich nehme den Bus.</div><div class="ru">Я еду на автобусе.</div></div>
+        <div class="example"><div class="de">Nimmst du das?</div><div class="ru">Ты это возьмёшь?</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 31. heißen -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="verb">heißen</div>
+        <div class="pron">[хайсэн]</div>
+        <div class="label">Präsens</div>
+        <div class="conj">
+          ich <span>heiße</span><br>du <span>heißt</span><br>er/sie/es <span>heißt</span><br>
+          wir <span>heißen</span><br>ihr <span>heißt</span><br>sie/Sie <span>heißen</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">зваться / называться</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich heiße Anna.</div><div class="ru">Меня зовут Анна.</div></div>
+        <div class="example"><div class="de">Wie heißt du?</div><div class="ru">Как тебя зовут?</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 32. sagen -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="verb">sagen</div>
+        <div class="pron">[загэн]</div>
+        <div class="label">Präsens</div>
+        <div class="conj">
+          ich <span>sage</span><br>du <span>sagst</span><br>er/sie/es <span>sagt</span><br>
+          wir <span>sagen</span><br>ihr <span>sagt</span><br>sie/Sie <span>sagen</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">говорить / сказать</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Was sagst du?</div><div class="ru">Что ты говоришь?</div></div>
+        <div class="example"><div class="de">Ich sage die Wahrheit.</div><div class="ru">Я говорю правду.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 33. fragen -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="verb">fragen</div>
+        <div class="pron">[фрагэн]</div>
+        <div class="label">Präsens</div>
+        <div class="conj">
+          ich <span>frage</span><br>du <span>fragst</span><br>er/sie/es <span>fragt</span><br>
+          wir <span>fragen</span><br>ihr <span>fragt</span><br>sie/Sie <span>fragen</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">спрашивать</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich frage den Lehrer.</div><div class="ru">Я спрашиваю учителя.</div></div>
+        <div class="example"><div class="de">Fragst du mich?</div><div class="ru">Ты меня спрашиваешь?</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 34. antworten -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="verb">antworten</div>
+        <div class="pron">[антвортэн]</div>
+        <div class="label">Präsens</div>
+        <div class="conj">
+          ich <span>antworte</span><br>du <span>antwortest</span><br>er/sie/es <span>antwortet</span><br>
+          wir <span>antworten</span><br>ihr <span>antwortet</span><br>sie/Sie <span>antworten</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">отвечать</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich antworte auf die Frage.</div><div class="ru">Я отвечаю на вопрос.</div></div>
+        <div class="example"><div class="de">Antworte bitte!</div><div class="ru">Ответь, пожалуйста!</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 35. brauchen -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="verb">brauchen</div>
+        <div class="pron">[браухэн]</div>
+        <div class="label">Präsens</div>
+        <div class="conj">
+          ich <span>brauche</span><br>du <span>brauchst</span><br>er/sie/es <span>braucht</span><br>
+          wir <span>brauchen</span><br>ihr <span>braucht</span><br>sie/Sie <span>brauchen</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">нуждаться</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich brauche Hilfe.</div><div class="ru">Мне нужна помощь.</div></div>
+        <div class="example"><div class="de">Brauchst du das?</div><div class="ru">Тебе это нужно?</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 36. finden -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="verb">finden</div>
+        <div class="pron">[финдэн]</div>
+        <div class="label">Präsens</div>
+        <div class="conj">
+          ich <span>finde</span><br>du <span>findest</span><br>er/sie/es <span>findet</span><br>
+          wir <span>finden</span><br>ihr <span>findet</span><br>sie/Sie <span>finden</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">находить; считать</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich finde den Schlüssel.</div><div class="ru">Я нахожу ключ.</div></div>
+        <div class="example"><div class="de">Ich finde das gut.</div><div class="ru">Я считаю это хорошим.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 37. suchen -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="verb">suchen</div>
+        <div class="pron">[зухэн]</div>
+        <div class="label">Präsens</div>
+        <div class="conj">
+          ich <span>suche</span><br>du <span>suchst</span><br>er/sie/es <span>sucht</span><br>
+          wir <span>suchen</span><br>ihr <span>sucht</span><br>sie/Sie <span>suchen</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">искать</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich suche meine Brille.</div><div class="ru">Я ищу свои очки.</div></div>
+        <div class="example"><div class="de">Was suchst du?</div><div class="ru">Что ты ищешь?</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 38. helfen -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="verb">helfen</div>
+        <div class="pron">[хельфэн]</div>
+        <div class="label">Präsens</div>
+        <div class="conj">
+          ich <span>helfe</span><br>du <span>hilfst</span><br>er/sie/es <span>hilft</span><br>
+          wir <span>helfen</span><br>ihr <span>helft</span><br>sie/Sie <span>helfen</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">помогать</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich helfe meiner Mutter.</div><div class="ru">Я помогаю маме.</div></div>
+        <div class="example"><div class="de">Kannst du mir helfen?</div><div class="ru">Ты можешь мне помочь?</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 39. bleiben -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="verb">bleiben</div>
+        <div class="pron">[бляйбэн]</div>
+        <div class="label">Präsens</div>
+        <div class="conj">
+          ich <span>bleibe</span><br>du <span>bleibst</span><br>er/sie/es <span>bleibt</span><br>
+          wir <span>bleiben</span><br>ihr <span>bleibt</span><br>sie/Sie <span>bleiben</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">оставаться</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich bleibe zu Hause.</div><div class="ru">Я остаюсь дома.</div></div>
+        <div class="example"><div class="de">Bleib hier!</div><div class="ru">Останься здесь!</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 40. aufstehen -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="verb">aufstehen</div>
+        <div class="pron">[ауфштэен]</div>
+        <div class="label">Präsens (отделяемая приставка)</div>
+        <div class="conj">
+          ich <span>stehe auf</span><br>du <span>stehst auf</span><br>er/sie/es <span>steht auf</span><br>
+          wir <span>stehen auf</span><br>ihr <span>steht auf</span><br>sie/Sie <span>stehen auf</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">вставать (с постели)</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich stehe um 7 Uhr auf.</div><div class="ru">Я встаю в 7 часов.</div></div>
+        <div class="example"><div class="de">Wann stehst du auf?</div><div class="ru">Когда ты встаёшь?</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 41. einkaufen -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="verb">einkaufen</div>
+        <div class="pron">[айнкауфэн]</div>
+        <div class="label">Präsens (отделяемая приставка)</div>
+        <div class="conj">
+          ich <span>kaufe ein</span><br>du <span>kaufst ein</span><br>er/sie/es <span>kauft ein</span><br>
+          wir <span>kaufen ein</span><br>ihr <span>kauft ein</span><br>sie/Sie <span>kaufen ein</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">делать покупки</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich kaufe im Supermarkt ein.</div><div class="ru">Я делаю покупки в супермаркете.</div></div>
+        <div class="example"><div class="de">Wann kaufst du ein?</div><div class="ru">Когда ты идёшь за покупками?</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 42. anrufen -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="verb">anrufen</div>
+        <div class="pron">[анруфэн]</div>
+        <div class="label">Präsens (отделяемая приставка)</div>
+        <div class="conj">
+          ich <span>rufe an</span><br>du <span>rufst an</span><br>er/sie/es <span>ruft an</span><br>
+          wir <span>rufen an</span><br>ihr <span>ruft an</span><br>sie/Sie <span>rufen an</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">звонить (по телефону)</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich rufe dich morgen an.</div><div class="ru">Я позвоню тебе завтра.</div></div>
+        <div class="example"><div class="de">Ruf mich bitte an!</div><div class="ru">Позвони мне, пожалуйста!</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 43. anfangen -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="verb">anfangen</div>
+        <div class="pron">[анфангэн]</div>
+        <div class="label">Präsens (отделяемая приставка)</div>
+        <div class="conj">
+          ich <span>fange an</span><br>du <span>fängst an</span><br>er/sie/es <span>fängt an</span><br>
+          wir <span>fangen an</span><br>ihr <span>fangt an</span><br>sie/Sie <span>fangen an</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">начинать</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Der Film fängt um 8 an.</div><div class="ru">Фильм начинается в 8.</div></div>
+        <div class="example"><div class="de">Wann fangen wir an?</div><div class="ru">Когда мы начинаем?</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 44. aufhören -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="verb">aufhören</div>
+        <div class="pron">[ауфхёэрэн]</div>
+        <div class="label">Präsens (отделяемая приставка)</div>
+        <div class="conj">
+          ich <span>höre auf</span><br>du <span>hörst auf</span><br>er/sie/es <span>hört auf</span><br>
+          wir <span>hören auf</span><br>ihr <span>hört auf</span><br>sie/Sie <span>hören auf</span>
+        </div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">прекращать / заканчивать</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Hör bitte auf!</div><div class="ru">Прекрати, пожалуйста!</div></div>
+        <div class="example"><div class="de">Der Regen hört nicht auf.</div><div class="ru">Дождь не прекращается.</div></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

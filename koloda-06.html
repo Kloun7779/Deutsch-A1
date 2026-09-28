@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Колода 6 — Тело, здоровье, одежда (A1)</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: linear-gradient(135deg, #c31432, #240b36);
+    min-height: 100vh;
+    padding: 40px 20px;
+    color: #333;
+  }
+
+  h1 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 8px;
+    font-size: 1.9rem;
+  }
+
+  .subtitle {
+    text-align: center;
+    color: #f5c6d0;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+  }
+
+  .counter {
+    text-align: center;
+    color: #e0a8b8;
+    margin-bottom: 35px;
+    font-size: 0.85rem;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  .card {
+    perspective: 1200px;
+    height: 300px;
+    cursor: pointer;
+  }
+
+  .card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.7s;
+    transform-style: preserve-3d;
+  }
+
+  .card.flipped .card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    overflow-y: auto;
+  }
+
+  .front {
+    background: #ffffff;
+    border-top: 6px solid #c31432;
+  }
+
+  .front .word {
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: #8c1023;
+    text-align: center;
+    margin-bottom: 4px;
+    line-height: 1.2;
+  }
+
+  .front .word .art {
+    color: #c31432;
+    font-weight: 500;
+  }
+
+  .front .plural {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #c96a7a;
+    margin-bottom: 10px;
+    font-style: italic;
+  }
+
+  .front .pron {
+    text-align: center;
+    color: #d97706;
+    font-style: italic;
+    font-size: 1rem;
+    margin-bottom: 12px;
+  }
+
+  .front .hint {
+    text-align: center;
+    font-size: 0.7rem;
+    color: #bbb;
+    margin-top: auto;
+    padding-top: 10px;
+    border-top: 1px dashed #eee;
+  }
+
+  .back {
+    background: linear-gradient(160deg, #8c1023, #240b36);
+    color: #fff;
+    transform: rotateY(180deg);
+    border-top: 6px solid #c31432;
+    justify-content: center;
+  }
+
+  .back .translation {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 16px;
+    color: #ffd166;
+  }
+
+  .back .label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #f5c6d0;
+    margin-bottom: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 4px;
+  }
+
+  .back .example {
+    font-size: 0.93rem;
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+
+  .back .example .de { font-weight: 600; color: #fff; }
+  .back .example .ru { color: #f5c6d0; font-size: 0.85rem; }
+
+  @media (max-width: 480px) {
+    .card { height: 320px; }
+    h1 { font-size: 1.35rem; }
+    .front .word { font-size: 1.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<h1>💪 Колода 6 — Тело, здоровье, одежда</h1>
+<p class="subtitle">Уровень A1 · Нажми на карточку, чтобы перевернуть 🔄</p>
+<p class="counter">34 карточки</p>
+
+<div class="grid">
+
+  <!-- 1 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Kopf</div>
+        <div class="plural">die Köpfe</div>
+        <div class="pron">[копф]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">голова</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Mein Kopf tut weh.</div><div class="ru">У меня болит голова.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">das</span> Haar</div>
+        <div class="plural">die Haare</div>
+        <div class="pron">[хар]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">волос(ы)</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Sie hat lange Haare.</div><div class="ru">У неё длинные волосы.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">das</span> Auge</div>
+        <div class="plural">die Augen</div>
+        <div class="pron">[аугэ]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">глаз</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Sie hat blaue Augen.</div><div class="ru">У неё голубые глаза.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Nase</div>
+        <div class="plural">die Nasen</div>
+        <div class="pron">[назэ]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">нос</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Meine Nase ist verstopft.</div><div class="ru">У меня заложен нос.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Mund</div>
+        <div class="plural">die Münder</div>
+        <div class="pron">[мунт]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">рот</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Mach den Mund auf!</div><div class="ru">Открой рот!</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">das</span> Ohr</div>
+        <div class="plural">die Ohren</div>
+        <div class="pron">[ор]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">ухо</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Mein Ohr tut weh.</div><div class="ru">У меня болит ухо.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Zahn</div>
+        <div class="plural">die Zähne</div>
+        <div class="pron">[цан]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">зуб</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich habe Zahnschmerzen.</div><div class="ru">У меня болит зуб.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Hals</div>
+        <div class="plural">die Hälse</div>
+        <div class="pron">[хальс]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">шея; горло</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Mein Hals tut weh.</div><div class="ru">У меня болит горло.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Arm</div>
+        <div class="plural">die Arme</div>
+        <div class="pron">[арм]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">рука (от плеча до кисти)</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Mein Arm ist gebrochen.</div><div class="ru">У меня сломана рука.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Hand</div>
+        <div class="plural">die Hände</div>
+        <div class="pron">[хант]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">кисть руки</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Wasch dir die Hände!</div><div class="ru">Помой руки!</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 11 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Finger</div>
+        <div class="plural">die Finger</div>
+        <div class="pron">[фингэр]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">палец (на руке)</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich habe mir den Finger geschnitten.</div><div class="ru">Я порезал палец.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 12 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">das</span> Bein</div>
+        <div class="plural">die Beine</div>
+        <div class="pron">[байн]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">нога (вся)</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Mein Bein tut weh.</div><div class="ru">У меня болит нога.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 13 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Fuß</div>
+        <div class="plural">die Füße</div>
+        <div class="pron">[фус]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">ступня</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Meine Füße sind kalt.</div><div class="ru">У меня холодные ноги.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 14 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Bauch</div>
+        <div class="plural">die Bäuche</div>
+        <div class="pron">[баух]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">живот</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Mein Bauch tut weh.</div><div class="ru">У меня болит живот.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 15 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Rücken</div>
+        <div class="plural">die Rücken</div>
+        <div class="pron">[рюкэн]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">спина</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Mein Rücken tut weh.</div><div class="ru">У меня болит спина.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 16 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">das</span> Herz</div>
+        <div class="plural">die Herzen</div>
+        <div class="pron">[хэрц]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">сердце</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Mein Herz ist gesund.</div><div class="ru">Моё сердце здоровое.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 17 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Schmerz</div>
+        <div class="plural">die Schmerzen</div>
+        <div class="pron">[шмэрц]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">боль</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich habe starke Schmerzen.</div><div class="ru">У меня сильная боль.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 18 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Krankheit</div>
+        <div class="plural">die Krankheiten</div>
+        <div class="pron">[кранкхайт]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">болезнь</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Er hat eine schwere Krankheit.</div><div class="ru">У него тяжёлая болезнь.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 19 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">das</span> Fieber</div>
+        <div class="plural">—</div>
+        <div class="pron">[фибэр]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">температура (жар)</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich habe Fieber.</div><div class="ru">У меня температура.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 20 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Erkältung</div>
+        <div class="plural">die Erkältungen</div>
+        <div class="pron">[эркэльтунг]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">простуда</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich habe eine Erkältung.</div><div class="ru">У меня простуда.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 21 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Tablette</div>
+        <div class="plural">die Tabletten</div>
+        <div class="pron">[таблэтэ]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">таблетка</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Nehmen Sie diese Tabletten!</div><div class="ru">Принимайте эти таблетки!</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 22 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">das</span> Rezept</div>
+        <div class="plural">die Rezepte</div>
+        <div class="pron">[рэцэпт]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">рецепт (врача; кулинарный)</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Der Arzt schreibt ein Rezept.</div><div class="ru">Врач выписывает рецепт.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 23 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Kleidung</div>
+        <div class="plural">—</div>
+        <div class="pron">[клайдунг]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">одежда</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Die Kleidung ist im Schrank.</div><div class="ru">Одежда в шкафу.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 24 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">das</span> Hemd</div>
+        <div class="plural">die Hemden</div>
+        <div class="pron">[хэмт]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">рубашка</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Das Hemd ist weiß.</div><div class="ru">Рубашка белая.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 25 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Hose</div>
+        <div class="plural">die Hosen</div>
+        <div class="pron">[хозэ]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">брюки, штаны</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Die Hose ist zu lang.</div><div class="ru">Брюки слишком длинные.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 26 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Rock</div>
+        <div class="plural">die Röcke</div>
+        <div class="pron">[рок]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">юбка</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Sie trägt einen roten Rock.</div><div class="ru">Она носит красную юбку.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 27 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Jacke</div>
+        <div class="plural">die Jacken</div>
+        <div class="pron">[якэ]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">куртка, пиджак</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Zieh die Jacke an!</div><div class="ru">Надень куртку!</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 28 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Mantel</div>
+        <div class="plural">die Mäntel</div>
+        <div class="pron">[мантэль]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">пальто</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Im Winter trage ich einen Mantel.</div><div class="ru">Зимой я ношу пальто.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 29 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">das</span> Kleid</div>
+        <div class="plural">die Kleider</div>
+        <div class="pron">[клайт]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">платье</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Das Kleid ist sehr schön.</div><div class="ru">Платье очень красивое.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 30 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Schuh</div>
+        <div class="plural">die Schuhe</div>
+        <div class="pron">[шу]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">обувь, ботинок</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Die Schuhe sind neu.</div><div class="ru">Туфли новые.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 31 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Socke</div>
+        <div class="plural">die Socken</div>
+        <div class="pron">[зокэ]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">носок</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich brauche neue Socken.</div><div class="ru">Мне нужны новые носки.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 32 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Hut</div>
+        <div class="plural">die Hüte</div>
+        <div class="pron">[хут]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">шляпа</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Der Hut ist zu groß.</div><div class="ru">Шляпа слишком большая.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 33 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">der</span> Schal</div>
+        <div class="plural">die Schals</div>
+        <div class="pron">[шаль]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">шарф</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Im Winter trage ich einen Schal.</div><div class="ru">Зимой я ношу шарф.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 34 -->
+  <div class="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="word"><span class="art">die</span> Brille</div>
+        <div class="plural">die Brillen</div>
+        <div class="pron">[брилэ]</div>
+        <div class="hint">нажми, чтобы увидеть перевод</div>
+      </div>
+      <div class="card-face back">
+        <div class="translation">очки</div>
+        <div class="label">Пример</div>
+        <div class="example"><div class="de">Ich suche meine Brille.</div><div class="ru">Я ищу свои очки.</div></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
